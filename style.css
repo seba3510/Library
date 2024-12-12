@@ -17,3 +17,7 @@ header span {
     font-weight: bold;
     font-size: xx-large;
 }
+
+button {
+    margin-top: 2em;
+}
