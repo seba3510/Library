@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sebastian's Library</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./font.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,8 +27,59 @@
         </div>
     </div>
 
-</body>
-<script src="./library.js"></script>
+    <form action="">
 
+
+        <div id="author">
+            <label for="author">Author</label> <br>
+            <input type="text" name="author" id="book-author" required>
+        </div>
+
+
+        <div id="title">
+            <label for="title">Title</label> <br>
+            <input type="text" name="title" id="book-title" required>
+        </div>
+
+        <div id="price">
+            <label for="price">Book Price</label> <br>
+            <input type="text" name="price" id="book-price">
+        </div>
+
+        <div id="pages">
+            <label for="pages">Number Of Pages</label> <br>
+            <input type="text" name="pages" id="num-pages" required>
+        </div>
+
+
+        <div id="publised">
+            <label for="release-date">Date Published</label> <br>
+            <input type="date" name="release-date" id="release-date">
+        </div>
+
+
+        <fieldset id="status">
+            <label for="book-status">Has the book been read?</label>
+
+            <div id="options">
+
+                <div>
+                    <input type="radio" name="yes" id="yes" value="Yes">
+                    <label for="yes">Yes</label>
+                </div>
+
+                <div>
+                    <input type="radio" name="no" id="no" value="No">
+                    <label for="no">No</label>
+                </div>
+            </div>
+        </fieldset>
+
+
+
+    </form>
+
+</body>
+<script src="./scripts/library.js"></script>
 
 </html>

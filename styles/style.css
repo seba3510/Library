@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
     font-family: Roboto;
+    font-size: 1.12em;
+
 }
 
 header {
@@ -19,5 +21,24 @@ header span {
 }
 
 button {
+    margin-top: 2rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 15px;
+    border: 2px solid black;
+    border-radius: 120px;
+    width: 40%;
+    height: 52vh;
+    padding: 1em;
+    margin-top: 2em;
+    /* background-color: gray */
+
+}
+
+#author {
     margin-top: 2em;
 }
