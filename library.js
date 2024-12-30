@@ -57,7 +57,22 @@ function displayForm() {
         dialog.showModal();
     });
 }//displayForm()
+
 //========================================================================
 
+function validateForm() {
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        validate
+    });
+}//validateForm()
+
+//========================================================================
+
+function isEmpty(str) {
+    return ((str.trim().length === 0));
+}//str()
+
+//========================================================================
 
 handleClick();
