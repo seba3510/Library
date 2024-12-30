@@ -16,6 +16,43 @@
             <h1>Sebastian's Library</h1>
         </div>
     </header>
+
+    <button id="open-modal">Add New Book</button>
+
+    <dialog id="dialog">
+        <form action="">
+            <div id="title-container">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="book-title">
+            </div>
+
+            <div id="author-container">
+                <label for="author">Author</label>
+                <input type="text" name="author" id="book-author">
+            </div>
+
+            <div id="pages-container">
+                <label for="pages">Number of Pages</label>
+                <input type="number" name="pages" id="num-pages">
+            </div>
+
+            <div id="status-container">
+                <fieldset>
+                    <legend>Has the book been read?</legend>
+                    <input type="checkbox" name="agree" id="chbx" value="True">
+                    <label for="chbx">Yes</label>
+                    <input type="checkbox" name="disagree" id="chbx" value="False">
+                    <label for="chbx">No</label>
+                </fieldset>
+            </div>
+        </form>
+        <div id="btns-container">
+            <button id="close-modal">Close</button>
+            <button id="add-book">Add Book</button>
+        </div>
+    </dialog>
+
+
     <script src="./library.js"></script>
 </body>
 

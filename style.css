@@ -3,7 +3,7 @@
     padding: 0;
 }
 
-/*========== Header ==========*/
+/*==================== Header ====================*/
 
 header>div {
     display: flex;
@@ -17,4 +17,10 @@ header>div {
 header>div>img {
     width: 50px;
     height: 50px;
+}
+
+/*==================== Form ====================*/
+form>div {
+    display: flex;
+    flex-direction: column;
 }
