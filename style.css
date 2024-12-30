@@ -20,7 +20,37 @@ header>div>img {
 }
 
 /*==================== Form ====================*/
-form>div {
+
+form {
     display: flex;
     flex-direction: column;
+    gap: 13px;
+    padding: 1em;
+
+}
+
+
+/*==================== Modal ====================*/
+
+#dialog {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    width: 220px;
+    max-width: 100%;
+    padding: 1em;
+}
+
+#btns-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#open-modal-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
 }
