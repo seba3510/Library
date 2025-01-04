@@ -45,10 +45,10 @@ let library = [
 /**
  * Creates a new Book object 
  * 
- * @param {String} title  The title of the book 
- * @param {String} author  The author of the book
- * @param {Number} pages  The total number of pages that the book has
- * @param {Boolean} read   Status that indicates whether the book has been read, or not
+ * @param {String} title - The title of the book 
+ * @param {String} author - The author of the book
+ * @param {Number} pages - The total number of pages that the book has
+ * @param {Boolean} read - Status that indicates whether the book has been read, or not
  */
 function Book(title, author, pages, read) {
     this.title = title;
@@ -80,6 +80,16 @@ function displayForm() {
 
 //=======================================================================================================
 
+function closeForm() {
+    const btn = document.querySelector("#close-modal");
+
+    btn.addEventListener("click", () => {
+        dialogElem.close();
+    });
+}// closeForm()
+
+//=======================================================================================================
+
 /**
  * Handles the button click by calling displayForm.
  * 
@@ -89,6 +99,7 @@ function displayForm() {
 function handleClick() {
     displayForm(); // Call displayForm to show the modal when this function is executed
     submitForm();
+    closeForm();
 } // handleClick()
 
 //=======================================================================================================
@@ -97,9 +108,10 @@ function submitForm() {
 
     form.addEventListener("submit", (e) => {
 
-
+        // Prevents the form from submitting
         e.preventDefault();
 
+        checkTitle();
 
 
     });
@@ -111,17 +123,17 @@ function submitForm() {
 /**
  * Displays the specified error message for the given input field.
  * 
- * @param {HTMLElement} input The input field element that is being validated
- * @param {string} message The error message to display next to the input field
+ * @param {HTMLElement} input - The input field element that is being validated
+ * @param {string} message - The error message to display next to the input field
  */
 function showError(input, message) {
 
     const formField = input.parentElement;
     const small = formField.querySelector("small");
 
-    small.innerText = message;
+    small.innerHTML = message;
 
-    formControl.setAttribute("class", "form-field error");
+    formField.setAttribute("class", "form-field error");
 } // showError()
 
 //=======================================================================================================
@@ -144,7 +156,9 @@ function showSuccess(input) {
 
 /**
  * Determines whether the specified string is empty
- * @param {String} str 
+ * 
+ * @param {String} str - The specified string
+ * 
  * @returns {Boolean} True if the string is empty. False otherwise
  */
 function isEmpty(str) {
@@ -153,5 +167,45 @@ function isEmpty(str) {
 
 //=======================================================================================================
 
+function isBetween(length, min, max) {
+
+    let isBetween = false;
+
+    if ((length >= min) &&
+        (length <= max)) {
+
+        isBetween = true;
+
+    } // if
+
+    else {
+
+        isBetween = false;
+    }// else
+
+    return isBetween;
+}// isBetween()
+
+//=======================================================================================================
+
+
+/**
+ * Validates the title of the book entered by the user
+ */
+function checkTitle() {
+
+    const titleValue = titleElem.value.trim();
+
+    if ((isEmpty(titleValue))) {
+        let msg = "Title of book cannot be blank.";
+        showError(titleElem, msg);
+    }
+
+    else {
+        showSuccess(titleElem);
+    }
+}// checkTitle()
+
+//=======================================================================================================
 
 handleClick();

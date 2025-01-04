@@ -75,8 +75,11 @@ form {
 
 .form-field small {
     color: rgb(237, 57, 57);
-    position: absolute;
-    bottom: 0;
-    left: 0;
+
+}
+
+/*==================== Table ====================*/
+
+table {
     visibility: hidden;
 }
