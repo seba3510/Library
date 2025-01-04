@@ -65,10 +65,20 @@ function addBookToLibrary(title, author, pages, read) {
 
 //=======================================================================================================
 
+
 function displayLibrary() {
 
-    library.forEach(book => {
+    const table = document.querySelector("table");
+    table.style.visibility = "visible";
+    const tableBody = document.querySelector("tbody");
 
+    library.forEach(book => {
+        tableBody.innerHTML += `<tr>
+        <td>${book.title}</td>
+        <td>${book.author}</td>
+        <td>${book.pages}</td>
+        <td>${book.read}</td>
+        <tr>`
         console.table(book);
     });
 }// displayLibrary()

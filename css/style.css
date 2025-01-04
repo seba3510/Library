@@ -82,5 +82,5 @@ form {
 /*==================== Table ====================*/
 
 table {
-    visibility: hidden;
+    visibility: visible;
 }
