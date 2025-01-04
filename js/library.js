@@ -167,12 +167,21 @@ function isEmpty(str) {
 
 //=======================================================================================================
 
-function isBetween(length, min, max) {
+/**
+ * Determines if the specified value is between the specified range
+ * 
+ * @param {Number} val - The specified value
+ * @param {Number} min - The lower bound of the range
+ * @param {Number} max - The upper bound of the range
+ * 
+ * @returns {Boolean}  True if the value if between the specified range. False otherwise
+ */
+function isBetween(val, min, max) {
 
     let isBetween = false;
 
-    if ((length >= min) &&
-        (length <= max)) {
+    if ((val >= min) &&
+        (val <= max)) {
 
         isBetween = true;
 
