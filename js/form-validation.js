@@ -3,6 +3,9 @@ const form = document.querySelector("form");
 const titleElem = document.querySelector("#book-title");
 const authorElem = document.querySelector("#book-author");
 const numPagesElem = document.querySelector("#num-pages");
+const haveRead = document.querySelector("#agree");
+const haveNotRead = document.querySelector("#disagree");
+
 
 const dialogElem = document.querySelector("#dialog");
 
@@ -67,6 +70,7 @@ function submitForm() {
         checkNumberOfPages();
         checkStatus();
         addBookToLibrary(titleElem.value, authorElem.value, numPagesElem.value, checkStatus());
+        clearInputs();
         displayLibrary();
     });
 } // submitForm()
@@ -158,23 +162,21 @@ function isBetween(val, min, max) {
 /**
  * Validates the status of the book
  * 
- * @returns True if the book has been read.  False if the book hasn't been read
+ * @returns {String} 'Yes' if the book has been read.  'No' if the book has not been read
  */
 function checkStatus() {
 
-    let readStatus = false;
-    const haveRead = document.querySelector("#agree");
-    const haveNotRead = document.querySelector("#disagree");
+    let readStatus = "";
 
     if ((haveRead.checked === true)) {
 
-        readStatus = true;
+        readStatus = "Yes";
 
     }
 
     else if ((haveNotRead.checked === true)) {
 
-        readStatus = false;
+        readStatus = "No";
     }
 
 
@@ -266,6 +268,22 @@ function checkNumberOfPages() {
 
 
 }// checkNumberOfPages()
+
+//=======================================================================================================
+
+function clearInputs() {
+    // titleElem.value = "";
+    // authorElem.value = "";
+    // numPagesElem.value = "";
+    // haveNotRead.removeAttribute("checked");
+    // haveRead.removeAttribute("checked");
+    form.reset();
+
+    // const formField = document.querySelector("#form-field");
+
+    // formField.classList.remove("form-field success");
+
+} // resetForm()
 
 //=======================================================================================================
 

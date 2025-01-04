@@ -35,7 +35,7 @@ form {
 #dialog {
     position: fixed;
     top: 30%;
-    left: 50%;
+    left: 43%;
     width: 220px;
     max-width: 100%;
     padding: 2em;
@@ -82,5 +82,22 @@ form {
 /*==================== Table ====================*/
 
 table {
-    visibility: visible;
+    visibility: hidden;
+}
+
+table,
+tr,
+td,
+th,
+tbody,
+thead {
+    border: 1px solid black;
+    text-align: center;
+}
+
+#table-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 5em;
 }
