@@ -7,6 +7,7 @@ const numPagesElem = document.querySelector("#num-pages");
 const dialogElem = document.querySelector("#dialog");
 
 
+
 //=======================================================================================================
 
 /**
@@ -50,7 +51,47 @@ let library = [
  * @param {Boolean} read   Status that indicates whether the book has been read, or not
  */
 function Book(title, author, pages, read) {
-
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
 }//Book()
+
 //=======================================================================================================
 
+/**
+ * Displays the form when the user clicks on the button
+ * 
+ * This function listens for a click event on the button with the ID "open-modal".
+ * When the button is clicked, it shows a modal dialog (assumed to be stored in the `dialogElem` variable).
+ */
+function displayForm() {
+
+    // Select the button element with the ID "open-modal"
+    const btn = document.querySelector("#open-modal");
+
+    // Add an event listener to the button that listens for the "click" event
+    btn.addEventListener("click", () => {
+        // Show the modal dialog when the button is clicked
+        dialogElem.showModal();
+    });
+
+} // displayForm()
+
+//=======================================================================================================
+
+/**
+ * Handles the button click by calling displayForm.
+ * 
+ * This function is a wrapper around the `displayForm` function. It can be used to
+ * trigger the display of the form/modal, likely in response to some other logic or user interaction.
+ */
+function handleClick() {
+    displayForm(); // Call displayForm to show the modal when this function is executed
+
+} // handleClick()
+
+
+
+
+handleClick();
