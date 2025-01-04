@@ -4,6 +4,9 @@ const titleElem = document.querySelector("#book-title");
 const authorElem = document.querySelector("#book-author");
 const numPagesElem = document.querySelector("#num-pages");
 
+const dialogElem = document.querySelector("#dialog");
+
+
 //=======================================================================================================
 
 /**
@@ -42,10 +45,12 @@ let library = [
  * Creates a new Book object 
  * 
  * @param {String} title  The title of the book 
- * @param {*} author  The author of the book
- * @param {*} pages  The total number of pages that the book has
- * @param {*} read   Status that indicates whether the book has been read, or not
+ * @param {String} author  The author of the book
+ * @param {Number} pages  The total number of pages that the book has
+ * @param {Boolean} read   Status that indicates whether the book has been read, or not
  */
 function Book(title, author, pages, read) {
 
 }//Book()
+//=======================================================================================================
+
