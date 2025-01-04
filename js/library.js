@@ -47,3 +47,20 @@ function Book(title, author, pages, read) {
     this.read = read;
 }// Book()
 
+
+//=======================================================================================================
+
+/**
+ * Adds the specified book to the library
+ * 
+ * @param {String} title 
+ * @param {String} author 
+ * @param {Number} pages 
+ * @param {Boolean} read 
+ */
+function addBookToLibrary(title, author, pages, read) {
+    let newBook = new Book(title, author, pages, read);
+    library.push(newBook);
+}// addBookToLibrary()
+
+//=======================================================================================================
