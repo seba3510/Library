@@ -64,3 +64,11 @@ function addBookToLibrary(title, author, pages, read) {
 }// addBookToLibrary()
 
 //=======================================================================================================
+
+function displayLibrary() {
+
+    library.forEach(book => {
+
+        console.table(book);
+    });
+}// displayLibrary()

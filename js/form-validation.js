@@ -65,8 +65,9 @@ function submitForm() {
         checkTitle();
         checkAuthor();
         checkNumberOfPages();
-
-
+        checkStatus();
+        addBookToLibrary(titleElem.value, authorElem.value, numPagesElem.value, checkStatus());
+        displayLibrary();
     });
 } // submitForm()
 
@@ -154,6 +155,36 @@ function isBetween(val, min, max) {
 
 //=======================================================================================================
 
+/**
+ * Validates the status of the book
+ * 
+ * @returns True if the book has been read.  False if the book hasn't been read
+ */
+function checkStatus() {
+
+    let readStatus = false;
+    const haveRead = document.querySelector("#agree");
+    const haveNotRead = document.querySelector("#disagree");
+
+    if ((haveRead.checked === true)) {
+
+        readStatus = true;
+
+    }
+
+    else if ((haveNotRead.checked === true)) {
+
+        readStatus = false;
+    }
+
+
+
+    return readStatus;
+
+}// checkStatus()
+
+//=======================================================================================================
+
 
 /**
  * Validates the title of the book entered by the user
@@ -166,6 +197,7 @@ function checkTitle() {
     if ((isEmpty(titleValue))) {
         let msg = "Title of book cannot be blank.";
         showError(titleElem, msg);
+
     }
 
     else {
