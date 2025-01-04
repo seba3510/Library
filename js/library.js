@@ -7,6 +7,7 @@
  * @note I manually added a few books to the array so I can see the display
  */
 let library = [
+
     {
         "title": "The Hunger Games",
         "author": "Suzanne Collins",
@@ -45,3 +46,4 @@ function Book(title, author, pages, read) {
     this.pages = pages;
     this.read = read;
 }// Book()
+

@@ -64,6 +64,8 @@ function submitForm() {
 
         checkTitle();
         checkAuthor();
+        checkNumberOfPages();
+
 
     });
 } // submitForm()
@@ -175,6 +177,9 @@ function checkTitle() {
 
 //=======================================================================================================
 
+/**
+ * Validates the input value for the book author
+ */
 function checkAuthor() {
 
     const authorValue = authorElem.value.trim();
@@ -190,53 +195,79 @@ function checkAuthor() {
         msg = "Author of book cannot be blank."
         showError(authorElem, msg);
 
-    }
+    } // if
 
     else if ((!isBetween(authorValue.length, min, max))) {
 
         msg = `Author of book must be between ${min} and ${max} characters.`;
         showError(authorElem, msg);
 
-    }
+    } // else if
 
     else {
-
         showSuccess(authorElem);
-    }
+    } // else
+
 } // checkAuthor()
 
 //=======================================================================================================
 
-const debounce = (fn, delay = 500) => {
-    let timeoutId;
-    return (...args) => {
-        // cancel the previous timer
-        if (timeoutId) {
-            clearTimeout(timeoutId);
-        }
-        // setup a new timer
-        timeoutId = setTimeout(() => {
-            fn.apply(null, args)
-        }, delay);
-    };
-};
+/**
+ * Validates the input value for the number of pages of the book
+ */
+function checkNumberOfPages() {
+
+    const numPagesValue = numPagesElem.value.trim();
+
+
+    if ((isEmpty(numPagesValue))) {
+
+        let msg = "Number of pages cannot be blank.";
+        showError(numPagesElem, msg);
+
+    }// if
+
+    else {
+
+        showSuccess(numPagesElem);
+    } // else
+
+
+}// checkNumberOfPages()
+
+//=======================================================================================================
+
+// const debounce = (fn, delay = 500) => {
+//     let timeoutId;
+//     return (...args) => {
+//         // cancel the previous timer
+//         if (timeoutId) {
+//             clearTimeout(timeoutId);
+//         }
+//         // setup a new timer
+//         timeoutId = setTimeout(() => {
+//             fn.apply(null, args)
+//         }, delay);
+//     };
+// };
 
 //=======================================================================================================
 
 
-form.addEventListener("input", debounce((event) => {
-    switch ((event.target.id)) {
-        case "book-title":
-            checkTitle();
-            break;
-        case "book-author":
-            checkAuthor();
-        case "num-pages":
-            checkNumPages();
-        default:
-            break;
-    }
-}));
+// form.addEventListener("input", debounce((event) => {
+
+//     switch ((event.target.id)) {
+//         case "book-title":
+//             checkTitle();
+//             break;
+//         case "book-author":
+//             checkAuthor();
+//         case "num-pages":
+//             checkNumPages();
+//         default:
+//             break;
+//     }
+// }));
 
 //=======================================================================================================
 
