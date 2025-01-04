@@ -69,9 +69,10 @@ form {
 
 }
 
-.form-field.success {
-    color: rgb(85, 219, 94);
-}
+/* .form-field.success {
+    border-color: rgb(85, 219, 94);
+} */
+
 
 .form-field small {
     color: rgb(237, 57, 57);

@@ -131,7 +131,7 @@ function showError(input, message) {
     const formField = input.parentElement;
     const small = formField.querySelector("small");
 
-    small.innerHTML = message;
+    small.textContent = message;
 
     formField.setAttribute("class", "form-field error");
 } // showError()
@@ -148,7 +148,11 @@ function showSuccess(input) {
 
     const formField = input.parentElement;
 
+    formField.classList.remove("error");
     formField.setAttribute("class", "form-field success");
+
+    const error = formField.querySelector("small");
+    error.textContent = "";
 
 }// showSuccess()
 
@@ -203,6 +207,7 @@ function isBetween(val, min, max) {
  */
 function checkTitle() {
 
+    // Get value entered by the user
     const titleValue = titleElem.value.trim();
 
     if ((isEmpty(titleValue))) {
@@ -213,8 +218,44 @@ function checkTitle() {
     else {
         showSuccess(titleElem);
     }
+
+
 }// checkTitle()
 
 //=======================================================================================================
+
+const debounce = (fn, delay = 500) => {
+    let timeoutId;
+    return (...args) => {
+        // cancel the previous timer
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+        }
+        // setup a new timer
+        timeoutId = setTimeout(() => {
+            fn.apply(null, args)
+        }, delay);
+    };
+};
+
+//=======================================================================================================
+
+
+form.addEventListener("input", debounce((event) => {
+    switch ((event.target.id)) {
+        case "book-title":
+            checkTitle();
+            break;
+        case "book-author":
+            checkAuthor();
+        case "num-pages":
+            checkNumPages();
+        default:
+            break;
+    }
+}));
+
+//=======================================================================================================
+
 
 handleClick();
