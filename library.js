@@ -88,10 +88,70 @@ function displayForm() {
  */
 function handleClick() {
     displayForm(); // Call displayForm to show the modal when this function is executed
-
+    submitForm();
 } // handleClick()
 
+//=======================================================================================================
 
+function submitForm() {
+
+    form.addEventListener("submit", (e) => {
+
+
+        e.preventDefault();
+
+
+
+    });
+} // submitForm()
+
+
+//=======================================================================================================
+
+/**
+ * Displays the specified error message for the given input field.
+ * 
+ * @param {HTMLElement} input The input field element that is being validated
+ * @param {string} message The error message to display next to the input field
+ */
+function showError(input, message) {
+
+    const formField = input.parentElement;
+    const small = formField.querySelector("small");
+
+    small.innerText = message;
+
+    formControl.setAttribute("class", "form-field error");
+} // showError()
+
+//=======================================================================================================
+
+/**
+ * Updates the class of the parent element of the provided input field
+ * to indicate a successful form input
+ * 
+ * @param {HTMLElement} input - The input field whose parent element will be updated
+ */
+function showSuccess(input) {
+
+    const formField = input.parentElement;
+
+    formField.setAttribute("class", "form-field success");
+
+}// showSuccess()
+
+//=======================================================================================================
+
+/**
+ * Determines whether the specified string is empty
+ * @param {String} str 
+ * @returns {Boolean} True if the string is empty. False otherwise
+ */
+function isEmpty(str) {
+    return ((str === ""));
+}// isEmpty()
+
+//=======================================================================================================
 
 
 handleClick();
