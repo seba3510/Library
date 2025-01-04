@@ -23,26 +23,26 @@
     </div>
 
     <dialog id="dialog">
-        <form action="">
-            <div id="title-container">
+        <form action="/" method="get">
+            <div class="form-field">
                 <label for="title">Title</label>
                 <input type="text" name="title" id="book-title">
                 <small></small>
             </div>
 
-            <div id="author-container">
+            <div class="form-field">
                 <label for="author">Author</label>
                 <input type="text" name="author" id="book-author">
                 <small></small>
             </div>
 
-            <div id="pages-container">
+            <div class="form-field">
                 <label for="pages">Number of Pages</label>
                 <input type="number" name="pages" id="num-pages">
                 <small></small>
             </div>
 
-            <div id="status-container">
+            <div class="form-field">
                 <fieldset>
                     <legend>Has the book been read?</legend>
                     <input type="checkbox" name="agree" id="chbx" value="True">
@@ -52,13 +52,30 @@
                     <small></small>
                 </fieldset>
             </div>
+            <div id="btns-container">
+                <button id="close-modal">Close</button>
+                <button type="submit" id="add-book">Add Book</button>
+            </div>
         </form>
-        <div id="btns-container">
-            <button id="close-modal">Close</button>
-            <button id="add-book">Add Book</button>
-        </div>
     </dialog>
 
+    <div id="table-container">
+
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Number of Pages</th>
+                <th>Has the book been read?</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+
+        </table>
+    </div>
 
     <script src="./library.js"></script>
 </body>

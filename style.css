@@ -54,3 +54,29 @@ form {
     align-items: center;
     margin-top: 2em;
 }
+
+
+/*==================== Form Input Fields ====================*/
+
+
+.form-field.error input {
+    border-color: red;
+
+}
+
+.form-field.success input {
+    border-color: rgb(117, 227, 81);
+
+}
+
+.form-field.success {
+    color: rgb(85, 219, 94);
+}
+
+.form-field small {
+    color: rgb(237, 57, 57);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    visibility: hidden;
+}
