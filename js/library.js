@@ -65,7 +65,9 @@ function addBookToLibrary(title, author, pages, read) {
 
 //=======================================================================================================
 
-
+/**
+ * Displays all of the books that are in the library
+ */
 function displayLibrary() {
 
     const table = document.querySelector("table");
@@ -79,8 +81,10 @@ function displayLibrary() {
         <td>${book.pages}</td>
         <td>${book.read}</td>
         <tr>`
-        console.table(book);
+        // console.table(book);
     });
+
+    clearInputs();
 }// displayLibrary()
 
 //=======================================================================================================
