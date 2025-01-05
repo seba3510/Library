@@ -70,8 +70,8 @@ function submitForm() {
         checkNumberOfPages();
         checkStatus();
         addBookToLibrary(titleElem.value, authorElem.value, numPagesElem.value, checkStatus());
+        // clearInputs();
         displayLibrary();
-        clearInputs();
 
     });
 } // submitForm()
@@ -189,10 +189,10 @@ function checkStatus() {
 
     }
 
-    else {
 
-        return readStatus;
-    }
+
+    return readStatus;
+
 
 
 
@@ -297,53 +297,53 @@ function clearInputs() {
     haveNotRead.checked = false;
     haveRead.checked = false;
 
-    const formField = document.querySelector(".form-field");
+    // const formField = document.querySelector(".form-field");
 
-    formField.removeAttribute("class", "form-field.success input");
+    form.classList.remove("form-field success");
 
 } // clearInputs()
 
 //=======================================================================================================
 
-const debounce = (fn, delay = 500) => {
-    let timeoutId;
-    return (...args) => {
-        // cancel the previous timer
-        if (timeoutId) {
-            clearTimeout(timeoutId);
-        }
-        // setup a new timer
-        timeoutId = setTimeout(() => {
-            fn.apply(null, args)
-        }, delay);
-    };
-};
+// const debounce = (fn, delay = 500) => {
+//     let timeoutId;
+//     return (...args) => {
+//         // cancel the previous timer
+//         if (timeoutId) {
+//             clearTimeout(timeoutId);
+//         }
+//         // setup a new timer
+//         timeoutId = setTimeout(() => {
+//             fn.apply(null, args)
+//         }, delay);
+//     };
+// };
 
 //=======================================================================================================
 
 
-form.addEventListener("input", debounce((event) => {
+// form.addEventListener("input", debounce((event) => {
 
-    switch ((event.target.id)) {
-        case "book-title":
-            checkTitle();
-            break;
-        case "book-author":
-            checkAuthor();
-            break;
-        case "num-pages":
-            checkNumPages();
-            break;
-        case "agree":
-            checkStatus();
-            break;
-        case "disagree":
-            checkStatus();
-            break;
-        default:
-            break;
-    }// switch()
-}));
+//     switch ((event.target.id)) {
+//         case "book-title":
+//             checkTitle();
+//             break;
+//         case "book-author":
+//             checkAuthor();
+//             break;
+//         case "num-pages":
+//             checkNumPages();
+//             break;
+//         case "agree":
+//             checkStatus();
+//             break;
+//         case "disagree":
+//             checkStatus();
+//             break;
+//         default:
+//             break;
+//     }// switch()
+// }));
 
 //=======================================================================================================
 
