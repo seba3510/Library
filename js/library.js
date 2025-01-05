@@ -71,16 +71,25 @@ function addBookToLibrary(title, author, pages, read) {
 function displayLibrary() {
 
     const table = document.querySelector("table");
+
     table.style.visibility = "visible";
+
+
     const tableBody = document.querySelector("tbody");
 
+    const btn = `<button id="remove-btn">
+    <img src="../images/delete.png" id="remove-icon"></button>`
+
     library.forEach(book => {
+
+
         tableBody.innerHTML += `<tr>
         <td>${book.title}</td>
         <td>${book.author}</td>
         <td>${book.pages}</td>
         <td>${book.read}</td>
-        <tr>`
+        <td>${btn}</td>
+        </tr>`;
         // console.table(book);
     });
 
@@ -88,7 +97,3 @@ function displayLibrary() {
 }// displayLibrary()
 
 //=======================================================================================================
-
-function displayRemoveButton() {
-
-}// removeBookFromLibrary()

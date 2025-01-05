@@ -107,14 +107,12 @@ thead {
     margin-top: 5em;
 }
 
-#edit-book img {
-    width: 30px;
-    height: 30px;
+#remove-icon {
+    width: 50px;
+    height: 50px;
 }
 
-#edit-book button {
-    margin-left: 1rem;
-    margin-top: 1rem;
+#remove-btn {
     cursor: pointer;
     background-color: transparent;
     border-color: transparent;
