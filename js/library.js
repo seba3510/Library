@@ -89,6 +89,6 @@ function displayLibrary() {
 
 //=======================================================================================================
 
-function removeBookFromLibrary() {
+function displayRemoveButton() {
 
 }// removeBookFromLibrary()
