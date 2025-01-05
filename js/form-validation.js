@@ -60,18 +60,19 @@ function handleClick() {
 
 function submitForm() {
 
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", (event) => {
 
         // Prevents the form from submitting
-        e.preventDefault();
+        event.preventDefault();
 
         checkTitle();
         checkAuthor();
         checkNumberOfPages();
         checkStatus();
         addBookToLibrary(titleElem.value, authorElem.value, numPagesElem.value, checkStatus());
-        clearInputs();
         displayLibrary();
+        clearInputs();
+
     });
 } // submitForm()
 
@@ -166,22 +167,35 @@ function isBetween(val, min, max) {
  */
 function checkStatus() {
 
-    let readStatus = "";
+    let readStatus = false;
 
     if ((haveRead.checked === true)) {
 
-        readStatus = "Yes";
+        readStatus = true;
 
     }
 
     else if ((haveNotRead.checked === true)) {
 
-        readStatus = "No";
+        readStatus = false;
+
+    }
+
+    else if ((haveNotRead.checked == false) &&
+        (haveRead.checked == false)) {
+
+        let msg = "Please fill out this field.";
+        showError(haveRead, msg);
+
+    }
+
+    else {
+
+        return readStatus;
     }
 
 
 
-    return readStatus;
 
 }// checkStatus()
 
@@ -271,53 +285,65 @@ function checkNumberOfPages() {
 
 //=======================================================================================================
 
+/**
+ * Clears the input values entered by the user then the form is submitted
+ */
 function clearInputs() {
-    // titleElem.value = "";
-    // authorElem.value = "";
-    // numPagesElem.value = "";
-    // haveNotRead.removeAttribute("checked");
-    // haveRead.removeAttribute("checked");
-    form.reset();
 
-    // const formField = document.querySelector("#form-field");
+    titleElem.value = "";
+    authorElem.value = "";
+    numPagesElem.value = "";
 
-    // formField.classList.remove("form-field success");
+    haveNotRead.checked = false;
+    haveRead.checked = false;
 
-} // resetForm()
+    const formField = document.querySelector(".form-field");
 
-//=======================================================================================================
+    formField.removeAttribute("class", "form-field.success input");
 
-// const debounce = (fn, delay = 500) => {
-//     let timeoutId;
-//     return (...args) => {
-//         // cancel the previous timer
-//         if (timeoutId) {
-//             clearTimeout(timeoutId);
-//         }
-//         // setup a new timer
-//         timeoutId = setTimeout(() => {
-//             fn.apply(null, args)
-//         }, delay);
-//     };
-// };
+} // clearInputs()
 
 //=======================================================================================================
 
+const debounce = (fn, delay = 500) => {
+    let timeoutId;
+    return (...args) => {
+        // cancel the previous timer
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+        }
+        // setup a new timer
+        timeoutId = setTimeout(() => {
+            fn.apply(null, args)
+        }, delay);
+    };
+};
 
-// form.addEventListener("input", debounce((event) => {
+//=======================================================================================================
 
-//     switch ((event.target.id)) {
-//         case "book-title":
-//             checkTitle();
-//             break;
-//         case "book-author":
-//             checkAuthor();
-//         case "num-pages":
-//             checkNumPages();
-//         default:
-//             break;
-//     }
-// }));
+
+form.addEventListener("input", debounce((event) => {
+
+    switch ((event.target.id)) {
+        case "book-title":
+            checkTitle();
+            break;
+        case "book-author":
+            checkAuthor();
+            break;
+        case "num-pages":
+            checkNumPages();
+            break;
+        case "agree":
+            checkStatus();
+            break;
+        case "disagree":
+            checkStatus();
+            break;
+        default:
+            break;
+    }// switch()
+}));
 
 //=======================================================================================================
 

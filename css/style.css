@@ -36,9 +36,14 @@ form {
     position: fixed;
     top: 30%;
     left: 43%;
+    /* width: 220px; */
     width: 220px;
-    max-width: 100%;
+    /* max-width: 100%; */
     padding: 2em;
+}
+
+#dialog fieldset {
+    width: 500px;
 }
 
 #btns-container {
@@ -69,9 +74,9 @@ form {
 
 }
 
-/* .form-field.success {
+.form-field.success {
     border-color: rgb(85, 219, 94);
-} */
+}
 
 
 .form-field small {
