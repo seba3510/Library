@@ -97,7 +97,7 @@ function displayLibrary() {
 
     // Iterate over each book in the 'library' array
     library.forEach(book => {
-        library.pop();
+
         // Create a new row element  for each book
         const row = document.createElement("tr");
 
@@ -124,7 +124,7 @@ function displayLibrary() {
         // Create the delete button element
         const deleteBtn = document.createElement("button");
 
-        deleteBtn.setAttribute("id", "remove-btn");
+        deleteBtn.setAttribute("class", "remove-btn");
 
         // Create an image element for the delete icon inside the button
         const deleteIcon = document.createElement("img");
@@ -132,7 +132,7 @@ function displayLibrary() {
         let path = "../images/delete.png";
         deleteIcon.setAttribute("src", path);
 
-        deleteIcon.setAttribute("id", "remove-icon");
+        deleteIcon.setAttribute("class", "remove-icon");
 
 
 
@@ -152,7 +152,7 @@ function displayLibrary() {
         // Append the newly created row to the table body, making it part of the visible table
         tableBody.appendChild(row);
 
-        // removeBookFromLibrary(deleteBtn, row);
+        removeBookFromLibrary(deleteBtn, row);
     });
 
 
@@ -168,9 +168,11 @@ function displayLibrary() {
  * @param {HTMLElement} row 
  */
 function removeBookFromLibrary(button, row) {
-    button.addEventListener("click", () => {
-        row.remove();
 
+    button.addEventListener("click", () => {
+
+        row.remove();
+        library.pop();
         console.log(library);
     });
 }// removeBookFromLibrary()

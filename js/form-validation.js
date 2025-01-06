@@ -304,7 +304,7 @@ function clearInputs() {
     haveRead.checked = false;
     // const formField = document.querySelector(".form-field");
 
-    form.classList.remove("form-field success");
+    // form.classList.remove("form-field success");
 
 } // clearInputs()
 
