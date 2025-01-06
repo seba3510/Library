@@ -79,9 +79,11 @@ function addBookToLibrary(title, author, pages, read) {
 }// addBookToLibrary()
 
 //=======================================================================================================
+
+
 /**
  * Displays  the list of books in the library onto a table
- */
+*/
 function displayLibrary() {
 
     // Select the table element from the DOM
@@ -93,11 +95,14 @@ function displayLibrary() {
     // Select the table body element where rows will be added
     const tableBody = document.querySelector("tbody");
 
+
+
     // Iterate over each book in the 'library' array
     library.forEach(book => {
 
         // Create a new row element  for each book
         const row = document.createElement("tr");
+
 
         // Create a new cell  for the book's title and set its text content to the book's title
         const titleCell = document.createElement("td");
@@ -116,11 +121,10 @@ function displayLibrary() {
         statusCell.textContent = book.read;
 
         // Create a new cell for the delete button
-        const buttonCell = document.createElement("td");
+        const deleteBtnCell = document.createElement("td");
 
         // Create the delete button element
         const deleteBtn = document.createElement("button");
-
 
         deleteBtn.setAttribute("id", "remove-btn");
 
@@ -130,39 +134,45 @@ function displayLibrary() {
         let path = "../images/delete.png";
         deleteIcon.setAttribute("src", path);
 
-
         deleteIcon.setAttribute("id", "remove-icon");
+
+
 
         // Append the delete icon to the delete button
         deleteBtn.appendChild(deleteIcon);
 
         // Append the delete button to the button cell
-        buttonCell.appendChild(deleteBtn);
+        deleteBtnCell.appendChild(deleteBtn);
 
         // Append the individual cells (title, author, pages, status, button) to the row
         row.appendChild(titleCell);
         row.appendChild(authorCell);
         row.appendChild(pagesCell);
         row.appendChild(statusCell);
-        row.appendChild(buttonCell);
+        row.appendChild(deleteBtnCell);
 
         // Append the newly created row to the table body, making it part of the visible table
         tableBody.appendChild(row);
+
+        removeBookFromLibrary(deleteBtn, row);
     });
+
 
 }// displayLibrary()
 
-
-
 //=======================================================================================================
 
-
-
-
-//=======================================================================================================
-
-
-function removeBookFromLibrary() {
-    let msg = `You will remove "${book.title}" from the library!`;
-    alert(msg);
+/**
+ * Removes the specified row from the library 
+ * @param {HTMLElement} button 
+ * @param {HTMLElement} row 
+ */
+function removeBookFromLibrary(button, row) {
+    button.addEventListener("click", () => {
+        row.remove();
+        console.log(library);
+    });
 }// removeBookFromLibrary()
+
+//=======================================================================================================
+
