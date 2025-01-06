@@ -6,32 +6,32 @@
  * 
  * @note I manually added a few books to the array so I can see the display
  */
-let library = [
+// let library = [
 
-    {
-        "title": "The Hunger Games",
-        "author": "Suzanne Collins",
-        "pages": 400,
-        "read": true
+//     {
+//         "title": "The Hunger Games",
+//         "author": "Suzanne Collins",
+//         "pages": 400,
+//         "read": true
 
-    },
+//     },
 
-    {
-        "title": "Harry Potter and the Sorcerer's Stone",
-        "author": "J.K. Rowling",
-        "pages": 320,
-        "read": false
-    },
+//     {
+//         "title": "Harry Potter and the Sorcerer's Stone",
+//         "author": "J.K. Rowling",
+//         "pages": 320,
+//         "read": false
+//     },
 
-    {
-        "title": "A Tale of Two Cities",
-        "author": "Charles Dickens",
-        "pages": 428,
-        "read": false
-    }
-];
+//     {
+//         "title": "A Tale of Two Cities",
+//         "author": "Charles Dickens",
+//         "pages": 428,
+//         "read": false
+//     }
+// ];
 
-// const library = [];
+const library = [];
 
 // const removeBookBtn = `<button id="remove-btn">
 // <img src="../images/delete.png" id="remove-icon"></button>`
@@ -95,11 +95,9 @@ function displayLibrary() {
     // Select the table body element where rows will be added
     const tableBody = document.querySelector("tbody");
 
-
-
     // Iterate over each book in the 'library' array
     library.forEach(book => {
-
+        library.pop();
         // Create a new row element  for each book
         const row = document.createElement("tr");
 
@@ -154,9 +152,11 @@ function displayLibrary() {
         // Append the newly created row to the table body, making it part of the visible table
         tableBody.appendChild(row);
 
-        removeBookFromLibrary(deleteBtn, row);
+        // removeBookFromLibrary(deleteBtn, row);
     });
 
+
+    clearInputs();
 
 }// displayLibrary()
 
@@ -170,9 +170,9 @@ function displayLibrary() {
 function removeBookFromLibrary(button, row) {
     button.addEventListener("click", () => {
         row.remove();
+
         console.log(library);
     });
 }// removeBookFromLibrary()
 
 //=======================================================================================================
-

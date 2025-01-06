@@ -53,10 +53,12 @@ function closeForm() {
 function handleClick() {
     displayForm();
     submitForm();
+    // clearInputs();
     closeForm();
 } // handleClick()
 
 //=======================================================================================================
+
 
 function submitForm() {
 
@@ -70,11 +72,12 @@ function submitForm() {
         checkNumberOfPages();
         checkStatus();
         addBookToLibrary(titleElem.value, authorElem.value, numPagesElem.value, checkStatus());
-        // clearInputs();
         displayLibrary();
 
     });
+    // clearInputs();
 } // submitForm()
+
 
 
 //=======================================================================================================
@@ -290,13 +293,15 @@ function checkNumberOfPages() {
  */
 function clearInputs() {
 
+
+    // form.reset();
+
     titleElem.value = "";
     authorElem.value = "";
     numPagesElem.value = "";
 
     haveNotRead.checked = false;
     haveRead.checked = false;
-
     // const formField = document.querySelector(".form-field");
 
     form.classList.remove("form-field success");
