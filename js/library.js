@@ -86,7 +86,7 @@ function addBookToLibrary(title, author, pages, read) {
 function displayLibrary() {
 
     // Select the table element from the DOM
-    const table = document.querySelector("table");
+    const table = document.querySelector("#table-container > table");
 
     // Make the table visible by setting its visibility style to 'visible'
     table.style.visibility = "visible";
@@ -123,7 +123,7 @@ function displayLibrary() {
         // Create the delete button element
         const deleteBtn = document.createElement("button");
 
-        deleteBtn.setAttribute("id", "remove-btn");
+        deleteBtn.setAttribute("class", "remove-btn");
 
         // Create an image element for the delete icon inside the button
         const deleteIcon = document.createElement("img");
@@ -131,7 +131,7 @@ function displayLibrary() {
         let path = "../images/delete.png";
         deleteIcon.setAttribute("src", path);
 
-        deleteIcon.setAttribute("id", "remove-icon");
+        deleteIcon.setAttribute("class", "remove-icon");
 
 
 
@@ -151,6 +151,8 @@ function displayLibrary() {
         // Append the newly created row to the table body, making it part of the visible table
         tableBody.appendChild(row);
 
+        // clearInputs();
+
         // removeBookFromLibrary(deleteBtn, row);
     });
 
@@ -169,9 +171,13 @@ function displayLibrary() {
 function removeBookFromLibrary(button, row) {
     button.addEventListener("click", () => {
         row.remove();
-
         console.log(library);
     });
 }// removeBookFromLibrary()
 
 //=======================================================================================================
+
+function clearTable() {
+    const tableBody = document.querySelector("tbody");
+    tableBody.innerHTML = "";
+}// clearTable()

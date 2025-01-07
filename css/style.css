@@ -111,12 +111,12 @@ thead {
     margin-top: 5em;
 }
 
-#remove-icon {
+.remove-icon {
     width: 50px;
     height: 50px;
 }
 
-#remove-btn {
+.remove-btn {
     cursor: pointer;
     background-color: transparent;
     border-color: transparent;

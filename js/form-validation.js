@@ -115,8 +115,9 @@ function submitForm() {
         checkNumberOfPages();
         checkStatus();
 
-
+        clearTable();
         addBookToLibrary(titleElem.value, authorElem.value, numPagesElem.value, checkStatus());
+        clearInputs();
         displayLibrary();
 
     });
