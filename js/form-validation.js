@@ -1,12 +1,50 @@
+/**
+ * Reference to the form in which the user will add a book to the library.
+ * 
+ * @type {HTMLElement}
+ */
 const form = document.querySelector("form");
 
+/**
+ * Reference to the input field that stores the title of the book.
+ * 
+ * @type {HTMLElement}
+ */
 const titleElem = document.querySelector("#book-title");
+
+/**
+ * Reference to the input field that stores the author of the book.
+ * 
+ * @type {HTMLElement}
+ */
 const authorElem = document.querySelector("#book-author");
+
+/**
+ * Reference to the input field that stores the number of pages that the book has.
+ * 
+ * @type {HTMLElement}
+ */
 const numPagesElem = document.querySelector("#num-pages");
+
+/**
+ * Reference to the input field that indicates whether the book has been read.
+ * This element represents the user's selection confirming that the book has been read.
+ * 
+ * @type {HTMLElement}
+ */
 const haveRead = document.querySelector("#agree");
+
+/**
+ * Reference to the input field that indicates that whether the book has been read.
+ * This element represents the user's selection confirming the the book has not been read.
+ */
 const haveNotRead = document.querySelector("#disagree");
 
-
+/**
+ * Reference to the dialog element that displays the form.
+ * 
+ * @type {HTMLElement}
+ */
 const dialogElem = document.querySelector("#dialog");
 
 
@@ -14,10 +52,7 @@ const dialogElem = document.querySelector("#dialog");
 //=======================================================================================================
 
 /**
- * Displays the form when the user clicks on the button
- * 
- * This function listens for a click event on the button with the ID "open-modal".
- * When the button is clicked, it shows a modal dialog (assumed to be stored in the `dialogElem` variable).
+ * Displays the form when the user clicks wants to add a new book to the library.
  */
 function displayForm() {
 
@@ -34,7 +69,12 @@ function displayForm() {
 
 //=======================================================================================================
 
+/**
+ * Closes the form.
+ */
 function closeForm() {
+
+
     const btn = document.querySelector("#close-modal");
 
     btn.addEventListener("click", () => {
@@ -59,7 +99,9 @@ function handleClick() {
 
 //=======================================================================================================
 
-
+/**
+ * Submits the form filled out by the user, so the book can be added to the library, and displayed
+ */
 function submitForm() {
 
     form.addEventListener("submit", (event) => {
@@ -67,10 +109,13 @@ function submitForm() {
         // Prevents the form from submitting
         event.preventDefault();
 
+        // Validate input fields
         checkTitle();
         checkAuthor();
         checkNumberOfPages();
         checkStatus();
+
+
         addBookToLibrary(titleElem.value, authorElem.value, numPagesElem.value, checkStatus());
         displayLibrary();
 
@@ -102,9 +147,9 @@ function showError(input, message) {
 
 /**
  * Updates the class of the parent element of the provided input field
- * to indicate a successful form input
+ * to indicate a successful form input.
  * 
- * @param {HTMLElement} input - The input field whose parent element will be updated
+ * @param {HTMLElement} input - The input field whose parent element will be updated.
  */
 function showSuccess(input) {
 
@@ -121,9 +166,9 @@ function showSuccess(input) {
 //=======================================================================================================
 
 /**
- * Determines whether the specified string is empty
+ * Determines whether the specified string is empty.
  * 
- * @param {String} str - The specified string
+ * @param {String} str - The specified string.
  * 
  * @returns {Boolean} True if the string is empty. False otherwise
  */
@@ -134,13 +179,13 @@ function isEmpty(str) {
 //=======================================================================================================
 
 /**
- * Determines if the specified value is between the specified range
+ * Determines if the specified value is between the specified range.
  * 
- * @param {Number} val - The specified value
- * @param {Number} min - The lower bound of the range
- * @param {Number} max - The upper bound of the range
+ * @param {Number} val - The specified value.
+ * @param {Number} min - The lower bound of the range.
+ * @param {Number} max - The upper bound of the range.
  * 
- * @returns {Boolean}  True if the value if between the specified range. False otherwise
+ * @returns {Boolean}  True if the value if between the specified range. False otherwise.
  */
 function isBetween(val, min, max) {
 
@@ -164,7 +209,7 @@ function isBetween(val, min, max) {
 //=======================================================================================================
 
 /**
- * Validates the status of the book
+ * Validates the status of the book.
  * 
  * @returns {String} 'Yes' if the book has been read.  'No' if the book has not been read
  */
@@ -206,7 +251,7 @@ function checkStatus() {
 
 
 /**
- * Validates the title of the book entered by the user
+ * Validates the title of the book entered by the user.
  */
 function checkTitle() {
 
@@ -229,7 +274,7 @@ function checkTitle() {
 //=======================================================================================================
 
 /**
- * Validates the input value for the book author
+ * Validates the input value for the book author.
  */
 function checkAuthor() {
 
@@ -264,7 +309,7 @@ function checkAuthor() {
 //=======================================================================================================
 
 /**
- * Validates the input value for the number of pages of the book
+ * Validates the input value for the number of pages of the book.
  */
 function checkNumberOfPages() {
 
@@ -289,7 +334,7 @@ function checkNumberOfPages() {
 //=======================================================================================================
 
 /**
- * Clears the input values entered by the user then the form is submitted
+ * Clears the input values entered by the user when the form is submitted.
  */
 function clearInputs() {
 
@@ -302,9 +347,8 @@ function clearInputs() {
 
     haveNotRead.checked = false;
     haveRead.checked = false;
-    // const formField = document.querySelector(".form-field");
 
-    // form.classList.remove("form-field success");
+    // const formField = document.querySelector(".form-field");
 
 } // clearInputs()
 
@@ -351,6 +395,5 @@ function clearInputs() {
 // }));
 
 //=======================================================================================================
-
 
 handleClick();

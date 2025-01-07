@@ -59,7 +59,6 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
-
 }// Book()
 
 
@@ -68,10 +67,10 @@ function Book(title, author, pages, read) {
 /**
  * Adds the specified book to the library
  * 
- * @param {String} title 
- * @param {String} author 
- * @param {Number} pages 
- * @param {Boolean} read 
+ * @param {String} title - The title of the book    
+ * @param {String} author - The author of the book
+ * @param {Number} pages - The total number of pages that the book has
+ * @param {Boolean} read - Status that indicates if the book has been read, or not
  */
 function addBookToLibrary(title, author, pages, read) {
     let newBook = new Book(title, author, pages, read);
@@ -124,7 +123,7 @@ function displayLibrary() {
         // Create the delete button element
         const deleteBtn = document.createElement("button");
 
-        deleteBtn.setAttribute("class", "remove-btn");
+        deleteBtn.setAttribute("id", "remove-btn");
 
         // Create an image element for the delete icon inside the button
         const deleteIcon = document.createElement("img");
@@ -132,7 +131,7 @@ function displayLibrary() {
         let path = "../images/delete.png";
         deleteIcon.setAttribute("src", path);
 
-        deleteIcon.setAttribute("class", "remove-icon");
+        deleteIcon.setAttribute("id", "remove-icon");
 
 
 
@@ -152,7 +151,7 @@ function displayLibrary() {
         // Append the newly created row to the table body, making it part of the visible table
         tableBody.appendChild(row);
 
-        removeBookFromLibrary(deleteBtn, row);
+        // removeBookFromLibrary(deleteBtn, row);
     });
 
 
@@ -168,11 +167,9 @@ function displayLibrary() {
  * @param {HTMLElement} row 
  */
 function removeBookFromLibrary(button, row) {
-
     button.addEventListener("click", () => {
-
         row.remove();
-        library.pop();
+
         console.log(library);
     });
 }// removeBookFromLibrary()
