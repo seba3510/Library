@@ -177,6 +177,11 @@ function removeBookFromLibrary(button, row) {
 
 //=======================================================================================================
 
+/**
+ * Clears the contents of the table. This function was added to fix an issue where 
+ * every time a new book (except the first one) was added, {@link displayLibrary()}
+ * would display both the already added books and the new one.
+ */
 function clearTable() {
     const tableBody = document.querySelector("tbody");
     tableBody.innerHTML = "";
