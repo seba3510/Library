@@ -47,8 +47,7 @@ const haveNotRead = document.querySelector("#disagree");
  */
 const dialogElem = document.querySelector("#dialog");
 
-
-
+let bookId = Number(0);
 //=======================================================================================================
 
 /**
@@ -93,7 +92,6 @@ function closeForm() {
 function handleClick() {
     displayForm();
     submitForm();
-    // clearInputs();
     closeForm();
 } // handleClick()
 
@@ -115,13 +113,13 @@ function submitForm() {
         checkNumberOfPages();
         checkStatus();
 
+
         clearTable();
-        addBookToLibrary(titleElem.value, authorElem.value, numPagesElem.value, checkStatus());
+        addBookToLibrary(bookId, titleElem.value, authorElem.value, numPagesElem.value, checkStatus());
         clearInputs();
         displayLibrary();
 
     });
-    // clearInputs();
 } // submitForm()
 
 
@@ -222,13 +220,13 @@ function checkStatus() {
 
         readStatus = true;
 
-    }
+    }// if
 
     else if ((haveNotRead.checked === true)) {
 
         readStatus = false;
 
-    }
+    }// else if
 
     else if ((haveNotRead.checked == false) &&
         (haveRead.checked == false)) {
@@ -236,7 +234,7 @@ function checkStatus() {
         let msg = "Please fill out this field.";
         showError(haveRead, msg);
 
-    }
+    }// else if
 
 
 

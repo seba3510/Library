@@ -1,4 +1,3 @@
-
 /**
  * Array of objects that stores all books of the library.
  * 
@@ -33,28 +32,21 @@
 
 const library = [];
 
-// const removeBookBtn = `<button id="remove-btn">
-// <img src="../images/delete.png" id="remove-icon"></button>`
 
-// const removeBtn = document.createElement("button");
-// removeBtn.setAttribute("id", "remove-btn");
-
-// const image = document.createElement("img");
-// image.src = "../images/delete.png";
-// image.setAttribute("id", "remove-icon");
-// removeBtn.append(image);
 
 //=======================================================================================================
 
 /**
  * Creates a new Book object 
  * 
+ * @param {Number} id - The id assigned to the book
  * @param {String} title - The title of the book 
  * @param {String} author - The author of the book
  * @param {Number} pages - The total number of pages that the book has
  * @param {Boolean} read - Status that indicates whether the book has been read, or not
  */
-function Book(title, author, pages, read) {
+function Book(id, title, author, pages, read) {
+    this.id = id;
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -67,18 +59,19 @@ function Book(title, author, pages, read) {
 /**
  * Adds the specified book to the library
  * 
+ * @param {Number} id - The id of the book
  * @param {String} title - The title of the book    
  * @param {String} author - The author of the book
  * @param {Number} pages - The total number of pages that the book has
  * @param {Boolean} read - Status that indicates if the book has been read, or not
  */
-function addBookToLibrary(title, author, pages, read) {
-    let newBook = new Book(title, author, pages, read);
+function addBookToLibrary(id, title, author, pages, read) {
+    let newBook = new Book(id, title, author, pages, read);
     library.push(newBook);
+    bookId++;
 }// addBookToLibrary()
 
 //=======================================================================================================
-
 
 /**
  * Displays  the list of books in the library onto a table
@@ -86,7 +79,7 @@ function addBookToLibrary(title, author, pages, read) {
 function displayLibrary() {
 
     // Select the table element from the DOM
-    const table = document.querySelector("#table-container > table");
+    const table = document.querySelector("table");
 
     // Make the table visible by setting its visibility style to 'visible'
     table.style.visibility = "visible";
@@ -99,6 +92,10 @@ function displayLibrary() {
 
         // Create a new row element  for each book
         const row = document.createElement("tr");
+
+        // Create a  cell for the id of the book, and set its text content to the id of book
+        const bookIdCell = document.createElement("td");
+        bookIdCell.textContent = `${book.id}`;
 
 
         // Create a new cell  for the book's title and set its text content to the book's title
@@ -113,6 +110,7 @@ function displayLibrary() {
         const pagesCell = document.createElement("td");
         pagesCell.textContent = book.pages;
 
+
         // Create a new cell for the book's reading status and set its text content
         const statusCell = document.createElement("td");
         statusCell.textContent = book.read;
@@ -124,6 +122,7 @@ function displayLibrary() {
         const deleteBtn = document.createElement("button");
 
         deleteBtn.setAttribute("class", "remove-btn");
+        // deleteBtn.setAttribute("")
 
         // Create an image element for the delete icon inside the button
         const deleteIcon = document.createElement("img");
@@ -134,7 +133,6 @@ function displayLibrary() {
         deleteIcon.setAttribute("class", "remove-icon");
 
 
-
         // Append the delete icon to the delete button
         deleteBtn.appendChild(deleteIcon);
 
@@ -142,6 +140,7 @@ function displayLibrary() {
         deleteBtnCell.appendChild(deleteBtn);
 
         // Append the individual cells (title, author, pages, status, button) to the row
+        row.appendChild(bookIdCell);
         row.appendChild(titleCell);
         row.appendChild(authorCell);
         row.appendChild(pagesCell);
@@ -153,7 +152,7 @@ function displayLibrary() {
 
         // clearInputs();
 
-        // removeBookFromLibrary(deleteBtn, row);
+        removeBookFromLibrary(deleteBtn, row);
     });
 
 
@@ -178,7 +177,9 @@ function removeBookFromLibrary(button, row) {
 //=======================================================================================================
 
 /**
- * Clears the contents of the table. This function was added to fix an issue where 
+ * Clears the contents of the table. 
+ * 
+ * @Note - This function was added to fix an issue where 
  * every time a new book (except the first one) was added, {@link displayLibrary()}
  * would display both the already added books and the new one.
  */
