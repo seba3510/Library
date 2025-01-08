@@ -125,7 +125,8 @@ function displayLibrary() {
         const deleteBtn = document.createElement("button");
 
         deleteBtn.setAttribute("class", "remove-btn");
-        deleteBtn.setAttribute("id", `${book.id}`);
+        deleteBtn.setAttribute("data-bookId", book.id);
+
 
         // Create an image element for the delete icon inside the button
         const deleteIcon = document.createElement("img");
@@ -142,20 +143,6 @@ function displayLibrary() {
         // Append the delete button to the button cell
         deleteBtnCell.appendChild(deleteBtn);
 
-        // Create a cell for the button that toggles read status of the book
-        const changeStatusBtnCell = document.createElement("td");
-
-        // Create the button that changes the read status
-        const changeStatusBtn = document.createElement("button");
-        let msg = "Change read status";
-
-        changeStatusBtn.innerText = msg;
-
-        changeStatusBtn.setAttribute("id", `${book.id}`);
-
-
-        // Append the status button to it's cell
-        changeStatusBtnCell.appendChild(changeStatusBtn);
 
 
         // Append the individual cells (title, author, pages, status, button) to the row
@@ -165,14 +152,13 @@ function displayLibrary() {
         row.appendChild(pagesCell);
         row.appendChild(statusCell);
         row.appendChild(deleteBtnCell);
-        row.appendChild(changeStatusBtnCell);
 
         // Append the newly created row to the table body, making it part of the visible table
         tableBody.appendChild(row);
 
         // clearInputs();
 
-        toggleBookStatus(changeStatusBtn, statusCell);
+        // toggleBookStatus(changeStatusBtn, statusCell);
         removeBookFromLibrary(deleteBtn, row);
     });
 
@@ -193,7 +179,7 @@ function displayLibrary() {
 function removeBookFromLibrary(button, row) {
     button.addEventListener("click", () => {
         row.remove(); // remove the book from the display
-        delete library[Number(button.id)]; // remove the book from the 'library' array
+        delete library[Number(button.getAttribute("data-bookId"))]; // remove the book from the 'library' array
     });
 }// removeBookFromLibrary()
 
@@ -215,8 +201,8 @@ function clearTable() {
 
 function toggleBookStatus(button, cell) {
 
-    let readStatus = checkStatus();
 
+    // let readStatus = checkStatus();
 
     button.addEventListener("click", () => {
 
