@@ -139,6 +139,18 @@ function displayLibrary() {
         // Append the delete button to the button cell
         deleteBtnCell.appendChild(deleteBtn);
 
+        // Create a cell for the button that toggles read status of the book
+        const changeStatusBtnCell = document.createElement("td");
+
+        // Create the button that changes the read status
+        const changeStatusBtn = document.createElement("button");
+        let msg = "Change read status";
+        changeStatusBtn.innerText = msg;
+
+        // Append the status button to it's cell
+        changeStatusBtnCell.appendChild(changeStatusBtn);
+
+
         // Append the individual cells (title, author, pages, status, button) to the row
         row.appendChild(bookIdCell);
         row.appendChild(titleCell);
@@ -146,6 +158,7 @@ function displayLibrary() {
         row.appendChild(pagesCell);
         row.appendChild(statusCell);
         row.appendChild(deleteBtnCell);
+        row.appendChild(changeStatusBtnCell);
 
         // Append the newly created row to the table body, making it part of the visible table
         tableBody.appendChild(row);
@@ -188,3 +201,5 @@ function clearTable() {
     const tableBody = document.querySelector("tbody");
     tableBody.innerHTML = "";
 }// clearTable()
+
+//=======================================================================================================
