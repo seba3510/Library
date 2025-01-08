@@ -145,7 +145,11 @@ function displayLibrary() {
         // Create the button that changes the read status
         const changeStatusBtn = document.createElement("button");
         let msg = "Change read status";
+
         changeStatusBtn.innerText = msg;
+
+        changeStatusBtn.setAttribute("id", `${book.id}`)
+
 
         // Append the status button to it's cell
         changeStatusBtnCell.appendChild(changeStatusBtn);
@@ -158,7 +162,6 @@ function displayLibrary() {
         row.appendChild(pagesCell);
         row.appendChild(statusCell);
         row.appendChild(deleteBtnCell);
-        row.appendChild(changeStatusBtnCell);
 
         // Append the newly created row to the table body, making it part of the visible table
         tableBody.appendChild(row);
@@ -176,7 +179,7 @@ function displayLibrary() {
 //=======================================================================================================
 
 /**
- * Removes the specified row from the library 
+ * Removes the specified book from the library 
  * 
  * @param {HTMLElement} button - The button that performs the action of deleting the book from the library
  * @param {HTMLElement} row  - The row in the display of the library that contains  the book to be removed
@@ -203,3 +206,6 @@ function clearTable() {
 }// clearTable()
 
 //=======================================================================================================
+
+function toggleBookStatus(button, cell) {
+}// toggleBookStatus()

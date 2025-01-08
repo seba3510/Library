@@ -118,6 +118,8 @@ function submitForm() {
         addBookToLibrary(bookId, titleElem.value, authorElem.value, numPagesElem.value, checkStatus());
         clearInputs();
         displayLibrary();
+        // toggleBookStatus();
+
 
     });
 } // submitForm()
