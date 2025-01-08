@@ -122,7 +122,7 @@ function displayLibrary() {
         const deleteBtn = document.createElement("button");
 
         deleteBtn.setAttribute("class", "remove-btn");
-        // deleteBtn.setAttribute("")
+        deleteBtn.setAttribute("id", `${book.id}`);
 
         // Create an image element for the delete icon inside the button
         const deleteIcon = document.createElement("img");
@@ -164,13 +164,14 @@ function displayLibrary() {
 
 /**
  * Removes the specified row from the library 
- * @param {HTMLElement} button 
- * @param {HTMLElement} row 
+ * 
+ * @param {HTMLElement} button - The button that performs the action of deleting the book from the library
+ * @param {HTMLElement} row  - The row in the display of the library that contains  the book to be removed
  */
 function removeBookFromLibrary(button, row) {
     button.addEventListener("click", () => {
-        row.remove();
-        console.log(library);
+        row.remove(); // remove the book from the display
+        delete library[Number(button.id)]; // remove the book from the 'library' array
     });
 }// removeBookFromLibrary()
 
