@@ -73,6 +73,8 @@ function addBookToLibrary(id, title, author, pages, read) {
 
 //=======================================================================================================
 
+
+
 /**
  * Displays  the list of books in the library onto a table
 */
@@ -113,6 +115,7 @@ function displayLibrary() {
 
         // Create a new cell for the book's reading status and set its text content
         const statusCell = document.createElement("td");
+        // const statusCell = document.createElement("td");
         statusCell.textContent = book.read;
 
         // Create a new cell for the delete button
@@ -148,7 +151,7 @@ function displayLibrary() {
 
         changeStatusBtn.innerText = msg;
 
-        changeStatusBtn.setAttribute("id", `${book.id}`)
+        changeStatusBtn.setAttribute("id", `${book.id}`);
 
 
         // Append the status button to it's cell
@@ -162,12 +165,14 @@ function displayLibrary() {
         row.appendChild(pagesCell);
         row.appendChild(statusCell);
         row.appendChild(deleteBtnCell);
+        row.appendChild(changeStatusBtnCell);
 
         // Append the newly created row to the table body, making it part of the visible table
         tableBody.appendChild(row);
 
         // clearInputs();
 
+        toggleBookStatus(changeStatusBtn, statusCell);
         removeBookFromLibrary(deleteBtn, row);
     });
 
@@ -176,10 +181,11 @@ function displayLibrary() {
 
 }// displayLibrary()
 
+
 //=======================================================================================================
 
 /**
- * Removes the specified book from the library 
+ * Removes the specified row from the library 
  * 
  * @param {HTMLElement} button - The button that performs the action of deleting the book from the library
  * @param {HTMLElement} row  - The row in the display of the library that contains  the book to be removed
@@ -208,4 +214,24 @@ function clearTable() {
 //=======================================================================================================
 
 function toggleBookStatus(button, cell) {
+
+    let readStatus = checkStatus();
+
+
+    button.addEventListener("click", () => {
+
+
+        if ((readStatus = true)) {
+            readStatus = false;
+            cell.textContent = `${readStatus}`;
+            library[Number(button.id)] = readStatus;
+        }// if
+
+        else if ((readStatus = false)) {
+            readStatus = true;
+            cell.textContent = `${readStatus}`;
+            library[Number(button.id)] = readStatus;
+        }// else if
+
+    });
 }// toggleBookStatus()

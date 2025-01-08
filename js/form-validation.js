@@ -93,8 +93,8 @@ function handleClick() {
     displayForm();
     submitForm();
     closeForm();
-} // handleClick()
 
+} // handleClick()
 //=======================================================================================================
 
 /**
@@ -118,8 +118,7 @@ function submitForm() {
         addBookToLibrary(bookId, titleElem.value, authorElem.value, numPagesElem.value, checkStatus());
         clearInputs();
         displayLibrary();
-        // toggleBookStatus();
-
+        // toggleBookStatus(changeStatusBtn, statusCell);
 
     });
 } // submitForm()
