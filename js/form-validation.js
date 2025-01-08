@@ -211,7 +211,7 @@ function isBetween(val, min, max) {
 /**
  * Validates the status of the book.
  * 
- * @returns {String} 'Yes' if the book has been read.  'No' if the book has not been read
+ * @returns {String} True  if the book has been read.  False if the book has not been read
  */
 function checkStatus() {
 
