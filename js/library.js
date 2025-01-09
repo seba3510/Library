@@ -219,6 +219,13 @@ function clearTable() {
 
 //=======================================================================================================
 
+/**
+ * Toggles the display status of the book
+ * 
+ * @param {@HTMLElement} button - The button that triggers the event to change the status
+ * @param {@HTMLElement} cell - The cell in which the status will be displayed
+ * @param {Boolean} status - The value of the book's read status
+ */
 function toggleBookStatus(button, cell, status) {
 
     button.addEventListener("click", (event) => {
@@ -229,12 +236,13 @@ function toggleBookStatus(button, cell, status) {
                 break;
             case false:
                 status = true;
-            // break;
+                break;
             default:
                 break;
         }// switch()
 
-        library[Number(button.getAttribute("data-bookId"))] = status;
+        library[Number(button.getAttribute("data-bookId"))].read = status
+
         cell.textContent = status;
 
     });

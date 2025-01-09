@@ -259,12 +259,11 @@ function checkTitle() {
     if ((isEmpty(titleValue))) {
         let msg = "Title of book cannot be blank.";
         showError(titleElem, msg);
-
-    }
+    }//if
 
     else {
         showSuccess(titleElem);
-    }
+    }// else
 
 
 }// checkTitle()
