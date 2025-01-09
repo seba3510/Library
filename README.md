@@ -32,6 +32,6 @@ The attributes used for the book are as follow:
 [Live Demo](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript)
 
 ## Credits
-- [https://www.theodinproject.com/paths/foundations/courses/foundations]
+- [https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript]
 
 
