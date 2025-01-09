@@ -1,11 +1,17 @@
-
 /**
- * Array of objects that stores all books of the library.
+ * This script implements the library to store all the books
+ * once the form is validated.
  * 
- * @type {Book}
- * 
- * @note I manually added a few books to the array so I can see the display
+ * @author Sebastian Corporan Berrios
  */
+
+// /**
+//  * Array of objects that stores all books of the library.
+//  * 
+//  * @type {Book}
+//  * 
+//  * @note I manually added a few books to the array so I can see the display
+//  */
 // let library = [
 
 //     {
@@ -158,7 +164,7 @@ function displayLibrary() {
 
         changeStatusBtnCell.appendChild(changeStatusBtn);
 
-        // Append the individual cells (title, author, pages, status, button) to the row
+        // Append the individual cells (title, author, pages, status, delete button) to  the row
         row.appendChild(bookIdCell);
         row.appendChild(titleCell);
         row.appendChild(authorCell);
@@ -170,12 +176,7 @@ function displayLibrary() {
         // Append the newly created row to the table body, making it part of the visible table
         tableBody.appendChild(row);
 
-        // clearInputs();
-
         removeBookFromLibrary(deleteBtn, row);
-        // toggleBookStatus(changeStatusBtn, statusCell);
-
-
         toggleBookStatus(changeStatusBtn, statusCell, book.read);
 
     });
@@ -198,7 +199,6 @@ function removeBookFromLibrary(button, row) {
     button.addEventListener("click", () => {
         row.remove(); // remove the book from the display
         delete library[Number(button.getAttribute("data-bookId"))]; // remove the book from the 'library' array
-        // displayLibrary();
         return;
     });
 }// removeBookFromLibrary()
@@ -241,9 +241,8 @@ function toggleBookStatus(button, cell, status) {
                 break;
         }// switch()
 
-        library[Number(button.getAttribute("data-bookId"))].read = status
+        library[Number((button.getAttribute("data-bookId")))].read = status
 
         cell.textContent = status;
-
     });
 }// toggleBookStatus()

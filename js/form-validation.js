@@ -1,4 +1,12 @@
 /**
+ * This script validates the form in which the user enters a
+ * book to store in the library.
+ * 
+ * @author Sebastian Corporan Berrios
+ */
+
+
+/**
  * Reference to the form in which the user will add a book to the library.
  * 
  * @type {HTMLElement}
@@ -115,7 +123,6 @@ function submitForm() {
 
         clearTable();
         addBookToLibrary(bookId, titleElem.value, authorElem.value, numPagesElem.value, checkStatus());
-        // clearInputs();
         displayLibrary();
 
     });
