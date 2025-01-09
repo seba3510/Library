@@ -29,7 +29,7 @@ The attributes used for the book are as follow:
 - JavaScript
 
 ## Demo
-[Live Demo](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript)
+[Live Demo](https://seba3510.github.io/Library/)
 
 ## Credits
 - [https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript]
