@@ -93,7 +93,6 @@ function handleClick() {
     displayForm();
     submitForm();
     closeForm();
-
 } // handleClick()
 //=======================================================================================================
 
@@ -116,9 +115,8 @@ function submitForm() {
 
         clearTable();
         addBookToLibrary(bookId, titleElem.value, authorElem.value, numPagesElem.value, checkStatus());
-        clearInputs();
+        // clearInputs();
         displayLibrary();
-        // toggleBookStatus(changeStatusBtn, statusCell);
 
     });
 } // submitForm()

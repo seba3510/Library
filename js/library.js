@@ -1,3 +1,4 @@
+
 /**
  * Array of objects that stores all books of the library.
  * 
@@ -31,8 +32,6 @@
 // ];
 
 const library = [];
-
-
 
 //=======================================================================================================
 
@@ -69,10 +68,10 @@ function addBookToLibrary(id, title, author, pages, read) {
     let newBook = new Book(id, title, author, pages, read);
     library.push(newBook);
     bookId++;
+    // toggleBookStatus(read);
 }// addBookToLibrary()
 
 //=======================================================================================================
-
 
 
 /**
@@ -125,7 +124,8 @@ function displayLibrary() {
         const deleteBtn = document.createElement("button");
 
         deleteBtn.setAttribute("class", "remove-btn");
-        deleteBtn.setAttribute("data-bookId", book.id);
+        deleteBtn.setAttribute("data-bookId", `${book.id}`);
+
 
 
         // Create an image element for the delete icon inside the button
@@ -143,7 +143,20 @@ function displayLibrary() {
         // Append the delete button to the button cell
         deleteBtnCell.appendChild(deleteBtn);
 
+        const changeStatusBtnCell = document.createElement("td");
 
+
+        // const statusCell = document.createElement("td");
+        const changeStatusBtn = document.createElement("button");
+
+
+        // const changeStatusBtn = document.createElement("button");
+        changeStatusBtn.setAttribute("data-bookId", `${book.id}`);
+        changeStatusBtn.textContent = "Change Status";
+
+
+
+        changeStatusBtnCell.appendChild(changeStatusBtn);
 
         // Append the individual cells (title, author, pages, status, button) to the row
         row.appendChild(bookIdCell);
@@ -152,14 +165,19 @@ function displayLibrary() {
         row.appendChild(pagesCell);
         row.appendChild(statusCell);
         row.appendChild(deleteBtnCell);
+        row.appendChild(changeStatusBtnCell);
 
         // Append the newly created row to the table body, making it part of the visible table
         tableBody.appendChild(row);
 
         // clearInputs();
 
-        // toggleBookStatus(changeStatusBtn, statusCell);
         removeBookFromLibrary(deleteBtn, row);
+        // toggleBookStatus(changeStatusBtn, statusCell);
+
+
+        toggleBookStatus(changeStatusBtn, statusCell, book.read);
+
     });
 
 
@@ -180,6 +198,8 @@ function removeBookFromLibrary(button, row) {
     button.addEventListener("click", () => {
         row.remove(); // remove the book from the display
         delete library[Number(button.getAttribute("data-bookId"))]; // remove the book from the 'library' array
+        // displayLibrary();
+        return;
     });
 }// removeBookFromLibrary()
 
@@ -199,25 +219,23 @@ function clearTable() {
 
 //=======================================================================================================
 
-function toggleBookStatus(button, cell) {
+function toggleBookStatus(button, cell, status) {
 
+    button.addEventListener("click", (event) => {
 
-    // let readStatus = checkStatus();
+        switch ((status)) {
+            case true:
+                status = false;
+                break;
+            case false:
+                status = true;
+            // break;
+            default:
+                break;
+        }// switch()
 
-    button.addEventListener("click", () => {
-
-
-        if ((readStatus = true)) {
-            readStatus = false;
-            cell.textContent = `${readStatus}`;
-            library[Number(button.id)] = readStatus;
-        }// if
-
-        else if ((readStatus = false)) {
-            readStatus = true;
-            cell.textContent = `${readStatus}`;
-            library[Number(button.id)] = readStatus;
-        }// else if
+        library[Number(button.getAttribute("data-bookId"))] = status;
+        cell.textContent = status;
 
     });
 }// toggleBookStatus()
