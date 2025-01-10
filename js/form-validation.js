@@ -43,7 +43,7 @@ const numPagesElem = document.querySelector("#num-pages");
 const haveRead = document.querySelector("#agree");
 
 /**
- * Reference to the input field that indicates that whether the book has been read.
+ * Reference to the input field that indicates  that the book has not been been read.
  * This element represents the user's selection confirming the the book has not been read.
  */
 const haveNotRead = document.querySelector("#disagree");
@@ -55,6 +55,14 @@ const haveNotRead = document.querySelector("#disagree");
  */
 const dialogElem = document.querySelector("#dialog");
 
+/**
+ * Assigns an id to each book.
+ * This was done to facilitate the implementation of removing 
+ * a book from the library, and toggling the book status.
+ * 
+ * This id starts from 0 to link via data-attribute the index of the book in the array
+ * in which will be deleted.
+ */
 let bookId = Number(0);
 //=======================================================================================================
 
@@ -63,14 +71,14 @@ let bookId = Number(0);
  */
 function displayForm() {
 
-    // Select the button element with the ID "open-modal"
-    const btn = document.querySelector("#open-modal");
+	// Select the button element with the ID "open-modal"
+	const btn = document.querySelector("#open-modal");
 
-    // Add an event listener to the button that listens for the "click" event
-    btn.addEventListener("click", () => {
-        // Show the modal dialog when the button is clicked
-        dialogElem.showModal();
-    });
+	// Add an event listener to the button that listens for the "click" event
+	btn.addEventListener("click", () => {
+		// Show the modal dialog when the button is clicked
+		dialogElem.showModal();
+	});
 
 } // displayForm()
 
@@ -81,12 +89,11 @@ function displayForm() {
  */
 function closeForm() {
 
+	const btn = document.querySelector("#close-modal");
 
-    const btn = document.querySelector("#close-modal");
-
-    btn.addEventListener("click", () => {
-        dialogElem.close();
-    });
+	btn.addEventListener("click", () => {
+		dialogElem.close();
+	});
 }// closeForm()
 
 //=======================================================================================================
@@ -98,9 +105,9 @@ function closeForm() {
  * trigger the display of the form/modal, likely in response to some other logic or user interaction.
  */
 function handleClick() {
-    displayForm();
-    submitForm();
-    closeForm();
+	displayForm();
+	submitForm();
+	closeForm();
 } // handleClick()
 //=======================================================================================================
 
@@ -109,23 +116,24 @@ function handleClick() {
  */
 function submitForm() {
 
-    form.addEventListener("submit", (event) => {
+	form.addEventListener("submit", (event) => {
 
-        // Prevents the form from submitting
-        event.preventDefault();
+		// Prevents the form from submitting
+		event.preventDefault();
 
-        // Validate input fields
-        checkTitle();
-        checkAuthor();
-        checkNumberOfPages();
-        checkStatus();
+		// Validate input fields
+		checkTitle();
+		checkAuthor();
+		checkNumberOfPages();
+		checkStatus();
 
 
-        clearTable();
-        addBookToLibrary(bookId, titleElem.value, authorElem.value, numPagesElem.value, checkStatus());
-        displayLibrary();
+		clearTable();
 
-    });
+		addBookToLibrary(bookId, titleElem.value, authorElem.value, numPagesElem.value, checkStatus());
+		displayLibrary();
+
+	});
 } // submitForm()
 
 
@@ -140,12 +148,12 @@ function submitForm() {
  */
 function showError(input, message) {
 
-    const formField = input.parentElement;
-    const small = formField.querySelector("small");
+	const formField = input.parentElement;
+	const small = formField.querySelector("small");
 
-    small.textContent = message;
+	small.textContent = message;
 
-    formField.setAttribute("class", "form-field error");
+	formField.setAttribute("class", "form-field error");
 } // showError()
 
 //=======================================================================================================
@@ -158,13 +166,13 @@ function showError(input, message) {
  */
 function showSuccess(input) {
 
-    const formField = input.parentElement;
+	const formField = input.parentElement;
 
-    formField.classList.remove("error");
-    formField.setAttribute("class", "form-field success");
+	formField.classList.remove("error");
+	formField.setAttribute("class", "form-field success");
 
-    const error = formField.querySelector("small");
-    error.textContent = "";
+	const error = formField.querySelector("small");
+	error.textContent = "";
 
 }// showSuccess()
 
@@ -178,7 +186,7 @@ function showSuccess(input) {
  * @returns {Boolean} True if the string is empty. False otherwise
  */
 function isEmpty(str) {
-    return ((str === ""));
+	return ((str === ""));
 }// isEmpty()
 
 //=======================================================================================================
@@ -194,21 +202,20 @@ function isEmpty(str) {
  */
 function isBetween(val, min, max) {
 
-    let isBetween = false;
+	let isBetween = false;
 
-    if ((val >= min) &&
-        (val <= max)) {
+	if ((val >= min) &&
+		(val <= max)) {
 
-        isBetween = true;
+		isBetween = true;
 
-    } // if
+	} // if
 
-    else {
+	else {
+		isBetween = false;
+	}// else
 
-        isBetween = false;
-    }// else
-
-    return isBetween;
+	return isBetween;
 }// isBetween()
 
 //=======================================================================================================
@@ -220,35 +227,29 @@ function isBetween(val, min, max) {
  */
 function checkStatus() {
 
-    let readStatus = false;
+	let readStatus = false;
 
-    if ((haveRead.checked === true)) {
+	if ((haveRead.checked === true)) {
 
-        readStatus = true;
+		readStatus = true;
 
-    }// if
+	}// if
 
-    else if ((haveNotRead.checked === true)) {
+	else if ((haveNotRead.checked === true)) {
 
-        readStatus = false;
+		readStatus = false;
 
-    }// else if
+	}// else if
 
-    else if ((haveNotRead.checked == false) &&
-        (haveRead.checked == false)) {
+	else if ((haveNotRead.checked == false) &&
+		(haveRead.checked == false)) {
 
-        let msg = "Please fill out this field.";
-        showError(haveRead, msg);
+		let msg = "Please fill out this field.";
+		showError(haveRead, msg);
 
-    }// else if
+	}// else if
 
-
-
-    return readStatus;
-
-
-
-
+	return readStatus;
 
 }// checkStatus()
 
@@ -260,17 +261,22 @@ function checkStatus() {
  */
 function checkTitle() {
 
-    // Get value entered by the user
-    const titleValue = titleElem.value.trim();
+	/**
+	 * Get the title entered by the user in the form.
+	 * 
+	 * @Note - The method .trim() was used to eliminate any white spaces
+	 * entered by the user.
+	 */
+	const titleValue = titleElem.value.trim();
 
-    if ((isEmpty(titleValue))) {
-        let msg = "Title of book cannot be blank.";
-        showError(titleElem, msg);
-    }//if
+	if ((isEmpty(titleValue))) {
+		let msg = "Title of book cannot be blank.";
+		showError(titleElem, msg);
+	}//if
 
-    else {
-        showSuccess(titleElem);
-    }// else
+	else {
+		showSuccess(titleElem);
+	}// else
 
 
 }// checkTitle()
@@ -282,31 +288,31 @@ function checkTitle() {
  */
 function checkAuthor() {
 
-    const authorValue = authorElem.value.trim();
+	const authorValue = authorElem.value.trim();
 
-    const min = 3;
-    const max = 30;
+	const min = 3;
+	const max = 30;
 
 
-    let msg = "";
+	let msg = "";
 
-    if ((isEmpty(authorValue))) {
+	if ((isEmpty(authorValue))) {
 
-        msg = "Author of book cannot be blank."
-        showError(authorElem, msg);
+		msg = "Author of book cannot be blank."
+		showError(authorElem, msg);
 
-    } // if
+	} // if
 
-    else if ((!isBetween(authorValue.length, min, max))) {
+	else if ((!isBetween(authorValue.length, min, max))) {
 
-        msg = `Author of book must be between ${min} and ${max} characters.`;
-        showError(authorElem, msg);
+		msg = `Author of book must be between ${min} and ${max} characters.`;
+		showError(authorElem, msg);
 
-    } // else if
+	} // else if
 
-    else {
-        showSuccess(authorElem);
-    } // else
+	else {
+		showSuccess(authorElem);
+	} // else
 
 } // checkAuthor()
 
@@ -317,20 +323,20 @@ function checkAuthor() {
  */
 function checkNumberOfPages() {
 
-    const numPagesValue = numPagesElem.value.trim();
+	const numPagesValue = numPagesElem.value.trim();
 
 
-    if ((isEmpty(numPagesValue))) {
+	if ((isEmpty(numPagesValue))) {
 
-        let msg = "Number of pages cannot be blank.";
-        showError(numPagesElem, msg);
+		let msg = "Number of pages cannot be blank.";
+		showError(numPagesElem, msg);
 
-    }// if
+	}// if
 
-    else {
+	else {
 
-        showSuccess(numPagesElem);
-    } // else
+		showSuccess(numPagesElem);
+	} // else
 
 
 }// checkNumberOfPages()
@@ -342,62 +348,15 @@ function checkNumberOfPages() {
  */
 function clearInputs() {
 
+	titleElem.value = "";
+	authorElem.value = "";
+	numPagesElem.value = "";
 
-    // form.reset();
-
-    titleElem.value = "";
-    authorElem.value = "";
-    numPagesElem.value = "";
-
-    haveNotRead.checked = false;
-    haveRead.checked = false;
-
-    // const formField = document.querySelector(".form-field");
-
+	haveNotRead.checked = false;
+	haveRead.checked = false;
 } // clearInputs()
 
 //=======================================================================================================
 
-// const debounce = (fn, delay = 500) => {
-//     let timeoutId;
-//     return (...args) => {
-//         // cancel the previous timer
-//         if (timeoutId) {
-//             clearTimeout(timeoutId);
-//         }
-//         // setup a new timer
-//         timeoutId = setTimeout(() => {
-//             fn.apply(null, args)
-//         }, delay);
-//     };
-// };
-
-//=======================================================================================================
-
-
-// form.addEventListener("input", debounce((event) => {
-
-//     switch ((event.target.id)) {
-//         case "book-title":
-//             checkTitle();
-//             break;
-//         case "book-author":
-//             checkAuthor();
-//             break;
-//         case "num-pages":
-//             checkNumPages();
-//             break;
-//         case "agree":
-//             checkStatus();
-//             break;
-//         case "disagree":
-//             checkStatus();
-//             break;
-//         default:
-//             break;
-//     }// switch()
-// }));
-
-//=======================================================================================================
 
 handleClick();

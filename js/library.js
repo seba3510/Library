@@ -5,38 +5,12 @@
  * @author Sebastian Corporan Berrios
  */
 
-// /**
-//  * Array of objects that stores all books of the library.
-//  * 
-//  * @type {Book}
-//  * 
-//  * @note I manually added a few books to the array so I can see the display
-//  */
-// let library = [
 
-//     {
-//         "title": "The Hunger Games",
-//         "author": "Suzanne Collins",
-//         "pages": 400,
-//         "read": true
-
-//     },
-
-//     {
-//         "title": "Harry Potter and the Sorcerer's Stone",
-//         "author": "J.K. Rowling",
-//         "pages": 320,
-//         "read": false
-//     },
-
-//     {
-//         "title": "A Tale of Two Cities",
-//         "author": "Charles Dickens",
-//         "pages": 428,
-//         "read": false
-//     }
-// ];
-
+/**
+ * Array of objects used to store each book
+ * 
+ * @type {Book}
+ */
 const library = [];
 
 //=======================================================================================================
@@ -74,7 +48,6 @@ function addBookToLibrary(id, title, author, pages, read) {
     let newBook = new Book(id, title, author, pages, read);
     library.push(newBook);
     bookId++;
-    // toggleBookStatus(read);
 }// addBookToLibrary()
 
 //=======================================================================================================
@@ -149,19 +122,16 @@ function displayLibrary() {
         // Append the delete button to the button cell
         deleteBtnCell.appendChild(deleteBtn);
 
+        // Crate the cell in which the button to change the read status will be displayed
         const changeStatusBtnCell = document.createElement("td");
 
 
-        // const statusCell = document.createElement("td");
+        // Crete the button that is used to toggle the read status of the book
         const changeStatusBtn = document.createElement("button");
-
-
-        // const changeStatusBtn = document.createElement("button");
         changeStatusBtn.setAttribute("data-bookId", `${book.id}`);
         changeStatusBtn.textContent = "Change Status";
 
-
-
+        // Append the button that changes the status inside of its respective cell
         changeStatusBtnCell.appendChild(changeStatusBtn);
 
         // Append the individual cells (title, author, pages, status, delete button) to  the row
@@ -178,9 +148,7 @@ function displayLibrary() {
 
         removeBookFromLibrary(deleteBtn, row);
         toggleBookStatus(changeStatusBtn, statusCell, book.read);
-
     });
-
 
     clearInputs();
 
