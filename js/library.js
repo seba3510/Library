@@ -58,6 +58,7 @@ function addBookToLibrary(id, title, author, pages, read) {
 */
 function displayLibrary() {
 
+    const tableContainer = document.querySelector("#table-container");
     // Select the table element from the DOM
     const table = document.querySelector("table");
 
@@ -66,6 +67,9 @@ function displayLibrary() {
 
     // Select the table body element where rows will be added
     const tableBody = document.querySelector("tbody");
+
+
+
 
     // Iterate over each book in the 'library' array
     library.forEach(book => {
@@ -96,12 +100,10 @@ function displayLibrary() {
         // const statusCell = document.createElement("td");
         statusCell.textContent = book.read;
 
-        // Create a new cell for the delete button
-        const deleteBtnCell = document.createElement("td");
+        const div = document.createElement("div");
+        div.setAttribute("id", "edit-btns-container");
 
-        // Create the delete button element
         const deleteBtn = document.createElement("button");
-
         deleteBtn.setAttribute("class", "remove-btn");
         deleteBtn.setAttribute("data-bookId", `${book.id}`);
 
@@ -119,20 +121,31 @@ function displayLibrary() {
         // Append the delete icon to the delete button
         deleteBtn.appendChild(deleteIcon);
 
+        div.appendChild(deleteBtn);
+
         // Append the delete button to the button cell
-        deleteBtnCell.appendChild(deleteBtn);
+        // deleteBtnCell.appendChild(deleteBtn);
+
+
 
         // Crate the cell in which the button to change the read status will be displayed
-        const changeStatusBtnCell = document.createElement("td");
+        // const changeStatusBtnCell = document.createElement("td");
 
 
         // Crete the button that is used to toggle the read status of the book
         const changeStatusBtn = document.createElement("button");
         changeStatusBtn.setAttribute("data-bookId", `${book.id}`);
         changeStatusBtn.textContent = "Change Status";
-
+        div.appendChild(changeStatusBtn);
         // Append the button that changes the status inside of its respective cell
-        changeStatusBtnCell.appendChild(changeStatusBtn);
+        // changeStatusBtnCell.appendChild(changeStatusBtn);
+
+        // div.appendChild(deleteBtn);
+        // div.appendChild(changeStatusBtn);
+
+        tableContainer.appendChild(div);
+        // tableContainer.appendChild(div);
+
 
         // Append the individual cells (title, author, pages, status, delete button) to  the row
         row.appendChild(bookIdCell);
@@ -140,11 +153,13 @@ function displayLibrary() {
         row.appendChild(authorCell);
         row.appendChild(pagesCell);
         row.appendChild(statusCell);
-        row.appendChild(deleteBtnCell);
-        row.appendChild(changeStatusBtnCell);
+        // row.appendChild(deleteBtnCell);
+        // row.appendChild(changeStatusBtnCell);
+
+        tableBody.appendChild(row);
 
         // Append the newly created row to the table body, making it part of the visible table
-        tableBody.appendChild(row);
+        // tableBody.appendChild(div);
 
         removeBookFromLibrary(deleteBtn, row);
         toggleBookStatus(changeStatusBtn, statusCell, book.read);

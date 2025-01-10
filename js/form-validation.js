@@ -100,7 +100,6 @@ function closeForm() {
 
 /**
  * Handles the button click by calling displayForm.
- * 
  * This function is a wrapper around the `displayForm` function. It can be used to
  * trigger the display of the form/modal, likely in response to some other logic or user interaction.
  */
@@ -232,13 +231,15 @@ function checkStatus() {
 	if ((haveRead.checked === true)) {
 
 		readStatus = true;
-
+		// haveRead = true;
+		// haveNotRead = true;
 	}// if
 
 	else if ((haveNotRead.checked === true)) {
 
 		readStatus = false;
-
+		// haveNotRead = true;
+		// haveRead = false;
 	}// else if
 
 	else if ((haveNotRead.checked == false) &&
@@ -246,7 +247,6 @@ function checkStatus() {
 
 		let msg = "Please fill out this field.";
 		showError(haveRead, msg);
-
 	}// else if
 
 	return readStatus;
@@ -336,7 +336,7 @@ function checkNumberOfPages() {
 	else {
 
 		showSuccess(numPagesElem);
-	} // else
+	} // else			
 
 
 }// checkNumberOfPages()
@@ -348,6 +348,7 @@ function checkNumberOfPages() {
  */
 function clearInputs() {
 
+	// form.reset();
 	titleElem.value = "";
 	authorElem.value = "";
 	numPagesElem.value = "";
@@ -357,6 +358,7 @@ function clearInputs() {
 } // clearInputs()
 
 //=======================================================================================================
+
 
 
 handleClick();
