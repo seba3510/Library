@@ -10,7 +10,7 @@
 
    
 ## Description
-This is a simple library app done as part of the _JavaScript_ curriculumn of _The Odin Project_.  This library consists of storing book objects in an array.
+This is a simple library app done as part of the _JavaScript_ curriculum of _The Odin Project_.  This library consists of storing book objects in an array.
 The attributes used for the book are as follow:
 * Title
 * Author
@@ -18,7 +18,7 @@ The attributes used for the book are as follow:
 * A status that determines if the book has been read
 
 ## Features
-- Add books to the librray
+- Add books to the library
 - Display the books in a table
 - Remove the book from the library
 - Toggle the status of the book
