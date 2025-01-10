@@ -33,5 +33,6 @@ The attributes used for the book are as follow:
 
 ## Credits
 - [https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript]
+- [https://www.theodinproject.com/lessons/node-path-javascript-library]
 
 
