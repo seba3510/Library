@@ -80,6 +80,7 @@ function displayLibrary() {
         // Create a  cell for the id of the book, and set its text content to the id of book
         const bookIdCell = document.createElement("td");
         bookIdCell.textContent = `${book.id}`;
+        bookIdCell.style.visibility = "hidden";
 
 
         // Create a new cell  for the book's title and set its text content to the book's title
@@ -137,18 +138,14 @@ function displayLibrary() {
         changeStatusBtn.setAttribute("data-bookId", `${book.id}`);
         changeStatusBtn.textContent = "Change Status";
         div.appendChild(changeStatusBtn);
-        // Append the button that changes the status inside of its respective cell
-        // changeStatusBtnCell.appendChild(changeStatusBtn);
 
-        // div.appendChild(deleteBtn);
-        // div.appendChild(changeStatusBtn);
 
         tableContainer.appendChild(div);
         // tableContainer.appendChild(div);
 
 
         // Append the individual cells (title, author, pages, status, delete button) to  the row
-        row.appendChild(bookIdCell);
+        // row.appendChild(bookIdCell);
         row.appendChild(titleCell);
         row.appendChild(authorCell);
         row.appendChild(pagesCell);
