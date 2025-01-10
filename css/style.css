@@ -121,3 +121,10 @@ thead {
     background-color: transparent;
     border-color: transparent;
 }
+
+#edit-btns-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-left: 1em;
+}
