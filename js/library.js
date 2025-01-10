@@ -58,11 +58,12 @@ function addBookToLibrary(id, title, author, pages, read) {
 */
 function displayLibrary() {
 
-	// Select the table element from the DOM
-	const table = document.querySelector("table");
+	// Dynamically create the container of the table
+	const tableContainer = createElement("div");
+	tableContainer.setAttribute("id", "table-container");
 
-	const tableContainer = document.querySelector("#table-container");
-
+	// Create the table, and append it to the table container
+	const table = document.createElement("table");
 	tableContainer.appendChild(table);
 
 	// Make the table visible by setting its visibility style to 'visible'
