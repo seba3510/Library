@@ -236,10 +236,7 @@ function checkStatus() {
 	}// if
 
 	else if ((haveNotRead.checked === true)) {
-
 		readStatus = false;
-		// haveNotRead = true;
-		// haveRead = false;
 	}// else if
 
 	else if ((haveNotRead.checked == false) &&
@@ -348,7 +345,6 @@ function checkNumberOfPages() {
  */
 function clearInputs() {
 
-	// form.reset();
 	titleElem.value = "";
 	authorElem.value = "";
 	numPagesElem.value = "";
@@ -360,5 +356,5 @@ function clearInputs() {
 //=======================================================================================================
 
 
-
+// Trigger the 'click' event once the user clicks on the "Add New Book" button.
 handleClick();
