@@ -58,12 +58,9 @@ function addBookToLibrary(id, title, author, pages, read) {
 */
 function displayLibrary() {
 
+	const tableContainer = document.querySelector("#table-container");
 	// Select the table element from the DOM
 	const table = document.querySelector("table");
-
-	const tableContainer = document.querySelector("#table-container");
-
-	tableContainer.appendChild(table);
 
 	// Make the table visible by setting its visibility style to 'visible'
 	table.style.visibility = "visible";
@@ -71,63 +68,47 @@ function displayLibrary() {
 	// Select the table body element where rows will be added
 	const tableBody = document.querySelector("tbody");
 
-	const tableHead = document.createElement("thead");
+
+
 
 	// Iterate over each book in the 'library' array
-	library.forEach((book => {
+	library.forEach(book => {
 
 		// Create a new row element  for each book
 		const row = document.createElement("tr");
-
-		// Create header cell for the id of the book
-		const bookIdTitleCell = document.createElement("th");
-		bookIdTitleCell.textContent = "ID";
 
 		// Create a  cell for the id of the book, and set its text content to the id of book
 		const bookIdCell = document.createElement("td");
 		bookIdCell.textContent = `${book.id}`;
 		bookIdCell.style.visibility = "hidden";
 
-		// Create header cell for the title of the book
-		const titleHeaderCell = document.createElement("th");
-		titleHeaderCell.textContent = "Title";
 
 		// Create a new cell  for the book's title and set its text content to the book's title
 		const titleCell = document.createElement("td");
 		titleCell.textContent = book.title;
 
-		// Create header cell for the book author
-		const authorHeaderCell = document.createElement("th");
-		authorHeaderCell.textContent = "Author";
-
 		// Create a new cell for the book's author and set its text content to the book's author
 		const authorCell = document.createElement("td");
 		authorCell.textContent = book.author;
-
-		// Create the title header for the number of pages
-		const pagesHeaderCell = document.createElement("th");
-		pagesHeaderCell.textContent = "Number of Pages";
 
 		// Create a new cell for the number of pages and set its text content
 		const pagesCell = document.createElement("td");
 		pagesCell.textContent = book.pages;
 
-		// Crete cell for header of the book's read status
-		const statusHeaderCell = document.createElement("th");
-		statusHeaderCell.textContent = "Has the book been read?";
 
 		// Create a new cell for the book's reading status and set its text content
 		const statusCell = document.createElement("td");
+		// const statusCell = document.createElement("td");
 		statusCell.textContent = book.read;
 
-		// Create a div element to display the 'remove' button, and the 'Change Status' button
 		const div = document.createElement("div");
 		div.setAttribute("id", "edit-btns-container");
 
-		// Create the button used to delete a book from the library
 		const deleteBtn = document.createElement("button");
 		deleteBtn.setAttribute("class", "remove-btn");
 		deleteBtn.setAttribute("data-bookId", `${book.id}`);
+
+
 
 		// Create an image element for the delete icon inside the button
 		const deleteIcon = document.createElement("img");
@@ -137,42 +118,49 @@ function displayLibrary() {
 
 		deleteIcon.setAttribute("class", "remove-icon");
 
+
 		// Append the delete icon to the delete button
 		deleteBtn.appendChild(deleteIcon);
 
-		// Append the 'delete' button to the div-
 		div.appendChild(deleteBtn);
 
-		// Create the button that is used to toggle the read status of the book
+		// Append the delete button to the button cell
+		// deleteBtnCell.appendChild(deleteBtn);
+
+
+
+		// Crate the cell in which the button to change the read status will be displayed
+		// const changeStatusBtnCell = document.createElement("td");
+
+
+		// Crete the button that is used to toggle the read status of the book
 		const changeStatusBtn = document.createElement("button");
-
 		changeStatusBtn.setAttribute("data-bookId", `${book.id}`);
-
 		changeStatusBtn.textContent = "Change Status";
-
 		div.appendChild(changeStatusBtn);
 
-		// Append the div container to the table
-		tableContainer.appendChild(div);
 
-		// Append all the cells of the header of the table to the 'thead' element
-		tableHead.appendChild(titleHeaderCell);
-		tableHead.appendChild(authorHeaderCell);
-		tableHead.appendChild(pagesHeaderCell);
-		tableHead.appendChild(statusHeaderCell);
+		tableContainer.appendChild(div);
+		// tableContainer.appendChild(div);
+
 
 		// Append the individual cells (title, author, pages, status, delete button) to  the row
+		// row.appendChild(bookIdCell);
 		row.appendChild(titleCell);
 		row.appendChild(authorCell);
 		row.appendChild(pagesCell);
 		row.appendChild(statusCell);
+		// row.appendChild(deleteBtnCell);
+		// row.appendChild(changeStatusBtnCell);
+
+		tableBody.appendChild(row);
 
 		// Append the newly created row to the table body, making it part of the visible table
-		tableBody.appendChild(row);
+		// tableBody.appendChild(div);
 
 		removeBookFromLibrary(deleteBtn, row);
 		toggleBookStatus(changeStatusBtn, statusCell, book.read);
-	}));
+	});
 
 	clearInputs();
 
