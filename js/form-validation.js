@@ -70,7 +70,7 @@ function submitForm() {
 		checkStatus();
 
 
-		clearTable();
+		// clearTable();
 
 		addBookToLibrary(bookId, titleElem.value, authorElem.value, numPagesElem.value, checkStatus());
 		displayLibrary();

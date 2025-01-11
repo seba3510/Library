@@ -30,13 +30,23 @@ function addBookToLibrary(id, title, author, pages, read) {
 
 function displayLibrary() {
 
+	const body = document.querySelector("body");
+
+
 	const tableContainer = document.createElement("div");
 	tableContainer.setAttribute("id", "table-container");
-
+	body.appendChild(tableContainer);
 
 	const table = document.createElement("table");
 	const tableHeader = document.createElement("thead");
 	const tableBody = document.createElement("tbody");
+
+
+	// console.log(body);
+
+	table.appendChild(tableHeader);
+	table.appendChild(tableBody);
+	tableContainer.appendChild(table);
 
 
 
@@ -49,20 +59,27 @@ function displayLibrary() {
 		const headerRow = document.createElement("tr");
 
 
+
 		const bookIDHeaderCell = document.createElement("th");
 		bookIDHeaderCell.textContent = "ID";
+		headerRow.appendChild(bookIDHeaderCell);
 
 		const titleHeaderCell = document.createElement("th");
 		titleHeaderCell.textContent = "Title";
+		headerRow.appendChild(titleHeaderCell);
 
 		const authorHeaderCell = document.createElement("th");
 		authorHeaderCell.textContent = "Author";
+		headerRow.appendChild(authorHeaderCell);
 
 		const pagesHeaderCell = document.createElement("th");
 		pagesHeaderCell.textContent = "Number of Pages";
-		// console.log(library);
+		headerRow.appendChild(pagesHeaderCell);
+
 		const statusHeaderCell = document.createElement("th");
 		statusHeaderCell.textContent = "Has the book been read?";
+		headerRow.appendChild(statusHeaderCell);
+
 
 		const contentRow = document.createElement("tr");
 
@@ -106,6 +123,8 @@ function displayLibrary() {
 
 
 
+
+		tableHeader.appendChild(headerRow);
 
 
 		contentRow.appendChild(bookIDCell);
