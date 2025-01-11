@@ -2,66 +2,65 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sebastian's Library</title>
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="icon" href="./images/read.png" />
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Sebastian's Library</title>
+	<link rel="stylesheet" href="./css/style.css" />
+	<link rel="icon" href="./images/read.png" />
 </head>
 
 <body>
-    <header>
-        <div>
-            <img src="./Images/book.png" alt="This is a book" />
-            <h1>Sebastian's Library</h1>
-        </div>
-    </header>
+	<header>
+		<div>
+			<img src="./Images/book.png" alt="This is a book" />
+			<h1>Sebastian's Library</h1>
+		</div>
+	</header>
 
-    <div id="open-modal-container">
-        <button id="open-modal">Add New Book</button>
-    </div>
+	<div id="open-modal-container">
+		<button id="open-modal">Add New Book</button>
+	</div>
 
-    <dialog id="dialog">
-        <form action="/" method="get">
-            <div class="form-field">
-                <label for="title">Title</label>
-                <input type="text" name="title" id="book-title" />
-                <small></small>
-            </div>
+	<dialog id="dialog">
+		<form action="/" method="get">
+			<div class="form-field">
+				<label for="title">Title</label>
+				<input type="text" name="title" id="book-title" />
+				<small></small>
+			</div>
 
-            <div class="form-field">
-                <label for="author">Author</label>
-                <input type="text" name="author" id="book-author" />
-                <small></small>
-            </div>
+			<div class="form-field">
+				<label for="author">Author</label>
+				<input type="text" name="author" id="book-author" />
+				<small></small>
+			</div>
 
-            <div class="form-field">
-                <label for="pages">Number of Pages</label>
-                <input type="number" name="pages" id="num-pages" />
-                <small></small>
-            </div>
+			<div class="form-field">
+				<label for="pages">Number of Pages</label>
+				<input type="number" name="pages" id="num-pages" />
+				<small></small>
+			</div>
 
-            <div class="form-field">
-                <fieldset>
-                    <legend>Has the book been read?</legend>
-                    <input type="checkbox" name="agree" id="agree" value="Yes" />
-                    <label for="chbx">Yes</label>
-                    <input type="checkbox" name="disagree" id="disagree" value="No" />
-                    <label for="chbx">No</label>
-                    <small></small>
-                </fieldset>
-            </div>
-            <div id="btns-container">
-                <button id="close-modal">Close</button>
-                <button type="submit">Add Book</button>
-            </div>
-        </form>
-    </dialog>
+			<div class="form-field">
+				<fieldset>
+					<legend>Has the book been read?</legend>
+					<input type="checkbox" name="agree" id="agree" value="Yes" />
+					<label for="chbx">Yes</label>
+					<input type="checkbox" name="disagree" id="disagree" value="No" />
+					<label for="chbx">No</label>
+					<small></small>
+				</fieldset>
+			</div>
+			<div id="btns-container">
+				<button id="close-modal">Close</button>
+				<button type="submit">Add Book</button>
+			</div>
+		</form>
+	</dialog>
 
-    <div id="table-container"></div>
 
-    <script src="./js/form-validation.js"></script>
-    <script src="./js/library.js"></script>
+	<script src="./js/form-validation.js"></script>
+	<script src="./js/library.js"></script>
 </body>
 
 </html>
