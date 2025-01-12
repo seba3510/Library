@@ -125,6 +125,16 @@ thead {
 #edit-btns-container {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
     gap: 20px;
     margin-left: 1em;
+    margin-top: 20px;
+}
+
+
+.btns-container {
+    justify-content: center;
+    align-items: center;
+    margin-top: 45px;
 }

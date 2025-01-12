@@ -1,5 +1,4 @@
 
-
 const form = document.querySelector("form");
 
 
@@ -55,8 +54,9 @@ function handleClick() {
 } // handleClick()
 //=======================================================================================================
 
-
 function submitForm() {
+
+
 
 	form.addEventListener("submit", (event) => {
 
@@ -70,15 +70,18 @@ function submitForm() {
 		checkStatus();
 
 
-		// clearTable();
+
 
 		addBookToLibrary(bookId, titleElem.value, authorElem.value, numPagesElem.value, checkStatus());
+		// clearTable();
 		displayLibrary();
-
 	});
+
+	// clearTable((document.querySelector("#table-container")));
+
 } // submitForm()
 
-
+// clearTable();
 
 //=======================================================================================================
 
