@@ -22,6 +22,9 @@ const dialogElem = document.querySelector("#dialog");
 let bookId = Number(0);
 //=======================================================================================================
 
+/**
+ * Displays the form so that the user can add a book to the library
+ */
 function displayForm() {
 
 
@@ -35,6 +38,9 @@ function displayForm() {
 
 //=======================================================================================================
 
+/**
+ * Closes the form
+ */
 function closeForm() {
 
 	const btn = document.querySelector("#close-modal");
@@ -54,38 +60,41 @@ function handleClick() {
 } // handleClick()
 //=======================================================================================================
 
+/**
+ * Validates each input field, and submits the form
+ */
 function submitForm() {
 
 
 
 	form.addEventListener("submit", (event) => {
 
-
+		// Prevent the form from submitting
 		event.preventDefault();
 
-
+		// Validate each input field
 		checkTitle();
 		checkAuthor();
 		checkNumberOfPages();
 		checkStatus();
 
 
-
-
 		addBookToLibrary(bookId, titleElem.value, authorElem.value, numPagesElem.value, checkStatus());
-		// clearTable();
 		displayLibrary();
 	});
 
-	// clearTable((document.querySelector("#table-container")));
-
 } // submitForm()
 
-// clearTable();
+
 
 //=======================================================================================================
 
-
+/**
+ * Displays the specified error message
+ * 
+ * @param {@HTMLElement} input - Input element that did not pass its validation
+ * @param {*} message - The error message to display
+ */
 function showError(input, message) {
 
 	const formField = input.parentElement;
@@ -113,14 +122,26 @@ function showSuccess(input) {
 
 //=======================================================================================================
 
-
+/**
+ * Determines if the specified string is empty.
+ * 
+ * @param {String} str - The specified string to validate
+ * @returns True if the string is empty.  False if it is not empty
+ */
 function isEmpty(str) {
 	return ((str === ""));
 }// isEmpty()
 
 //=======================================================================================================
 
-
+/**
+ * Determine if the specified value is in between the specified range
+ * 
+ * @param {Number} val - The number to validate
+ * @param {*} min - The lower-bound value 
+ * @param {*} max - The upper-bound value
+ * @returns 
+ */
 function isBetween(val, min, max) {
 
 	let isBetween = false;
@@ -141,7 +162,11 @@ function isBetween(val, min, max) {
 
 //=======================================================================================================
 
-
+/**
+ * Validates the book's read status
+ * 
+ * @returns True if the book has been read, and false if the book has not been read
+ */
 function checkStatus() {
 
 	let readStatus = false;
@@ -149,8 +174,6 @@ function checkStatus() {
 	if ((haveRead.checked === true)) {
 
 		readStatus = true;
-		// haveRead = true;
-		// haveNotRead = true;
 	}// if
 
 	else if ((haveNotRead.checked === true)) {
@@ -171,7 +194,9 @@ function checkStatus() {
 //=======================================================================================================
 
 
-
+/**
+ * Validates the book title entered by the user
+ */
 function checkTitle() {
 
 
@@ -190,7 +215,9 @@ function checkTitle() {
 }// checkTitle()
 
 //=======================================================================================================
-
+/**
+ * Validates the name of the book author entered by the user
+ */
 function checkAuthor() {
 
 	const authorValue = authorElem.value.trim();
@@ -224,6 +251,9 @@ function checkAuthor() {
 //=======================================================================================================
 
 
+/**
+ * Validates the book's number of pages
+ */
 function checkNumberOfPages() {
 
 	const numPagesValue = numPagesElem.value.trim();
@@ -246,6 +276,9 @@ function checkNumberOfPages() {
 
 //=======================================================================================================
 
+/**
+ * Clears the input values of the form when it is submitted
+ */
 function clearInputs() {
 
 	titleElem.value = "";

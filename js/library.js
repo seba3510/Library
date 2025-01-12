@@ -1,12 +1,22 @@
 
 
 
-
+/**
+ * Array that stores all the books 
+ */
 const library = [];
 
 //=======================================================================================================
 
-
+/**
+ * Constructor that creates a new book
+ * 
+ * @param {Number} id - The id assigned to the book
+ * @param {String} title - The name of the book
+ * @param {String} author - Name of the author of the book
+ * @param {Number} pages - The total number of pages that the book has
+ * @param {Boolean} read - Status indicating if the book has been read
+ */
 function Book(id, title, author, pages, read) {
 	this.id = id;
 	this.title = title;
@@ -18,6 +28,15 @@ function Book(id, title, author, pages, read) {
 
 //=======================================================================================================
 
+/**
+ * Adds the specified book to the library
+ * 
+ * @param {Number} id - The id assigned to the book
+ * @param {String} title - The name of the book
+ * @param {String} author - Name of the author of the book
+ * @param {Number} pages - The total number of pages that the book has
+ * @param {Boolean} read - Status indicating if the book has been read
+ */
 function addBookToLibrary(id, title, author, pages, read) {
 	let newBook = new Book(id, title, author, pages, read);
 	library.push(newBook);
@@ -28,30 +47,28 @@ function addBookToLibrary(id, title, author, pages, read) {
 
 
 
+/**
+ * Creates and displays a table with the books that have been added to the library
+ */
 function displayLibrary() {
 
-	// clearTable();
 	const body = document.querySelector("body");
 
 	let tableContainer = document.querySelector("#table-container");
 
-	if ((!tableContainer)) {
+	// Check if the div that serves as a container for the table exists
+	if ((!doesElementExist(tableContainer))) {
 		tableContainer = document.createElement("div");
 		tableContainer.setAttribute("id", "table-container");
 		body.appendChild(tableContainer);
 
-	}
+	}// if
 
 	else {
 
 		clearTable();
 
-	}// if
-
-	// tableContainer.innerHTML = "";
-	// clearTable();
-
-
+	}// else
 
 	const table = document.createElement("table");
 	const tableHeader = document.createElement("thead");
@@ -66,6 +83,7 @@ function displayLibrary() {
 
 	const headerRow = document.createElement("tr");
 
+	// Append Header row to the table
 	const bookIDHeaderCell = document.createElement("th");
 	bookIDHeaderCell.textContent = "ID";
 	// headerRow.appendChild(bookIDHeaderCell);
@@ -126,6 +144,12 @@ function displayLibrary() {
 
 		const deleteBtn = document.createElement("button");
 		deleteBtn.setAttribute("class", "remove-btn");
+
+		/**
+		 * A data-attribute was assigned to this button to associate
+		 * this DOM element with with the book object.  This data-attribute
+		 * corresponds to the index of the library array
+		 */
 		deleteBtn.setAttribute("data-bookID", `${book.id}`);
 
 		const deleteIcon = document.createElement("img");
@@ -153,28 +177,49 @@ function displayLibrary() {
 
 //=======================================================================================================
 
+/**
+ * Removes a book from the library
+ * 
+ * @param {@HTMLElement} button - The button that triggers the action of deleting the book
+ * @param {@HTMLElement} row - The row in which the button is at
+ */
 function removeBookFromLibrary(button, row) {
+
 	button.addEventListener("click", () => {
+
 		row.remove(); // remove the book from the display
-		delete library[Number(button.getAttribute("data-bookID"))]; // remove the book from the 'library' array
+
+		let index = Number(button.getAttribute("data-bookID"));
+		delete library[index]; // remove the book from the 'library' array
+
 		library.length--;
 	});
 }// removeBookFromLibrary()
 
 //=======================================================================================================
-// displayLibrary();	
+
+/**
+ * Clears the contents of the container that stores the table
+ */
 function clearTable() {
 	const tableContainer = document.querySelector("#table-container");
 	tableContainer.innerHTML = "";
-
 }// clearTable()
 
 //=======================================================================================================
 
+/**
+ * Changes the status of the book
+ * 
+ * @param {@HTMLElement} button - Reference to the button that triggers the action of changing the read status
+ * @param {@HTMLElement} cell - Reference to the cell of the book in which the status wants to be changed
+ * @param {@HTMLElement} status - The read status of the book
+ */
 function toggleBookStatus(button, cell, status) {
 
 	button.addEventListener("click", (event) => {
 
+		//Change the value of the book's read status
 		switch ((status)) {
 			case true:
 				status = false;
@@ -186,19 +231,23 @@ function toggleBookStatus(button, cell, status) {
 				break;
 		}// switch()
 
-		library[Number((button.getAttribute("data-bookID")))].read = status
+		/**
+		 * Retrieve the index in which the book to change the status is at
+		 */
+		let index = Number(button.getAttribute("data-bookID"));
+		library[index].read = status
 
 		cell.textContent = status;
 	});
 }// toggleBookStatus();
 
-// clearTable();
+//=======================================================================================================
 
-
+/**
+ * Determines if the specified element exists in the HTML page
+ * @param {@HTMLElement} element 
+ * @returns True if the element exists.  False if it does not exist
+ */
 function doesElementExist(element) {
-	if ((element != null)) {
-		return true;
-	}
-
-	return false;
+	return ((element != null));
 }// doesElementExist()
