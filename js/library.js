@@ -68,7 +68,8 @@ function displayLibrary() {
 
 	const bookIDHeaderCell = document.createElement("th");
 	bookIDHeaderCell.textContent = "ID";
-	headerRow.appendChild(bookIDHeaderCell);
+	// headerRow.appendChild(bookIDHeaderCell);
+	bookIDHeaderCell.style.visibility = "hidden";
 
 	const titleHeaderCell = document.createElement("th");
 	titleHeaderCell.textContent = "Title";
@@ -99,7 +100,8 @@ function displayLibrary() {
 
 		const bookIDCell = document.createElement("td");
 		bookIDCell.textContent = `${book.id}`;
-		contentRow.appendChild(bookIDCell);
+		// contentRow.appendChild(bookIDCell);
+		bookIDCell.style.visibility = "hidden";
 
 		const titleCell = document.createElement("td");
 		titleCell.textContent = book.title;
@@ -155,6 +157,7 @@ function removeBookFromLibrary(button, row) {
 	button.addEventListener("click", () => {
 		row.remove(); // remove the book from the display
 		delete library[Number(button.getAttribute("data-bookID"))]; // remove the book from the 'library' array
+		library.length--;
 	});
 }// removeBookFromLibrary()
 
