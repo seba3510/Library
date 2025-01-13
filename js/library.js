@@ -21,7 +21,7 @@ function Book(id, title, author, pages, read) {
 	this.id = id;
 	this.title = title;
 	this.author = author;
-	this.pages = pages;
+	this.pages = formatNumber(pages);
 	this.read = read;
 }// Book()
 
@@ -251,3 +251,11 @@ function toggleBookStatus(button, cell, status) {
 function doesElementExist(element) {
 	return ((element != null));
 }// doesElementExist()
+
+//=======================================================================================================
+
+function formatNumber(num) {
+	let formatter = new Intl.NumberFormat("en-US");
+	let formattedNumber = formatter.format(num);
+	return formattedNumber;
+}//formatNumber()
