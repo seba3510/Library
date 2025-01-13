@@ -174,3 +174,27 @@ thead {
     width: 60px;
     height: 27px;
 }
+
+
+/*==================== Footer ====================*/
+
+footer>div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    position: absolute;
+    left: 45%;
+    gap: 8px;
+}
+
+.github-logo {
+    width: auto;
+    height: 30px;
+}
+
+footer>div>a {
+    cursor: pointer;
+    text-decoration: none;
+}
