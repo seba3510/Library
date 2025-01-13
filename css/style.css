@@ -40,6 +40,7 @@ form {
     width: 220px;
     /* max-width: 100%; */
     padding: 2em;
+    background-color: rgba(79, 79, 79, 0.282);
 }
 
 #dialog fieldset {
