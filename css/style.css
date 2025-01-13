@@ -95,6 +95,7 @@ table {
     visibility: hidden;
 }
 
+
 table,
 tr,
 td,
@@ -103,6 +104,20 @@ tbody,
 thead {
     border: 1px solid black;
     text-align: center;
+}
+
+table {
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+thead th {
+    background-color: rgb(220, 62, 222);
+    color: white;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: rgba(37, 37, 37, 0.197);
 }
 
 #table-container {
