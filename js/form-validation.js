@@ -24,9 +24,8 @@ let bookId = Number(0);
 
 /**
  * Displays the form so that the user can add a book to the library
- */
+*/
 function displayForm() {
-
 
 	const btn = document.querySelector("#open-modal");
 
@@ -40,12 +39,14 @@ function displayForm() {
 
 /**
  * Closes the form
- */
+*/
 function closeForm() {
 
-	const btn = document.querySelector("#close-modal");
+	const closeDialogBtn = document.querySelector("#close-modal");
 
-	btn.addEventListener("click", () => {
+	closeDialogBtn.addEventListener("click", (event) => {
+		//Prevent the form from submitting
+		event.preventDefault();
 		dialogElem.close();
 	});
 }// closeForm()
@@ -81,9 +82,12 @@ function submitForm() {
 
 		addBookToLibrary(bookId, titleElem.value, authorElem.value, numPagesElem.value, checkStatus());
 		displayLibrary();
+
 	});
 
 } // submitForm()
+
+
 
 
 
