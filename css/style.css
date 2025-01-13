@@ -155,8 +155,19 @@ thead {
 .close-form-btn {
     cursor: pointer;
     border-radius: 220px;
-    height: 25px;
+    height: 27px;
     width: 45px;
     background-color: rgb(225, 48, 48);
     border: none;
+    color: white;
+}
+
+.submit-form-btn {
+    cursor: pointer;
+    border: none;
+    background-color: rgb(4, 139, 20);
+    color: white;
+    border-radius: 220px;
+    width: 60px;
+    height: 27px;
 }
