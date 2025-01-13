@@ -130,6 +130,7 @@ function displayLibrary() {
 		contentRow.appendChild(authorCell);
 
 		const pagesCell = document.createElement("td");
+		book.pages = formatNumber(book.pages);
 		pagesCell.textContent = `${book.pages}`;
 		contentRow.appendChild(pagesCell);
 
@@ -251,3 +252,13 @@ function toggleBookStatus(button, cell, status) {
 function doesElementExist(element) {
 	return ((element != null));
 }// doesElementExist()
+
+//=======================================================================================================
+
+function formatNumber(num) {
+
+	const formatter = new Intl.NumberFormat("en-US");
+	const formattedNumber = formatter.format(num);
+	return formattedNumber;
+
+}// formatNumber()
