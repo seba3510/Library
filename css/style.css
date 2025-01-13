@@ -143,12 +143,20 @@ thead {
 }
 
 .open-form-btn {
-    position: absolute;
     background-color: rgb(163, 36, 172);
     cursor: pointer;
     color: white;
     border-radius: 220px;
     height: 33px;
     width: 100px;
+    border: none;
+}
+
+.close-form-btn {
+    cursor: pointer;
+    border-radius: 220px;
+    height: 25px;
+    width: 45px;
+    background-color: rgb(225, 48, 48);
     border: none;
 }
