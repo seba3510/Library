@@ -26,7 +26,6 @@ form {
     flex-direction: column;
     gap: 13px;
     padding: 1em;
-
 }
 
 
@@ -36,9 +35,7 @@ form {
     position: fixed;
     top: 30%;
     left: 43%;
-    /* width: 220px; */
     width: 220px;
-    /* max-width: 100%; */
     padding: 2em;
     background-color: rgba(79, 79, 79, 0.282);
 }
@@ -71,18 +68,15 @@ form {
 
 .form-field.error input {
     border-color: red;
-
 }
 
 .form-field.success input {
     border-color: rgb(117, 227, 81);
-
 }
 
 .form-field.success {
     border-color: rgb(85, 219, 94);
 }
-
 
 .form-field small {
     color: rgb(237, 57, 57);
@@ -92,9 +86,10 @@ form {
 /*==================== Table ====================*/
 
 table {
+    table-layout: fixed;
+    border-collapse: collapse;
     visibility: hidden;
 }
-
 
 table,
 tr,
@@ -104,11 +99,6 @@ tbody,
 thead {
     border: 1px solid black;
     text-align: center;
-}
-
-table {
-    table-layout: fixed;
-    border-collapse: collapse;
 }
 
 thead th {
@@ -148,8 +138,6 @@ tbody tr:nth-child(odd) {
     margin-top: 20px;
 }
 
-
-
 /*==================== Buttons ====================*/
 
 .btns-container {
@@ -157,7 +145,6 @@ tbody tr:nth-child(odd) {
     align-items: center;
     margin-top: 45px;
 }
-
 
 .open-form-btn {
     background-color: transparent;
