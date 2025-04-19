@@ -1,166 +1,220 @@
-const form = document.querySelector("form");
+	const form =
+		document.querySelector("form");
 
-const titleElem = document.querySelector("#book-title");
+	const titleElem = 
+		document.querySelector("#book-title");
 
-const authorElem = document.querySelector("#book-author");
+	const authorElem = 
+		document.querySelector("#book-author");
 
-const numPagesElem = document.querySelector("#num-pages");
+	const numPagesElem = 
+		document.querySelector("#num-pages");
 
-const haveRead = document.querySelector("#agree");
+	const haveRead = 
+		document.querySelector("#agree");
 
-const haveNotRead = document.querySelector("#disagree");
+	const haveNotRead = 
+		document.querySelector("#disagree");
 
-const dialogElem = document.querySelector("#dialog");
+	const dialogElem = 
+		document.querySelector("#dialog");
 
-let bookId = Number(0);
-//=======================================================================================================
-
-function displayForm() {
-
-	const btn = document.querySelector("#open-modal");
-
-	btn.addEventListener("click", () => {
-		dialogElem.showModal();
-	});
-} // displayForm()
+	let bookId = 
+		Number(0);
 
 //=======================================================================================================
 
-/**
- * Closes the form
-*/
-function closeForm() {
+	function displayForm() {
 
-	const closeDialogBtn = document.querySelector("#close-modal");
+		const btn = 
+			document.querySelector("#open-modal");
 
-	closeDialogBtn.addEventListener("click", (event) => {
-		//Prevent the form from submitting
-		event.preventDefault();
+		btn.addEventListener("click", () => {
+			dialogElem.showModal();
+		});
 
-		dialogElem.close();
-	});
-}// closeForm()
+	} // displayForm()
 
 //=======================================================================================================
 
+	
+	function closeForm() {
 
-function handleClick() {
-	displayForm();
-	submitForm();
-	closeForm();
-} // handleClick()
-//=======================================================================================================
+		const closeDialogBtn = 
+			document.querySelector("#close-modal");
 
-function submitForm() {
+		closeDialogBtn.addEventListener("click", (event) => {
+			
+			//Prevent the form from submitting
+			event.preventDefault();
 
-	form.addEventListener("submit", (event) => {
+			dialogElem.close();
 
-		// Prevent the form from submitting
-		event.preventDefault();
+		});
 
-		// Validate each input field
-		checkTitle();
-		checkAuthor();
-		checkNumberOfPages();
-		checkStatus();
-
-		addBookToLibrary(bookId, titleElem.value, authorElem.value, numPagesElem.value, checkStatus());
-		displayLibrary();
-	});
-} // submitForm()
+	}// closeForm()
 
 //=======================================================================================================
 
-function showError(input, message) {
+	function btnAddBookClick() {
 
-	const formField = input.parentElement;
-	const small = formField.querySelector("small");
+		displayForm();
 
-	small.textContent = message;
+		submitForm();
 
-	formField.setAttribute("class", "form-field error");
-} // showError()
+		closeForm();
 
-//=======================================================================================================
-
-
-function showSuccess(input) {
-
-	const formField = input.parentElement;
-
-	formField.classList.remove("error");
-	formField.setAttribute("class", "form-field success");
-
-	const error = formField.querySelector("small");
-	error.textContent = "";
-
-}// showSuccess()
+	} // btnAddBookClick()
 
 //=======================================================================================================
 
-function isEmpty(str) {
-	return ((str === ""));
-}// isEmpty()
+	function submitForm() {
+
+		form.addEventListener("submit", (event) => {
+
+			
+				try {
+
+					if(isDataValid()){
+
+					
+						event.preventDefault();
+
+						const title =
+							titleElem.value;
+
+						const author =
+							authorElem.value;
+
+						const numPages =
+							numPagesElem.value;
+						
+					
+						addBookToLibrary
+							(
+								bookId,
+								title,
+								author,
+								numPages,
+								checkStatus()
+							);
+
+
+						displayLibrary();
+
+					} // if
+
+			}  // try
+			
+			catch (error) {
+
+				const err =
+					error.message;
+
+				alert(err);
+				
+			} // catch
+
+		});
+
+	} // submitForm()
 
 //=======================================================================================================
 
-function isBetween(val, min, max) {
+	function isEmpty(str){
 
-	let isBetween = false;
+		const result =
+			(str === "") ? true
+				: false;
 
-	if ((val >= min) &&
-		(val <= max)) {
+		return result;
 
-		isBetween = true;
-
-	} // if
-
-	else {
-		isBetween = false;
-	}// else
-
-	return isBetween;
-}// isBetween()
+	}// isEmpty()
 
 //=======================================================================================================
 
-function checkStatus() {
+	function checkNumPages(){
 
-	let readStatus = false;
+		const areNumPagesValid =
+			numPagesElem.value
+				> 0;
 
-	if ((haveRead.checked === true)) {
+			if(!areNumPagesValid){
 
-		readStatus = true;
-	}// if
+				const err =
+					"The number of pages should be greater than 0.";
+				
+				throw new RangeError(err);
 
-	else if ((haveNotRead.checked === true)) {
-		readStatus = false;
-	}// else if
+			} // if
 
-	else if ((haveNotRead.checked == false) &&
-		(haveRead.checked == false)) {
-		let msg = "Please fill out this field.";
-		showError(haveRead, msg);
-	}// else if
+			return true;
 
-	return readStatus;
+	} // checkNumPages()
 
-}// checkStatus()
+//=======================================================================================================
+
+	function checkStatus() {
+
+			let readStatus = 
+				false;
+
+			const haveReadIsChecked =
+				haveRead.checked;
+
+			const haveNotReadIsChecked =
+				haveNotRead.checked;
+
+			if (haveReadIsChecked) {
+
+				readStatus = 
+					true;
+
+			} // if
+
+			else if (haveNotReadIsChecked) {
+
+				readStatus = 
+					false;
+
+			} // else if
+
+			else if	(
+						(!haveReadIsChecked) &&
+						(!haveNotReadIsChecked)
+					){
+
+				const err =
+					"Please indicate if you have read this book.";
+
+				throw new Error(err);
+
+		} // else if
+
+		return readStatus;
+
+	}// checkStatus()
 
 //=======================================================================================================
 
 function checkTitle() {
 
-	const titleValue = titleElem.value.trim();
+		const title = 
+			titleElem.value.trim();
 
-	if ((isEmpty(titleValue))) {
-		let msg = "Title of book cannot be blank.";
-		showError(titleElem, msg);
-	}//if
+		const isTitlePresent =
+			!isEmpty(title);
 
-	else {
-		showSuccess(titleElem);
-	}// else
+		if(!isTitlePresent){
+
+			const err =
+				"The book title is required.";
+
+				throw new Error(err);
+			
+		} // if
+
+		return true;
 
 }// checkTitle()
 
@@ -168,59 +222,129 @@ function checkTitle() {
 
 function checkAuthor() {
 
-	const authorValue = authorElem.value.trim();
+	let isValid =
+		false;
 
-	const min = 3;
-	const max = 30;
+	const author = 
+		authorElem.value.trim();
 
-	let msg = "";
+	const min = 
+		3;
+	const max =
+		30;
 
-	if ((isEmpty(authorValue))) {
-		msg = "Author of book cannot be blank."
-		showError(authorElem, msg);
+	let err;
+
+	const isAuthorPresent =
+		!isEmpty(author);
+		
+	const authorLength =
+		author.length;
+
+	const isBetweenRange =
+		(authorLength >= min) &&
+		(authorLength <= max);
+
+	let error;
+
+	if(!isAuthorPresent){
+
+		error =
+			"The author is required.";
+
+		throw new Error(error);
+
 	} // if
 
-	else if ((!isBetween(authorValue.length, min, max))) {
-		msg = `Author of book must be between ${min} and ${max} characters.`;
-		showError(authorElem, msg);
+	else if(!isBetweenRange){
+
+		err =
+			`The name of the author must be between ${min} and ${max} characters.`;
+
+		throw new RangeError(error);
+
 	} // else if
 
-	else {
-		showSuccess(authorElem);
-	} // else
+	else{
+
+		isValid =
+			true;
+
+	} // else 
+
+	return isValid;
 
 } // checkAuthor()
 
 //=======================================================================================================
 
+
 function checkNumberOfPages() {
 
-	const numPagesValue = numPagesElem.value.trim();
+	const numPages= 
+		numPagesElem.value.trim();
 
-	if ((isEmpty(numPagesValue))) {
-		let msg = "Number of pages cannot be blank.";
-		showError(numPagesElem, msg);
-	}// if
+	const isPresent =
+		isEmpty(numPages);
 
-	else {
-		showSuccess(numPagesElem);
-	} // else			
+		if (!isPresent) {
+
+			const err =
+				"The number of page are required.";
+
+			throw new Error(err);
+			
+		} // if
 
 
 }// checkNumberOfPages()
 
 //=======================================================================================================
 
+function isDataValid(){
+
+	const isBookTitleValid =
+		checkTitle();
+
+	const isAuthorValid =
+		checkAuthor();
+
+	const areNumPagesValid =
+		checkNumPages();
+
+	const isReadStatusChecked =
+		checkStatus();
+	
+	const result =
+		isBookTitleValid &&
+			isAuthorValid &&
+			areNumPagesValid &&
+			isReadStatusChecked;
+
+	return result;
+
+} // isDataValid()
+
+//=======================================================================================================
+
+
 function clearInputs() {
 
 	titleElem.value = "";
+
 	authorElem.value = "";
+
 	numPagesElem.value = "";
 
-	haveNotRead.checked = false;
-	haveRead.checked = false;
+
+	haveNotRead.checked = 
+		false;
+
+	haveRead.checked = 
+		false;
+
 } // clearInputs()
 
 //=======================================================================================================
 
-handleClick();
+btnAddBookClick();
