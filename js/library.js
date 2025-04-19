@@ -277,10 +277,8 @@
 						button.getAttribute("data-bookID")
 					);
 
-			// Remove the book from the array
-			delete library[index]; 
-
-			library.length--;
+			library.splice(index, 1);
+			
 		});
 
 	} // removeBookFromLibrary()
