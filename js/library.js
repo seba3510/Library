@@ -278,7 +278,7 @@
 					);
 
 			library.splice(index, 1);
-			
+
 		});
 
 	} // removeBookFromLibrary()
@@ -348,20 +348,9 @@
 	//=======================================================================================================
 
 
-	function doesElementExist
-		(
-			element
-		) {
+	function doesElementExist(element){
 
-			const doesExist =
-				element != null;
-
-			const result =
-				(!doesExist)
-					? false
-					: true;
-
-			return result;
+		return (element != null);
 		
 	} // doesElementExist()
 
