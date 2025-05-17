@@ -1,7 +1,8 @@
+let bookID =
+	0;
 class Book {
 
-	#id = 0;
-
+	#id;
 	#title;
 	#author;
 	#pages;
@@ -9,11 +10,7 @@ class Book {
 
 	//==============================================================
 
-	get id() {
 
-		return this.#id;
-
-	} // getId()
 
 	//==============================================================
 
@@ -145,13 +142,17 @@ class Book {
 
 	constructor
 		(
+			id,
 			title,
 			author,
 			pages,
 			read
 		) {
 
-		this.#id++;
+		this.#id =
+			bookID
+
+		bookID++;
 
 		this.title =
 			title;
@@ -264,6 +265,7 @@ class Book {
 //==============================================================
 class Library {
 
+
 	#library;
 
 	//==============================================================
@@ -289,6 +291,7 @@ class Library {
 
 		this.#library.push(book);
 
+
 	} // addBook()
 
 } // class
@@ -296,15 +299,30 @@ class Library {
 const hungerGames =
 	new Book
 		(
+			bookID,
 			"The  Hunger Games",
 			"Suzanne Collins",
 			255,
 			true
 		);
 
+const harryPotter =
+	new Book
+		(
+			bookID,
+			"Harry Potter",
+			"J.K. Rowling",
+			300,
+			true
+		);
+
 const library =
 	new Library().library;
 
+
+
 library.push(hungerGames);
+
+library.push(harryPotter);
 
 console.log(library);
