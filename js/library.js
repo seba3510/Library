@@ -1,371 +1,261 @@
-	// const library = 
-	// 	[];
+class Book {
 
-	// //=======================================================================================================
+	#id = 0;
 
-	// function Book
-	// 	(
-	// 		id, 
-	// 		title, 
-	// 		author, 
-	// 		pages, 
-	// 		read
-	// 	) {
+	#title;
+	#author;
+	#pages;
+	#read;
 
-	// 		this.id = 
-	// 			id;
+	//==============================================================
 
-	// 		this.title = 
-	// 			title;
-	
-	// 		this.author = 
-	// 			author;
+	get id() {
 
-	// 		this.pages = 
-	// 			formatNumber(pages);
+		return this.#id;
 
-	// 		this.read = 
-	// 			read;
+	} // getId()
 
-	// } // Book()
+	//==============================================================
 
-	// //=======================================================================================================
+	get title() {
 
-	// function addBookToLibrary
-	// 	(
-	// 		id, 
-	// 		title, 
-	// 		author, 
-	// 		pages, 
-	// 		read
-	// 	) {
+		return this.#title;
 
-	// 		const  newBook = 
-	// 			new Book
-	// 				(
-	// 					id, 
-	// 					title, 
-	// 					author, 
-	// 					pages, 
-	// 					read
-	// 				);
+	} // getTitle()
 
-	// 		library.push(newBook);
+	//==============================================================
 
-	// 		bookId++;
+	set title(value) {
 
-	// 	} // addBookToLibrary()
+		const isString =
+			typeof value === "string";
 
-	// //=======================================================================================================
+		if (!isString) {
 
-	// function displayLibrary() {
+			const error =
+				"The title must be a string.";
 
-	// 	const body =
-	// 		document.querySelector("body");
+			throw new TypeError(error);
 
-	// 	let tableContainer = 
-	// 		document.querySelector("#table-container");
+		} // if
 
-	// 	const doesTableContainerExist =
-	// 		doesElementExist(tableContainer);
+		this.#title =
+			value;
 
-	// 	if (!doesTableContainerExist) {
+	} // setTitle()
 
-	// 		tableContainer = 
-	// 			document.createElement("div");
+	//==============================================================
 
-	// 		tableContainer.setAttribute("id", "table-container");
+	get author() {
 
-	// 		body.appendChild(tableContainer);
+		return this.#author;
 
-	// 	} // if
+	} // getAuthor()
 
-	// 	else {
+	//==============================================================
 
-	// 		clearTable();
+	set author(value) {
 
-	// 	} // else
+		this.#author =
+			value;
 
-	// 	const table = 
-	// 		document.createElement("table");
+	} // setAuthor()
 
-	// 	const tableHeader = 
-	// 		document.createElement("thead");
+	//==============================================================
 
-	// 	const tableBody = 
-	// 		document.createElement("tbody");
+	get pages() {
 
-	// 	table.appendChild(tableHeader);
+		return this.#pages;
 
-	// 	table.appendChild(tableBody);
+	} // getPages()
 
-	// 	tableContainer.appendChild(table);
 
-	// 	table.style.visibility = 
-	// 		"visible";
+	//==============================================================
 
-	// 	const headerRow = 
-	// 		document.createElement("tr");
+	set pages(value) {
 
-	// 	const bookIDHeaderCell = 
-	// 		document.createElement("th");
+		const isInteger =
+			Number.isInteger
+				(value);
 
-	// 	bookIDHeaderCell.textContent = 
-	// 		"ID";
+		const areNumPagesValid =
+			value > 0;
 
-	// 	bookIDHeaderCell.style.visibility = 
-	// 		"hidden";
+		let error = "";
 
-	// 	const titleHeaderCell = 
-	// 		document.createElement("th");
+		if (!isInteger) {
 
-	// 	titleHeaderCell.textContent = 
-	// 		"Title";
+			error =
+				"The number of pages must " +
+				"be an integer.";
 
-	// 	headerRow.appendChild(titleHeaderCell);
+			throw new TypeError(error);
 
-	// 	const authorHeaderCell = 
-	// 	document.createElement("th");
+		} // if
 
-	// 	authorHeaderCell.textContent = 
-	// 		"Author";
+		if (!areNumPagesValid) {
 
-	// 	headerRow.appendChild(authorHeaderCell);
+			error =
+				"The number of pages must be " +
+				"greater than 0.";
 
-	// 	const pagesHeaderCell = 
-	// 		document.createElement("th");
+			throw new RangeError(error);
 
-	// 	pagesHeaderCell.textContent = 
-	// 		"Number of Pages";
+		} //  if
 
-	// 	headerRow.appendChild(pagesHeaderCell);
+		this.#pages =
+			value;
 
-	// 	const statusHeaderCell = 
-	// 		document.createElement("th");
+	} // setPages()
 
-	// 	statusHeaderCell.textContent = 
-	// 		"Has the book been read?";
+	//==============================================================
 
-	// 	headerRow.appendChild(statusHeaderCell);
+	get read() {
 
-	// 	tableHeader.appendChild(headerRow);
+		return this.#read;
 
-	// 	const btnsContainer = 
-	// 		document.createElement("div");
+	} // getRead()
 
-	// 	btnsContainer.setAttribute("class", "btns-container");
+	//==============================================================
 
-	// 	tableContainer.appendChild(btnsContainer);
+	set read(value) {
 
-	// 	library.forEach((book => {
+		const isBoolean =
+			typeof value === "boolean";
 
-	// 		const contentRow = 
-	// 			document.createElement("tr");
+		if (!isBoolean) {
 
-	// 		const bookIDCell = 
-	// 			document.createElement("td");
+			const error =
+				"The read status must be a boolean.";
 
-	// 		bookIDCell.textContent = 
-	// 			`${book.id}`;
+			throw new TypeError(error);
 
-	// 		bookIDCell.style.visibility = 
-	// 			"hidden";
+		}
 
-	// 		const titleCell = 
-	// 			document.createElement("td");
+		else {
 
-	// 		titleCell.textContent = 
-	// 			book.title;
+			this.#read =
+				value;
 
-	// 		contentRow.appendChild(titleCell);
+		} // if
 
-	// 		const authorCell = 
-	// 			document.createElement("td");
+	} // setRead()
 
-	// 		authorCell.textContent = 
-	// 			book.author;
+	//==============================================================
 
-	// 		contentRow.appendChild(authorCell);
+	constructor
+		(
+			title,
+			author,
+			pages,
+			read
+		) {
 
-	// 		const pagesCell = 
-	// 			document.createElement("td");
+		this.#id++;
 
-	// 		pagesCell.textContent = 
-	// 			`${book.pages}`;
-				
-	// 			contentRow.appendChild(pagesCell);
+		this.title =
+			title;
 
-	// 		const statusCell = 
-	// 			document.createElement("td");
+		this.author =
+			author;
 
-	// 		statusCell.textContent = 
-	// 			book.read;
+		this.pages =
+			pages;
 
-	// 		contentRow.appendChild(statusCell);
+		this.read =
+			read;
 
-	// 		tableBody.appendChild(contentRow);
+	} // constructor()
 
-	// 		const div = 
-	// 			document.createElement("div");
+	//==============================================================
 
-	// 		div.setAttribute("id", "edit-btns-container");
+} // class
 
-	// 		const deleteBtn = 
-	// 			document.createElement("button");
+//==============================================================
 
-	// 		deleteBtn.setAttribute("class", "remove-btn");
+try {
 
-	// 		deleteBtn.setAttribute("data-bookID", `${book.id}`);
+	const hungerGames = new Book
+		(
+			"The Hunger Games",
+			"Suzanne Collins",
+			150,
+			true
+		);
 
-	// 		const deleteIcon = 
-	// 			document.createElement("img");
+	const harryPotter =
+		new Book
+			(
+				"To Kill a Mocking Bird",
+				"Charles Dickens",
+				384,
+				false
+			);
 
-	// 		const path = 
-	// 			"../images/delete.png";
+	const donQuixote =
+		new Book
+			(
+				"Don Quixote",
+				"Miguel de Cervantes",
+				1_072,
+				false
+			);
 
-	// 		deleteIcon.setAttribute("src", path);
+	const library =
+		[
+			{
+				"Title": hungerGames.title,
+				"Author": hungerGames.author,
+				"Number of Pages": hungerGames.pages,
+				"Has the Book been Read?": hungerGames.read
+			},
+			{
+				"Title": harryPotter.title,
+				"Author": harryPotter.author,
+				"Number of Pages": harryPotter.pages,
+				"Has the Book been Read?": harryPotter.read
+			},
+			{
+				"Title": donQuixote.title,
+				"Author": donQuixote.author,
+				"Number of Pages": donQuixote.pages,
+				"Has the Book been Read?": donQuixote.read
+			}
+		];
 
-	// 		deleteIcon.setAttribute("class", "remove-icon")
+	console.table(library);
 
-	// 		deleteBtn.appendChild(deleteIcon);
+}  // try
 
-	// 		div.appendChild(deleteBtn);
+catch (ex) {
 
-	// 		const changeStatusBtn = 
-	// 			document.createElement("button");
+	const isTypeError =
+		ex instanceof TypeError;
 
-	// 		changeStatusBtn.setAttribute("data-bookID", `${book.id}`);
-				
-	// 		changeStatusBtn.textContent = 
-	// 				"Change Status";
+	if (isTypeError) {
 
-	// 		div.appendChild(changeStatusBtn);
+		const error =
+			ex.message;
 
-	// 		btnsContainer.appendChild(div);
+		console.error(error);
 
-	// 		clearInputs();
+	} // if
 
-	// 		removeBookFromLibrary
-	// 			(
-	// 				deleteBtn, 
-	// 				contentRow
-	// 			);
+	const isRangeError =
+		ex instanceof RangeError;
 
-	// 		toggleBookStatus
-	// 			(
-	// 				changeStatusBtn, 
-	// 				statusCell, 
-	// 				book.read
-	// 			);
+	if (isRangeError) {
 
-	// 	})); // foreach
 
-	// } // displayLibrary()
+		const error =
+			ex.message;
 
-	// //=======================================================================================================
+		console.error(error);
 
-	// function removeBookFromLibrary(button, row) {
+	} // if
 
-	// 	button.addEventListener("click", () => {
+} // catch
 
-	// 		// Removes the book from the table display
-	// 		row.remove();
+//==============================================================
 
-	// 		const index = 
-	// 			Number
-	// 				(
-	// 					button.getAttribute("data-bookID")
-	// 				);
 
-	// 		library.splice(index, 1);
-
-	// 	});
-
-	// } // removeBookFromLibrary()
-
-	// //=======================================================================================================
-
-	// function clearTable() {
-
-	// 	const tableContainer = 
-	// 		document.querySelector("#table-container");
-
-	// 	tableContainer.innerHTML = 
-	// 		"";
-		
-	// } // clearTable()
-
-	// //=======================================================================================================
-
-	// function toggleBookStatus
-	// 	(
-	// 		button, 
-	// 		cell, 
-	// 		status
-	// 	) {
-
-	// 		button.addEventListener("click", () => {
-
-
-	// 			switch (status) {
-
-	// 				case true:
-
-	// 					status =
-	// 						false;
-
-	// 					break;
-
-	// 				case false:
-
-	// 					status =
-	// 						true;
-						
-	// 					break;
-				
-	// 				default:
-
-	// 					break;
-
-	// 			} // switch			
-
-	// 			const index = 
-	// 				Number
-	// 					(
-	// 						button.getAttribute("data-bookID")
-	// 					);
-
-	// 			library[index].read = 
-	// 				status
-
-	// 			cell.textContent = 
-	// 				status;
-
-	// 		});
-
-	// } // toggleBookStatus();
-
-	// //=======================================================================================================
-
-
-	// function doesElementExist(element){
-
-	// 	return (element != null);
-		
-	// } // doesElementExist()
-
-	// //=======================================================================================================
-
-	// function formatNumber(num) {
-
-	// 	const formatter = 
-	// 		new Intl.NumberFormat("en-US");
-
-	// 	const formattedNumber = 
-	// 		formatter.format(num);
-
-	// 	return formattedNumber;
-
-	// } //formatNumber()
-
-	// //=======================================================================================================
