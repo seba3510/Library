@@ -167,95 +167,144 @@ class Book {
 
 	} // constructor()
 
+
+
 	//==============================================================
 
 } // class
 
 //==============================================================
 
-try {
+// try {
 
-	const hungerGames = new Book
+// 	const hungerGames =
+// 		new Book
+// 			(
+// 				"The Hunger Games",
+// 				"Suzanne Collins",
+// 				150,
+// 				true
+// 			);
+
+// 	const harryPotter =
+// 		new Book
+// 			(
+// 				"To Kill a Mocking Bird",
+// 				"Charles Dickens",
+// 				384,
+// 				false
+// 			);
+
+// 	const donQuixote =
+// 		new Book
+// 			(
+// 				"Don Quixote",
+// 				"Miguel de Cervantes",
+// 				1_072,
+// 				false
+// 			);
+
+// 	const library =
+// 		[
+// 			{
+// 				"Title": hungerGames.title,
+// 				"Author": hungerGames.author,
+// 				"Number of Pages": hungerGames.pages,
+// 				"Has the Book been Read?": hungerGames.read
+// 			},
+// 			{
+// 				"Title": harryPotter.title,
+// 				"Author": harryPotter.author,
+// 				"Number of Pages": harryPotter.pages,
+// 				"Has the Book been Read?": harryPotter.read
+// 			},
+// 			{
+// 				"Title": donQuixote.title,
+// 				"Author": donQuixote.author,
+// 				"Number of Pages": donQuixote.pages,
+// 				"Has the Book been Read?": donQuixote.read
+// 			}
+// 		];
+
+// 	console.log("Before adding new books...");
+
+// 	console.table(library);
+
+// }  // try
+
+// catch (ex) {
+
+// 	const isTypeError =
+// 		ex instanceof TypeError;
+
+// 	if (isTypeError) {
+
+// 		const error =
+// 			ex.message;
+
+// 		console.error(error);
+
+// 	} // if
+
+// 	const isRangeError =
+// 		ex instanceof RangeError;
+
+// 	if (isRangeError) {
+
+
+// 		const error =
+// 			ex.message;
+
+// 		console.error(error);
+
+// 	} // if
+
+// } // catch
+
+//==============================================================
+class Library {
+
+	#library;
+
+	//==============================================================
+
+
+	get library() {
+
+		return this.#library;
+
+	} // getLibrary()
+
+	//==============================================================
+
+	constructor() {
+
+		this.#library = [];
+
+	} // constructor()
+
+	//==============================================================
+
+	addBook(book) {
+
+		this.#library.push(book);
+
+	} // addBook()
+
+} // class
+
+const hungerGames =
+	new Book
 		(
-			"The Hunger Games",
+			"The  Hunger Games",
 			"Suzanne Collins",
-			150,
+			255,
 			true
 		);
 
-	const harryPotter =
-		new Book
-			(
-				"To Kill a Mocking Bird",
-				"Charles Dickens",
-				384,
-				false
-			);
+const library =
+	new Library().library;
 
-	const donQuixote =
-		new Book
-			(
-				"Don Quixote",
-				"Miguel de Cervantes",
-				1_072,
-				false
-			);
+library.push(hungerGames);
 
-	const library =
-		[
-			{
-				"Title": hungerGames.title,
-				"Author": hungerGames.author,
-				"Number of Pages": hungerGames.pages,
-				"Has the Book been Read?": hungerGames.read
-			},
-			{
-				"Title": harryPotter.title,
-				"Author": harryPotter.author,
-				"Number of Pages": harryPotter.pages,
-				"Has the Book been Read?": harryPotter.read
-			},
-			{
-				"Title": donQuixote.title,
-				"Author": donQuixote.author,
-				"Number of Pages": donQuixote.pages,
-				"Has the Book been Read?": donQuixote.read
-			}
-		];
-
-	console.table(library);
-
-}  // try
-
-catch (ex) {
-
-	const isTypeError =
-		ex instanceof TypeError;
-
-	if (isTypeError) {
-
-		const error =
-			ex.message;
-
-		console.error(error);
-
-	} // if
-
-	const isRangeError =
-		ex instanceof RangeError;
-
-	if (isRangeError) {
-
-
-		const error =
-			ex.message;
-
-		console.error(error);
-
-	} // if
-
-} // catch
-
-//==============================================================
-
-
+console.log(library);
