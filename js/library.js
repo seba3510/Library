@@ -1,371 +1,371 @@
-	const library = 
-		[];
+	// const library = 
+	// 	[];
 
-	//=======================================================================================================
+	// //=======================================================================================================
 
-	function Book
-		(
-			id, 
-			title, 
-			author, 
-			pages, 
-			read
-		) {
+	// function Book
+	// 	(
+	// 		id, 
+	// 		title, 
+	// 		author, 
+	// 		pages, 
+	// 		read
+	// 	) {
 
-			this.id = 
-				id;
+	// 		this.id = 
+	// 			id;
 
-			this.title = 
-				title;
+	// 		this.title = 
+	// 			title;
+	
+	// 		this.author = 
+	// 			author;
 
-			this.author = 
-				author;
+	// 		this.pages = 
+	// 			formatNumber(pages);
 
-			this.pages = 
-				formatNumber(pages);
+	// 		this.read = 
+	// 			read;
 
-			this.read = 
-				read;
+	// } // Book()
 
-	} // Book()
+	// //=======================================================================================================
 
-	//=======================================================================================================
+	// function addBookToLibrary
+	// 	(
+	// 		id, 
+	// 		title, 
+	// 		author, 
+	// 		pages, 
+	// 		read
+	// 	) {
 
-	function addBookToLibrary
-		(
-			id, 
-			title, 
-			author, 
-			pages, 
-			read
-		) {
+	// 		const  newBook = 
+	// 			new Book
+	// 				(
+	// 					id, 
+	// 					title, 
+	// 					author, 
+	// 					pages, 
+	// 					read
+	// 				);
 
-			const  newBook = 
-				new Book
-					(
-						id, 
-						title, 
-						author, 
-						pages, 
-						read
-					);
+	// 		library.push(newBook);
 
-			library.push(newBook);
+	// 		bookId++;
 
-			bookId++;
+	// 	} // addBookToLibrary()
 
-		} // addBookToLibrary()
+	// //=======================================================================================================
 
-	//=======================================================================================================
+	// function displayLibrary() {
 
-	function displayLibrary() {
+	// 	const body =
+	// 		document.querySelector("body");
 
-		const body =
-			document.querySelector("body");
+	// 	let tableContainer = 
+	// 		document.querySelector("#table-container");
 
-		let tableContainer = 
-			document.querySelector("#table-container");
+	// 	const doesTableContainerExist =
+	// 		doesElementExist(tableContainer);
 
-		const doesTableContainerExist =
-			doesElementExist(tableContainer);
+	// 	if (!doesTableContainerExist) {
 
-		if (!doesTableContainerExist) {
+	// 		tableContainer = 
+	// 			document.createElement("div");
 
-			tableContainer = 
-				document.createElement("div");
+	// 		tableContainer.setAttribute("id", "table-container");
 
-			tableContainer.setAttribute("id", "table-container");
+	// 		body.appendChild(tableContainer);
 
-			body.appendChild(tableContainer);
+	// 	} // if
 
-		} // if
+	// 	else {
 
-		else {
+	// 		clearTable();
 
-			clearTable();
+	// 	} // else
 
-		} // else
+	// 	const table = 
+	// 		document.createElement("table");
 
-		const table = 
-			document.createElement("table");
+	// 	const tableHeader = 
+	// 		document.createElement("thead");
 
-		const tableHeader = 
-			document.createElement("thead");
+	// 	const tableBody = 
+	// 		document.createElement("tbody");
 
-		const tableBody = 
-			document.createElement("tbody");
+	// 	table.appendChild(tableHeader);
 
-		table.appendChild(tableHeader);
+	// 	table.appendChild(tableBody);
 
-		table.appendChild(tableBody);
+	// 	tableContainer.appendChild(table);
 
-		tableContainer.appendChild(table);
+	// 	table.style.visibility = 
+	// 		"visible";
 
-		table.style.visibility = 
-			"visible";
+	// 	const headerRow = 
+	// 		document.createElement("tr");
 
-		const headerRow = 
-			document.createElement("tr");
+	// 	const bookIDHeaderCell = 
+	// 		document.createElement("th");
 
-		const bookIDHeaderCell = 
-			document.createElement("th");
+	// 	bookIDHeaderCell.textContent = 
+	// 		"ID";
 
-		bookIDHeaderCell.textContent = 
-			"ID";
+	// 	bookIDHeaderCell.style.visibility = 
+	// 		"hidden";
 
-		bookIDHeaderCell.style.visibility = 
-			"hidden";
+	// 	const titleHeaderCell = 
+	// 		document.createElement("th");
 
-		const titleHeaderCell = 
-			document.createElement("th");
+	// 	titleHeaderCell.textContent = 
+	// 		"Title";
 
-		titleHeaderCell.textContent = 
-			"Title";
+	// 	headerRow.appendChild(titleHeaderCell);
 
-		headerRow.appendChild(titleHeaderCell);
+	// 	const authorHeaderCell = 
+	// 	document.createElement("th");
 
-		const authorHeaderCell = 
-		document.createElement("th");
+	// 	authorHeaderCell.textContent = 
+	// 		"Author";
 
-		authorHeaderCell.textContent = 
-			"Author";
+	// 	headerRow.appendChild(authorHeaderCell);
 
-		headerRow.appendChild(authorHeaderCell);
+	// 	const pagesHeaderCell = 
+	// 		document.createElement("th");
 
-		const pagesHeaderCell = 
-			document.createElement("th");
+	// 	pagesHeaderCell.textContent = 
+	// 		"Number of Pages";
 
-		pagesHeaderCell.textContent = 
-			"Number of Pages";
+	// 	headerRow.appendChild(pagesHeaderCell);
 
-		headerRow.appendChild(pagesHeaderCell);
+	// 	const statusHeaderCell = 
+	// 		document.createElement("th");
 
-		const statusHeaderCell = 
-			document.createElement("th");
+	// 	statusHeaderCell.textContent = 
+	// 		"Has the book been read?";
 
-		statusHeaderCell.textContent = 
-			"Has the book been read?";
+	// 	headerRow.appendChild(statusHeaderCell);
 
-		headerRow.appendChild(statusHeaderCell);
+	// 	tableHeader.appendChild(headerRow);
 
-		tableHeader.appendChild(headerRow);
+	// 	const btnsContainer = 
+	// 		document.createElement("div");
 
-		const btnsContainer = 
-			document.createElement("div");
+	// 	btnsContainer.setAttribute("class", "btns-container");
 
-		btnsContainer.setAttribute("class", "btns-container");
+	// 	tableContainer.appendChild(btnsContainer);
 
-		tableContainer.appendChild(btnsContainer);
+	// 	library.forEach((book => {
 
-		library.forEach((book => {
+	// 		const contentRow = 
+	// 			document.createElement("tr");
 
-			const contentRow = 
-				document.createElement("tr");
+	// 		const bookIDCell = 
+	// 			document.createElement("td");
 
-			const bookIDCell = 
-				document.createElement("td");
+	// 		bookIDCell.textContent = 
+	// 			`${book.id}`;
 
-			bookIDCell.textContent = 
-				`${book.id}`;
+	// 		bookIDCell.style.visibility = 
+	// 			"hidden";
 
-			bookIDCell.style.visibility = 
-				"hidden";
+	// 		const titleCell = 
+	// 			document.createElement("td");
 
-			const titleCell = 
-				document.createElement("td");
+	// 		titleCell.textContent = 
+	// 			book.title;
 
-			titleCell.textContent = 
-				book.title;
+	// 		contentRow.appendChild(titleCell);
 
-			contentRow.appendChild(titleCell);
+	// 		const authorCell = 
+	// 			document.createElement("td");
 
-			const authorCell = 
-				document.createElement("td");
+	// 		authorCell.textContent = 
+	// 			book.author;
 
-			authorCell.textContent = 
-				book.author;
+	// 		contentRow.appendChild(authorCell);
 
-			contentRow.appendChild(authorCell);
+	// 		const pagesCell = 
+	// 			document.createElement("td");
 
-			const pagesCell = 
-				document.createElement("td");
-
-			pagesCell.textContent = 
-				`${book.pages}`;
+	// 		pagesCell.textContent = 
+	// 			`${book.pages}`;
 				
-				contentRow.appendChild(pagesCell);
+	// 			contentRow.appendChild(pagesCell);
 
-			const statusCell = 
-				document.createElement("td");
+	// 		const statusCell = 
+	// 			document.createElement("td");
 
-			statusCell.textContent = 
-				book.read;
+	// 		statusCell.textContent = 
+	// 			book.read;
 
-			contentRow.appendChild(statusCell);
+	// 		contentRow.appendChild(statusCell);
 
-			tableBody.appendChild(contentRow);
+	// 		tableBody.appendChild(contentRow);
 
-			const div = 
-				document.createElement("div");
+	// 		const div = 
+	// 			document.createElement("div");
 
-			div.setAttribute("id", "edit-btns-container");
+	// 		div.setAttribute("id", "edit-btns-container");
 
-			const deleteBtn = 
-				document.createElement("button");
+	// 		const deleteBtn = 
+	// 			document.createElement("button");
 
-			deleteBtn.setAttribute("class", "remove-btn");
+	// 		deleteBtn.setAttribute("class", "remove-btn");
 
-			deleteBtn.setAttribute("data-bookID", `${book.id}`);
+	// 		deleteBtn.setAttribute("data-bookID", `${book.id}`);
 
-			const deleteIcon = 
-				document.createElement("img");
+	// 		const deleteIcon = 
+	// 			document.createElement("img");
 
-			const path = 
-				"../images/delete.png";
+	// 		const path = 
+	// 			"../images/delete.png";
 
-			deleteIcon.setAttribute("src", path);
+	// 		deleteIcon.setAttribute("src", path);
 
-			deleteIcon.setAttribute("class", "remove-icon")
+	// 		deleteIcon.setAttribute("class", "remove-icon")
 
-			deleteBtn.appendChild(deleteIcon);
+	// 		deleteBtn.appendChild(deleteIcon);
 
-			div.appendChild(deleteBtn);
+	// 		div.appendChild(deleteBtn);
 
-			const changeStatusBtn = 
-				document.createElement("button");
+	// 		const changeStatusBtn = 
+	// 			document.createElement("button");
 
-			changeStatusBtn.setAttribute("data-bookID", `${book.id}`);
+	// 		changeStatusBtn.setAttribute("data-bookID", `${book.id}`);
 				
-			changeStatusBtn.textContent = 
-					"Change Status";
+	// 		changeStatusBtn.textContent = 
+	// 				"Change Status";
 
-			div.appendChild(changeStatusBtn);
+	// 		div.appendChild(changeStatusBtn);
 
-			btnsContainer.appendChild(div);
+	// 		btnsContainer.appendChild(div);
 
-			clearInputs();
+	// 		clearInputs();
 
-			removeBookFromLibrary
-				(
-					deleteBtn, 
-					contentRow
-				);
+	// 		removeBookFromLibrary
+	// 			(
+	// 				deleteBtn, 
+	// 				contentRow
+	// 			);
 
-			toggleBookStatus
-				(
-					changeStatusBtn, 
-					statusCell, 
-					book.read
-				);
+	// 		toggleBookStatus
+	// 			(
+	// 				changeStatusBtn, 
+	// 				statusCell, 
+	// 				book.read
+	// 			);
 
-		})); // foreach
+	// 	})); // foreach
 
-	} // displayLibrary()
+	// } // displayLibrary()
 
-	//=======================================================================================================
+	// //=======================================================================================================
 
-	function removeBookFromLibrary(button, row) {
+	// function removeBookFromLibrary(button, row) {
 
-		button.addEventListener("click", () => {
+	// 	button.addEventListener("click", () => {
 
-			// Removes the book from the table display
-			row.remove();
+	// 		// Removes the book from the table display
+	// 		row.remove();
 
-			const index = 
-				Number
-					(
-						button.getAttribute("data-bookID")
-					);
+	// 		const index = 
+	// 			Number
+	// 				(
+	// 					button.getAttribute("data-bookID")
+	// 				);
 
-			library.splice(index, 1);
+	// 		library.splice(index, 1);
 
-		});
+	// 	});
 
-	} // removeBookFromLibrary()
+	// } // removeBookFromLibrary()
 
-	//=======================================================================================================
+	// //=======================================================================================================
 
-	function clearTable() {
+	// function clearTable() {
 
-		const tableContainer = 
-			document.querySelector("#table-container");
+	// 	const tableContainer = 
+	// 		document.querySelector("#table-container");
 
-		tableContainer.innerHTML = 
-			"";
+	// 	tableContainer.innerHTML = 
+	// 		"";
 		
-	} // clearTable()
+	// } // clearTable()
 
-	//=======================================================================================================
+	// //=======================================================================================================
 
-	function toggleBookStatus
-		(
-			button, 
-			cell, 
-			status
-		) {
+	// function toggleBookStatus
+	// 	(
+	// 		button, 
+	// 		cell, 
+	// 		status
+	// 	) {
 
-			button.addEventListener("click", () => {
+	// 		button.addEventListener("click", () => {
 
 
-				switch (status) {
+	// 			switch (status) {
 
-					case true:
+	// 				case true:
 
-						status =
-							false;
+	// 					status =
+	// 						false;
 
-						break;
+	// 					break;
 
-					case false:
+	// 				case false:
 
-						status =
-							true;
+	// 					status =
+	// 						true;
 						
-						break;
+	// 					break;
 				
-					default:
+	// 				default:
 
-						break;
+	// 					break;
 
-				} // switch			
+	// 			} // switch			
 
-				const index = 
-					Number
-						(
-							button.getAttribute("data-bookID")
-						);
+	// 			const index = 
+	// 				Number
+	// 					(
+	// 						button.getAttribute("data-bookID")
+	// 					);
 
-				library[index].read = 
-					status
+	// 			library[index].read = 
+	// 				status
 
-				cell.textContent = 
-					status;
+	// 			cell.textContent = 
+	// 				status;
 
-			});
+	// 		});
 
-	} // toggleBookStatus();
+	// } // toggleBookStatus();
 
-	//=======================================================================================================
+	// //=======================================================================================================
 
 
-	function doesElementExist(element){
+	// function doesElementExist(element){
 
-		return (element != null);
+	// 	return (element != null);
 		
-	} // doesElementExist()
+	// } // doesElementExist()
 
-	//=======================================================================================================
+	// //=======================================================================================================
 
-	function formatNumber(num) {
+	// function formatNumber(num) {
 
-		const formatter = 
-			new Intl.NumberFormat("en-US");
+	// 	const formatter = 
+	// 		new Intl.NumberFormat("en-US");
 
-		const formattedNumber = 
-			formatter.format(num);
+	// 	const formattedNumber = 
+	// 		formatter.format(num);
 
-		return formattedNumber;
+	// 	return formattedNumber;
 
-	} //formatNumber()
+	// } //formatNumber()
 
-	//=======================================================================================================
+	// //=======================================================================================================

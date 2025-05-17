@@ -1,78 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Sebastian's Library</title>
+		<link rel="stylesheet" href="./css/style.css" />
+		<link rel="icon" href="./assets/images/read.png" />
+	</head>
 
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Sebastian's Library</title>
-	<link rel="stylesheet" href="./css/style.css" />
-	<link rel="icon" href="./images/read.png" />
-</head>
+	<body>
+		<header>
+			<div>
+				<img src="./assets/images/book.png" alt="This is a book" />
+				<h1>Sebastian's Library</h1>
+			</div>
+		</header>
 
-<body>
-	<header>
-		<div>
-			<img src="./Images/book.png" alt="This is a book" />
-			<h1>Sebastian's Library</h1>
+		<div id="open-modal-container">
+			<button
+				id="open-modal"
+				class="open-form-btn"
+				title="Add new book to the library"
+			>
+				<img src="./assets/images/add.png" alt="Add new book" />
+			</button>
 		</div>
-	</header>
 
-	<div id="open-modal-container">
-		<button id="open-modal" class="open-form-btn" title="Add new book to the library">
-			<img src="./images/add.png" alt="Add new book">
-		</button>
-	</div>
-
-	<dialog id="dialog">
-		<form action="/" method="dialog">
-			<div class="form-field">
-				<label for="title">Title</label>
-				<input type="text" name="title" id="book-title" />
-				<small></small>
-			</div>
-
-			<div class="form-field">
-				<label for="author">Author</label>
-				<input type="text" name="author" id="book-author" />
-				<small></small>
-			</div>
-
-			<div class="form-field">
-				<label for="pages">Number of Pages</label>
-				<input type="number" name="pages" id="num-pages" />
-				<small></small>
-			</div>
-
-			<div class="form-field">
-				<fieldset>
-					<legend>Has the book been read?</legend>
-					<input type="checkbox" name="agree" id="agree" value="Yes" />
-					<label for="chbx">Yes</label> <br>
-					<input type="checkbox" name="disagree" id="disagree" value="No" />
-					<label for="chbx">No</label>
+		<dialog id="dialog">
+			<form action="/" method="dialog">
+				<div class="form-field">
+					<label for="title">Title</label>
+					<input type="text" name="title" id="book-title" />
 					<small></small>
-				</fieldset>
+				</div>
+
+				<div class="form-field">
+					<label for="author">Author</label>
+					<input type="text" name="author" id="book-author" />
+					<small></small>
+				</div>
+
+				<div class="form-field">
+					<label for="pages">Number of Pages</label>
+					<input type="number" name="pages" id="num-pages" />
+					<small></small>
+				</div>
+
+				<div class="form-field">
+					<fieldset>
+						<legend>Has the book been read?</legend>
+						<input
+							type="checkbox"
+							name="agree"
+							id="agree"
+							value="Yes"
+						/>
+						<label for="chbx">Yes</label> <br />
+						<input
+							type="checkbox"
+							name="disagree"
+							id="disagree"
+							value="No"
+						/>
+						<label for="chbx">No</label>
+						<small></small>
+					</fieldset>
+				</div>
+				<div id="btns-container">
+					<button id="close-modal" class="close-form-btn">
+						Close
+					</button>
+					<button type="submit" class="submit-form-btn">
+						Add book
+					</button>
+				</div>
+			</form>
+		</dialog>
+
+		<footer>
+			<div>
+				<img
+					src="./assets/images/github.png"
+					alt="Github logo"
+					class="github-logo"
+				/>
+				<a href="https://github.com/seba3510">
+					<span>Seba3510</span>
+				</a>
 			</div>
-			<div id="btns-container">
-				<button id="close-modal" class="close-form-btn">Close</button>
-				<button type="submit" class="submit-form-btn">Add book</button>
-			</div>
-		</form>
-	</dialog>
+		</footer>
 
-
-	<footer>
-		<div>
-			<img src="./images/github.png" alt="Github logo" class="github-logo">
-			<a href="https://github.com/seba3510">
-				<span>Seba3510</span>
-			</a>
-		</div>
-	</footer>
-
-
-	<script src="./js/library.js"></script>
-	<script src="./js/form-validation.js"></script>
-</body>
-
+		<script src="./js/library-copy.js"></script>
+		<!-- <script src="./js/form-validation.js"></script> -->
+	</body>
 </html>
