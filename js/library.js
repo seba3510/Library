@@ -1,5 +1,5 @@
-let bookID =
-	0;
+// let bookID =
+// 	0;
 class Book {
 
 	#id;
@@ -11,6 +11,20 @@ class Book {
 	//==============================================================
 
 
+	get id() {
+
+		return this.#id;
+
+	} // getId()
+
+	//==============================================================
+
+	set id(value) {
+
+		this.#id =
+			value;
+
+	} // setId()
 
 	//==============================================================
 
@@ -65,7 +79,6 @@ class Book {
 		return this.#pages;
 
 	} // getPages()
-
 
 	//==============================================================
 
@@ -150,9 +163,9 @@ class Book {
 		) {
 
 		this.#id =
-			bookID
+			id;
 
-		bookID++;
+		this.id++;
 
 		this.title =
 			title;
@@ -168,116 +181,54 @@ class Book {
 
 	} // constructor()
 
-
-
 	//==============================================================
+
 
 } // class
 
-//==============================================================
 
-// try {
-
-// 	const hungerGames =
-// 		new Book
-// 			(
-// 				"The Hunger Games",
-// 				"Suzanne Collins",
-// 				150,
-// 				true
-// 			);
-
-// 	const harryPotter =
-// 		new Book
-// 			(
-// 				"To Kill a Mocking Bird",
-// 				"Charles Dickens",
-// 				384,
-// 				false
-// 			);
-
-// 	const donQuixote =
-// 		new Book
-// 			(
-// 				"Don Quixote",
-// 				"Miguel de Cervantes",
-// 				1_072,
-// 				false
-// 			);
-
-// 	const library =
-// 		[
-// 			{
-// 				"Title": hungerGames.title,
-// 				"Author": hungerGames.author,
-// 				"Number of Pages": hungerGames.pages,
-// 				"Has the Book been Read?": hungerGames.read
-// 			},
-// 			{
-// 				"Title": harryPotter.title,
-// 				"Author": harryPotter.author,
-// 				"Number of Pages": harryPotter.pages,
-// 				"Has the Book been Read?": harryPotter.read
-// 			},
-// 			{
-// 				"Title": donQuixote.title,
-// 				"Author": donQuixote.author,
-// 				"Number of Pages": donQuixote.pages,
-// 				"Has the Book been Read?": donQuixote.read
-// 			}
-// 		];
-
-// 	console.log("Before adding new books...");
-
-// 	console.table(library);
-
-// }  // try
-
-// catch (ex) {
-
-// 	const isTypeError =
-// 		ex instanceof TypeError;
-
-// 	if (isTypeError) {
-
-// 		const error =
-// 			ex.message;
-
-// 		console.error(error);
-
-// 	} // if
-
-// 	const isRangeError =
-// 		ex instanceof RangeError;
-
-// 	if (isRangeError) {
-
-
-// 		const error =
-// 			ex.message;
-
-// 		console.error(error);
-
-// 	} // if
-
-// } // catch
-
-//==============================================================
 class Library {
-
 
 	#library;
 
-	//==============================================================
+	#bookID = 0;
 
+	//==============================================================
 
 	get library() {
 
 		return this.#library;
-
 	} // getLibrary()
 
-	//==============================================================
+	//=============================================================
+
+	set library(value) {
+
+		this.#library =
+			value;
+
+	} // setLibrary()
+
+	//=============================================================
+
+
+	get bookID() {
+
+		return this.#bookID;
+
+	} // getBookID()
+
+	//=============================================================
+
+	set bookID(value) {
+
+		this.#bookID =
+			value;
+
+	} // setBookID()
+
+	//=============================================================
+
 
 	constructor() {
 
@@ -287,42 +238,57 @@ class Library {
 
 	//==============================================================
 
-	addBook(book) {
+	addBookToLibrary(book) {
+
+		book.id =
+			this.#bookID;
 
 		this.#library.push(book);
 
+		this.#bookID++;
 
-	} // addBook()
+	} // addBookToLibrary()
+
 
 } // class
 
-const hungerGames =
+const books =
+	new Library();
+
+
+
+const book1 =
 	new Book
 		(
-			bookID,
-			"The  Hunger Games",
-			"Suzanne Collins",
-			255,
+			books.bookID,
+			"Book #1",
+			"Author #1",
+			50,
 			true
 		);
 
-const harryPotter =
+const book2 =
 	new Book
 		(
-			bookID,
-			"Harry Potter",
-			"J.K. Rowling",
-			300,
+			books.bookID,
+			"Book #2",
+			"Author #2",
+			100,
+			false
+		);
+
+const book3 =
+	new Book
+		(
+			books.bookID,
+			"Book #3",
+			"Author #3",
+			500,
 			true
 		);
 
-const library =
-	new Library().library;
+books.addBookToLibrary(book1);
+books.addBookToLibrary(book2);
+books.addBookToLibrary(book3);
 
-
-
-library.push(hungerGames);
-
-library.push(harryPotter);
-
-console.log(library);
+console.log(books.library);
