@@ -1,5 +1,3 @@
-// let bookID =
-// 	0;
 class Book {
 
 	#id;
@@ -9,7 +7,6 @@ class Book {
 	#read;
 
 	//==============================================================
-
 
 	get id() {
 
@@ -140,14 +137,14 @@ class Book {
 
 			throw new TypeError(error);
 
-		}
+		} // if
 
 		else {
 
 			this.#read =
 				value;
 
-		} // if
+		} // else
 
 	} // setRead()
 
@@ -164,8 +161,6 @@ class Book {
 
 		this.#id =
 			id;
-
-		this.id++;
 
 		this.title =
 			title;
@@ -186,12 +181,13 @@ class Book {
 
 } // class
 
+//===================================================================
 
 class Library {
 
 	#library;
 
-	#bookID = 0;
+	#bookID;
 
 	//==============================================================
 
@@ -211,7 +207,6 @@ class Library {
 
 	//=============================================================
 
-
 	get bookID() {
 
 		return this.#bookID;
@@ -229,16 +224,29 @@ class Library {
 
 	//=============================================================
 
-
 	constructor() {
 
-		this.#library = [];
+		this.library = [];
+
+		this.bookID = 0;
 
 	} // constructor()
 
 	//==============================================================
 
-	addBookToLibrary(book) {
+	addBook(book) {
+
+		const isBook =
+			book instanceof Book;
+
+		if (!isBook) {
+
+			const error =
+				"The argument must be a book.";
+
+			throw new TypeError(error);
+
+		} // if
 
 		book.id =
 			this.#bookID;
@@ -247,48 +255,97 @@ class Library {
 
 		this.#bookID++;
 
-	} // addBookToLibrary()
+	} // addBook()
 
+	//==============================================================
+
+	displayBooks() {
+
+		/**
+		 * TODO: Complete this method
+		 *		when working on the
+		 *		HTML/CSS part of the
+		 * 		project.
+		  */
+
+	} // displayBooks()
 
 } // class
 
-const books =
-	new Library();
+//==================================================================
+
+try {
 
 
+	const library =
+		new Library();
 
-const book1 =
-	new Book
-		(
-			books.bookID,
-			"Book #1",
-			"Author #1",
-			50,
-			true
-		);
+	const book1 =
+		new Book
+			(
+				library.bookID,
+				"Book #1",
+				"Author #1",
+				50,
+				true
+			);
 
-const book2 =
-	new Book
-		(
-			books.bookID,
-			"Book #2",
-			"Author #2",
-			100,
-			false
-		);
+	const book2 =
+		new Book
+			(
+				library.bookID,
+				"Book #2",
+				"Author #2",
+				100,
+				false
+			);
 
-const book3 =
-	new Book
-		(
-			books.bookID,
-			"Book #3",
-			"Author #3",
-			500,
-			true
-		);
+	const book3 =
+		new Book
+			(
+				library.bookID,
+				"Book #3",
+				"Author #3",
+				500,
+				true
+			);
 
-books.addBookToLibrary(book1);
-books.addBookToLibrary(book2);
-books.addBookToLibrary(book3);
+	library.addBook(book1);
 
-console.log(books.library);
+	library.addBook(book2);
+
+	library.addBook(book3);
+
+	console.log(library.library);
+
+} // try
+
+catch (ex) {
+
+	const isTypeError =
+		ex instanceof TypeError;
+
+	if (isTypeError) {
+
+		const error =
+			ex.message;
+
+		console.error(error);
+
+	} // if
+
+	const isRangeError =
+		ex instanceof RangeError;
+
+	if (isRangeError) {
+
+		const error =
+			ex.message;
+
+		console.error(error);
+
+	} // if
+
+} // catch
+
+//==================================================================
