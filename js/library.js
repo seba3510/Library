@@ -311,6 +311,26 @@ class Library {
 
 	//==============================================================
 
+	toggleBookStatus(book) {
+
+		const isBook =
+			book instanceof Book;
+
+		if (!isBook) {
+
+			const error =
+				"The argument must be a book.";
+
+			throw new TypeError(error);
+
+		} // if
+
+		book.read =
+			book.read === true ?
+				false : true;
+
+	} // toggleBookStatus()
+
 } // class
 
 //==================================================================
@@ -391,9 +411,20 @@ try {
 				true
 			);
 
-	console.log(library);
+	library.addBook(book6);
 
-	library.removeBook(book6);
+	console.log
+		(
+			`Status of ${book6.title} before change: ${book6.read}`
+		);
+
+	library.toggleBookStatus(book6);
+
+	console.log
+		(
+			`Status of ${book6.title} after change: ${book6.read}`
+		);
+
 
 } // try
 
@@ -438,12 +469,3 @@ catch (ex) {
 } // catch
 
 //==================================================================
-
-const nums =
-	[
-		1,
-		2,
-		3,
-		4,
-		5
-	];
