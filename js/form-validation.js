@@ -1,220 +1,220 @@
-	const form =
-		document.querySelector("form");
+const form =
+	document.querySelector("form");
 
-	const titleElem = 
-		document.querySelector("#book-title");
+const titleElem =
+	document.querySelector("#book-title");
 
-	const authorElem = 
-		document.querySelector("#book-author");
+const authorElem =
+	document.querySelector("#book-author");
 
-	const numPagesElem = 
-		document.querySelector("#num-pages");
+const numPagesElem =
+	document.querySelector("#num-pages");
 
-	const haveRead = 
-		document.querySelector("#agree");
+const haveRead =
+	document.querySelector("#agree");
 
-	const haveNotRead = 
-		document.querySelector("#disagree");
+const haveNotRead =
+	document.querySelector("#disagree");
 
-	const dialogElem = 
-		document.querySelector("#dialog");
+const dialogElem =
+	document.querySelector("#dialog");
 
-	let bookId = 
-		Number(0);
-
-//=======================================================================================================
-
-	function displayForm() {
-
-		const btn = 
-			document.querySelector("#open-modal");
-
-		btn.addEventListener("click", () => {
-			dialogElem.showModal();
-		});
-
-	} // displayForm()
+let bookId =
+	Number(0);
 
 //=======================================================================================================
 
-	
-	function closeForm() {
+function displayForm() {
 
-		const closeDialogBtn = 
-			document.querySelector("#close-modal");
+	const btn =
+		document.querySelector("#open-modal");
 
-		closeDialogBtn.addEventListener("click", (event) => {
-			
-			//Prevent the form from submitting
-			event.preventDefault();
+	btn.addEventListener("click", () => {
+		dialogElem.showModal();
+	});
 
-			dialogElem.close();
-
-		});
-
-	}// closeForm()
+} // displayForm()
 
 //=======================================================================================================
 
-	function btnAddBookClick() {
 
-		displayForm();
+function closeForm() {
 
-		submitForm();
+	const closeDialogBtn =
+		document.querySelector("#close-modal");
 
-		closeForm();
+	closeDialogBtn.addEventListener("click", (event) => {
 
-	} // btnAddBookClick()
+		//Prevent the form from submitting
+		event.preventDefault();
 
-//=======================================================================================================
+		dialogElem.close();
 
-	function submitForm() {
+	});
 
-		form.addEventListener("submit", (event) => {
-
-			
-				try {
-
-					if(isDataValid()){
-
-					
-						event.preventDefault();
-
-						const title =
-							titleElem.value;
-
-						const author =
-							authorElem.value;
-
-						const numPages =
-							numPagesElem.value;
-						
-					
-						addBookToLibrary
-							(
-								bookId,
-								title,
-								author,
-								numPages,
-								checkStatus()
-							);
-
-
-						displayLibrary();
-
-					} // if
-
-			}  // try
-			
-			catch (error) {
-
-				const err =
-					error.message;
-
-				alert(err);
-				
-			} // catch
-
-		});
-
-	} // submitForm()
+}// closeForm()
 
 //=======================================================================================================
 
-	function isEmpty(str){
+function btnAddBookClick() {
 
-		const result =
-			(str === "") ? true
-				: false;
+	displayForm();
 
-		return result;
+	submitForm();
 
-	}// isEmpty()
+	closeForm();
+
+} // btnAddBookClick()
 
 //=======================================================================================================
 
-	function checkNumPages(){
+function submitForm() {
 
-		const areNumPagesValid =
-			numPagesElem.value
-				> 0;
+	form.addEventListener("submit", (event) => {
 
-			if(!areNumPagesValid){
 
-				const err =
-					"The number of pages should be greater than 0.";
-				
-				throw new RangeError(err);
+		try {
+
+			if (isDataValid()) {
+
+
+				event.preventDefault();
+
+				const title =
+					titleElem.value;
+
+				const author =
+					authorElem.value;
+
+				const numPages =
+					numPagesElem.value;
+
+
+				addBookToLibrary
+					(
+						bookId,
+						title,
+						author,
+						numPages,
+						checkStatus()
+					);
+
+
+				displayLibrary();
 
 			} // if
 
-			return true;
+		}  // try
 
-	} // checkNumPages()
+		catch (error) {
+
+			const err =
+				error.message;
+
+			alert(err);
+
+		} // catch
+
+	});
+
+} // submitForm()
 
 //=======================================================================================================
 
-	function checkStatus() {
+function isEmpty(str) {
 
-			let readStatus = 
-				false;
+	const result =
+		(str === "") ? true
+			: false;
 
-			const haveReadIsChecked =
-				haveRead.checked;
+	return result;
 
-			const haveNotReadIsChecked =
-				haveNotRead.checked;
+}// isEmpty()
 
-			if (haveReadIsChecked) {
+//=======================================================================================================
 
-				readStatus = 
-					true;
+function checkNumPages() {
 
-			} // if
+	const areNumPagesValid =
+		numPagesElem.value
+		> 0;
 
-			else if (haveNotReadIsChecked) {
+	if (!areNumPagesValid) {
 
-				readStatus = 
-					false;
+		const err =
+			"The number of pages should be greater than 0.";
 
-			} // else if
+		throw new RangeError(err);
 
-			else if	(
-						(!haveReadIsChecked) &&
-						(!haveNotReadIsChecked)
-					){
+	} // if
 
-				const err =
-					"Please indicate if you have read this book.";
+	return true;
 
-				throw new Error(err);
+} // checkNumPages()
 
-		} // else if
+//=======================================================================================================
 
-		return readStatus;
+function checkStatus() {
 
-	}// checkStatus()
+	let readStatus =
+		false;
+
+	const haveReadIsChecked =
+		haveRead.checked;
+
+	const haveNotReadIsChecked =
+		haveNotRead.checked;
+
+	if (haveReadIsChecked) {
+
+		readStatus =
+			true;
+
+	} // if
+
+	else if (haveNotReadIsChecked) {
+
+		readStatus =
+			false;
+
+	} // else if
+
+	else if (
+		(!haveReadIsChecked) &&
+		(!haveNotReadIsChecked)
+	) {
+
+		const err =
+			"Please indicate if you have read this book.";
+
+		throw new Error(err);
+
+	} // else if
+
+	return readStatus;
+
+}// checkStatus()
 
 //=======================================================================================================
 
 function checkTitle() {
 
-		const title = 
-			titleElem.value.trim();
+	const title =
+		titleElem.value.trim();
 
-		const isTitlePresent =
-			!isEmpty(title);
+	const isTitlePresent =
+		!isEmpty(title);
 
-		if(!isTitlePresent){
+	if (!isTitlePresent) {
 
-			const err =
-				"The book title is required.";
+		const err =
+			"The book title is required.";
 
-				throw new Error(err);
-			
-		} // if
+		throw new Error(err);
 
-		return true;
+	} // if
+
+	return true;
 
 }// checkTitle()
 
@@ -225,19 +225,17 @@ function checkAuthor() {
 	let isValid =
 		false;
 
-	const author = 
+	const author =
 		authorElem.value.trim();
 
-	const min = 
+	const min =
 		3;
 	const max =
 		30;
 
-	let err;
-
 	const isAuthorPresent =
 		!isEmpty(author);
-		
+
 	const authorLength =
 		author.length;
 
@@ -247,7 +245,7 @@ function checkAuthor() {
 
 	let error;
 
-	if(!isAuthorPresent){
+	if (!isAuthorPresent) {
 
 		error =
 			"The author is required.";
@@ -256,7 +254,7 @@ function checkAuthor() {
 
 	} // if
 
-	else if(!isBetweenRange){
+	else if (!isBetweenRange) {
 
 		err =
 			`The name of the author must be between ${min} and ${max} characters.`;
@@ -265,7 +263,7 @@ function checkAuthor() {
 
 	} // else if
 
-	else{
+	else {
 
 		isValid =
 			true;
@@ -281,27 +279,27 @@ function checkAuthor() {
 
 function checkNumberOfPages() {
 
-	const numPages= 
+	const numPages =
 		numPagesElem.value.trim();
 
 	const isPresent =
 		isEmpty(numPages);
 
-		if (!isPresent) {
+	if (!isPresent) {
 
-			const err =
-				"The number of page are required.";
+		const err =
+			"The number of page are required.";
 
-			throw new Error(err);
-			
-		} // if
+		throw new Error(err);
+
+	} // if
 
 
 }// checkNumberOfPages()
 
 //=======================================================================================================
 
-function isDataValid(){
+function isDataValid() {
 
 	const isBookTitleValid =
 		checkTitle();
@@ -314,12 +312,12 @@ function isDataValid(){
 
 	const isReadStatusChecked =
 		checkStatus();
-	
+
 	const result =
 		isBookTitleValid &&
-			isAuthorValid &&
-			areNumPagesValid &&
-			isReadStatusChecked;
+		isAuthorValid &&
+		areNumPagesValid &&
+		isReadStatusChecked;
 
 	return result;
 
@@ -337,10 +335,10 @@ function clearInputs() {
 	numPagesElem.value = "";
 
 
-	haveNotRead.checked = 
+	haveNotRead.checked =
 		false;
 
-	haveRead.checked = 
+	haveRead.checked =
 		false;
 
 } // clearInputs()

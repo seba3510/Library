@@ -261,14 +261,55 @@ class Library {
 
 	displayBooks() {
 
-		/**
-		 * TODO: Complete this method
-		 *		when working on the
-		 *		HTML/CSS part of the
-		 * 		project.
-		  */
+		//TODO: Complete this method.
 
 	} // displayBooks()
+
+	//==============================================================
+
+	removeBook(book) {
+
+		const isBook =
+			book instanceof Book;
+
+		if (!isBook) {
+
+			const error =
+				"The argument must be a book.";
+
+			throw new TypeError(error);
+
+		} // if
+
+		const index =
+			this.#library.indexOf(book);
+
+		const isBookFound =
+			index != -1;
+
+		if (!isBookFound) {
+
+			const bookTitle =
+				book.title;
+
+			const error =
+				`Could not find the book "${bookTitle}."`;
+
+			throw new Error(error);
+
+		} // if
+
+		else {
+
+			this.#library.splice(index, 1);
+
+			this.#bookID--;
+
+		} // else
+
+	} // removeBook()
+
+	//==============================================================
 
 } // class
 
@@ -310,13 +351,49 @@ try {
 				true
 			);
 
+	const book4 =
+		new Book
+			(
+				library.bookID,
+				"Book #4",
+				"Author #4",
+				123,
+				true
+			);
+
 	library.addBook(book1);
 
 	library.addBook(book2);
 
+	const book5 =
+		new Book
+			(
+				Library.bookID,
+				"Book #5",
+				"Author #5",
+				5,
+				false
+			);
+
 	library.addBook(book3);
 
-	console.log(library.library);
+	library.addBook(book4);
+
+	library.addBook(book5);
+
+	const book6 =
+		new Book
+			(
+				Library.bookID,
+				"Book #6",
+				"Author #6",
+				631,
+				true
+			);
+
+	console.log(library);
+
+	library.removeBook(book6);
 
 } // try
 
@@ -346,6 +423,27 @@ catch (ex) {
 
 	} // if
 
+	const isGeneralError =
+		ex instanceof Error;
+
+	if (isGeneralError) {
+
+		const error =
+			ex.message;
+
+		console.error(error);
+
+	} // if
+
 } // catch
 
 //==================================================================
+
+const nums =
+	[
+		1,
+		2,
+		3,
+		4,
+		5
+	];
