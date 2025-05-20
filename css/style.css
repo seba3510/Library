@@ -1,94 +1,93 @@
 * {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 /*==================== Header ====================*/
 
-header>div {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    background-color: rgb(21, 97, 132);
+header > div {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	background-color: rgb(21, 97, 132);
 }
 
-header>div>img {
-    width: 50px;
-    height: 50px;
+header > div > img {
+	width: 50px;
+	height: 50px;
 }
 
 /*==================== Form ====================*/
 
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 13px;
-    padding: 1em;
+	display: flex;
+	flex-direction: column;
+	gap: 13px;
+	padding: 1em;
 }
-
 
 /*==================== Modal ====================*/
 
 #dialog {
-    position: fixed;
-    top: 30%;
-    left: 43%;
-    width: 220px;
-    padding: 2em;
-    background-color: rgba(79, 79, 79, 0.282);
+	position: fixed;
+	top: 30%;
+	left: 43%;
+	width: 220px;
+	padding: 2em;
+	background-color: rgba(79, 79, 79, 0.282);
 }
 
 #dialog fieldset {
-    width: 500px;
+	width: 500px;
 }
 
 #btns-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
 }
 
 #open-modal-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2em;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	margin-top: 2em;
 }
-
 
 /*==================== Form Input Fields ====================*/
 
 .form-field {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .form-field.error input {
-    border-color: red;
+	border-color: red;
 }
 
 .form-field.success input {
-    border-color: rgb(117, 227, 81);
+	border-color: rgb(117, 227, 81);
 }
 
 .form-field.success {
-    border-color: rgb(85, 219, 94);
+	border-color: rgb(85, 219, 94);
 }
 
 .form-field small {
-    color: rgb(237, 57, 57);
-
+	color: rgb(237, 57, 57);
 }
 
 /*==================== Table ====================*/
 
+/*TODO: Style width of columns*/
 table {
-    table-layout: fixed;
-    border-collapse: collapse;
-    visibility: hidden;
+	table-layout: fixed;
+	text-align: center;
+	border-collapse: collapse;
+	visibility: hidden;
 }
 
 table,
@@ -97,106 +96,104 @@ td,
 th,
 tbody,
 thead {
-    border: 1px solid black;
-    text-align: center;
+	border: 1px solid black;
 }
 
 thead th {
-    background-color: rgb(220, 62, 222);
-    color: white;
+	background-color: rgb(220, 62, 222);
+	color: white;
 }
 
 tbody tr:nth-child(odd) {
-    background-color: rgba(37, 37, 37, 0.197);
+	background-color: rgba(37, 37, 37, 0.197);
 }
 
 #table-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 5em;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin-top: 5em;
 }
 
 .remove-icon {
-    width: 50px;
-    height: 50px;
+	width: 50px;
+	height: 50px;
 }
 
 .remove-btn {
-    cursor: pointer;
-    background-color: transparent;
-    border-color: transparent;
+	cursor: pointer;
+	background-color: transparent;
+	border-color: transparent;
 }
 
 #edit-btns-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    margin-left: 1em;
-    margin-top: 20px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	margin-left: 1em;
+	margin-top: 20px;
 }
 
 /*==================== Buttons ====================*/
 
 .btns-container {
-    justify-content: center;
-    align-items: center;
-    margin-top: 45px;
+	justify-content: center;
+	align-items: center;
+	margin-top: 45px;
 }
 
 .open-form-btn {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
 }
 
-.open-form-btn>img {
-    width: 50px;
-    height: 50px;
+.open-form-btn > img {
+	width: 50px;
+	height: 50px;
 }
 
 .close-form-btn {
-    cursor: pointer;
-    border-radius: 220px;
-    height: 27px;
-    width: 45px;
-    background-color: rgb(225, 48, 48);
-    border: none;
-    color: white;
+	cursor: pointer;
+	border-radius: 220px;
+	height: 27px;
+	width: 45px;
+	background-color: rgb(225, 48, 48);
+	border: none;
+	color: white;
 }
 
 .submit-form-btn {
-    cursor: pointer;
-    border: none;
-    background-color: rgb(4, 139, 20);
-    color: white;
-    border-radius: 220px;
-    width: 60px;
-    height: 27px;
+	cursor: pointer;
+	border: none;
+	background-color: rgb(4, 139, 20);
+	color: white;
+	border-radius: 220px;
+	width: 60px;
+	height: 27px;
 }
-
 
 /*==================== Footer ====================*/
 
-footer>div {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    bottom: 0;
-    position: absolute;
-    left: 45%;
-    gap: 8px;
+footer > div {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	bottom: 0;
+	position: absolute;
+	left: 45%;
+	gap: 8px;
 }
 
 .github-logo {
-    width: auto;
-    height: 30px;
+	width: auto;
+	height: 30px;
 }
 
-footer>div>a {
-    cursor: pointer;
-    text-decoration: none;
+footer > div > a {
+	cursor: pointer;
+	text-decoration: none;
 }

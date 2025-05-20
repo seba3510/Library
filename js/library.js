@@ -264,23 +264,27 @@ class Library {
 		//TODO: Complete this method.
 
 		const body =
-			document.querySelector("body");
+			document.querySelector
+				("body");
 
 		let tableContainer =
-			document.querySelector("#table-container");
+			document.querySelector
+				("#table-container");
 
 		const doesTableExist =
-			tableContainer != null;
-
+			(tableContainer != null);
 
 		if (!doesTableExist) {
 
 			tableContainer =
-				document.createElement("div");
+				document.createElement
+					("section");
 
-			tableContainer.setAttribute("id", "table-container");
+			tableContainer.setAttribute
+				("id", "table-container");
 
-			body.appendChild(tableContainer);
+			body.appendChild
+				(tableContainer);
 
 		} // if
 
@@ -315,9 +319,99 @@ class Library {
 		table.style.visibility =
 			"visible";
 
-		this.#appendTableHeader(tableHeader);
+		this.#appendTableHeader
+			(tableHeader);
+
+		const btnsContainer =
+			document.createElement("section");
+
+		btnsContainer.setAttribute
+			("class", "btns-container");
+
+		tableContainer.appendChild
+			(btnsContainer);
+		this.#library.forEach((book) => {
+
+			this.#appendTableData
+				(book, tableBody);
+
+		}); // forEach
 
 	} // displayBooks()
+
+	//==============================================================
+
+	#appendTableData(book, tableBody) {
+
+		const contentRow =
+			document.createElement("tr");
+
+		const bookIDCell =
+			document.createElement("td");
+
+		bookIDCell.textContent =
+			`${book.id}`;
+
+		// bookIDCell.style.visibility =
+		// 	"hidden"
+
+		contentRow.appendChild
+			(bookIDCell);
+
+		const titleCell =
+			document.createElement("td");
+
+		titleCell.textContent =
+			book.title;
+
+		contentRow.appendChild
+			(titleCell);
+
+		const authorCell =
+			document.createElement("td");
+
+		// authorCell.style.textAlign =
+		// 	"left";
+		authorCell.textContent =
+			book.author;
+
+		contentRow.appendChild
+			(authorCell);
+
+		const pagesCell =
+			document.createElement("td");
+
+		// pagesCell.style.textAlign =
+		// 	"right";
+
+		pagesCell.textContent =
+			`${book.pages}`;
+
+		contentRow.appendChild
+			(pagesCell);
+
+		const statusCell =
+			document.createElement("td");
+
+		// statusCell.style.textAlign =
+		// 	"left";
+
+		statusCell.textContent =
+			book.read;
+
+		statusCell.textContent =
+			(book.read === true)
+				? "Yes" : "No";
+
+		contentRow.appendChild
+			(statusCell);
+
+		tableBody.appendChild
+			(contentRow);
+
+	} // appendTableData()
+
+	//==============================================================
 
 	#appendTableHeader(tableHeader) {
 
@@ -330,8 +424,7 @@ class Library {
 		bookIDHeaderCell.textContent =
 			"ID";
 
-		bookIDHeaderCell.style.visibility =
-			"hidden";
+		headerRow.appendChild(bookIDHeaderCell);
 
 		const titleHeaderCell =
 			document.createElement("th");
@@ -355,7 +448,7 @@ class Library {
 			document.createElement("th");
 
 		pagesHeaderCell.textContent =
-			"Number Of Pages";
+			"Number of Pages";
 
 		headerRow.appendChild
 			(pagesHeaderCell);
@@ -364,7 +457,7 @@ class Library {
 			document.createElement("th");
 
 		statusHeaderCell.textContent =
-			"Has the Book Been Read?";
+			"Has the book been read?";
 
 		headerRow.appendChild
 			(statusHeaderCell);
@@ -403,7 +496,7 @@ class Library {
 				(book);
 
 		const isBookFound =
-			index != -1;
+			(index != -1);
 
 		if (!isBookFound) {
 
@@ -528,7 +621,7 @@ try {
 				Library.bookID,
 				"Book #6",
 				"Author #6",
-				631,
+				456,
 				true
 			);
 
