@@ -524,6 +524,12 @@ class Library {
 			section.appendChild
 				(changeStatusBtn);
 
+			this.removeBook
+				(
+					deleteBtn,
+					contentRow
+				);
+
 			this.toggleBookStatus
 				(
 					changeStatusBtn,
@@ -536,6 +542,48 @@ class Library {
 	} // displayBooks()
 
 	//========================================================================================================
+
+
+	removeBook(button, row) {
+
+		button.addEventListener("click", () => {
+
+
+			console.log("Before Removal...");
+			console.log(this.#library)
+
+			row.remove();
+
+			const bookID =
+				button.getAttribute
+					("data-bookID");
+
+			const index =
+				new Number
+					(bookID);
+
+			this.#library =
+				this.#library.filter((book) => {
+
+					const elem =
+						this.#library[index];
+
+					return (book != elem);
+
+				}); // filter()
+
+			console.log("After Removal...");
+			console.log(this.#library);
+
+			// this.bookID--;
+
+		}); // forEach
+
+
+	} // removeBook()
+
+	//========================================================================================================
+
 
 	appendRowButtons(book, btnsContainer) {
 
@@ -622,7 +670,6 @@ class Library {
 				changeStatusBtn,
 				statusCell,
 				book.read
-
 			);
 
 	} // appendRowButtons()
@@ -693,53 +740,6 @@ class Library {
 		tableContainer.innerHTML = "";
 
 	} // clearTable()
-
-	//=========================================================================================================
-
-	removeBook(book) {
-
-		const isBook =
-			book instanceof Book;
-
-		if (!isBook) {
-
-			const error =
-				"The argument must be a book.";
-
-			throw new TypeError(error);
-
-		} // if
-
-		const index =
-			this.#library.indexOf
-				(book);
-
-		const isBookFound =
-			(index != -1);
-
-		if (!isBookFound) {
-
-			const bookTitle =
-				book.title;
-
-			const error =
-				`Could not find the book "${bookTitle}."`;
-
-			throw new Error(error);
-
-		} // if
-
-		else {
-
-			this.#library.splice
-				(index, 1);
-
-			this.#bookID--;
-
-		} // else
-
-	} // removeBook()
-
 
 	//=========================================================================================================
 
