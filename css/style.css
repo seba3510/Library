@@ -149,7 +149,7 @@ tbody td:nth-child(5n - 3) {
 .btns-container {
 	justify-content: center;
 	align-items: center;
-	margin-top: 45px;
+	margin-top: 7.5em;
 }
 
 /**===========================================================================================*/

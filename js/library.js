@@ -362,13 +362,173 @@ class Library {
 
 		this.#library.forEach((book) => {
 
-			this.#appendTableData
-				(book, tableBody);
+			const contentRow =
+				document.createElement("tr");
 
-			this.appendRowButtons
+			const bookIDCell =
+				document.createElement("td");
+
+			bookIDCell.textContent =
+				`${book.id}`;
+
+			bookIDCell.style.textAlign =
+				"center";
+
+			// bookIDCell.style.visibility =
+			// 	"hidden"
+
+			contentRow.appendChild
+				(bookIDCell);
+
+			const titleCell =
+				document.createElement("td");
+
+			titleCell.textContent =
+				book.title;
+
+			titleCell.style.textAlign =
+				"left";
+
+			contentRow.appendChild
+				(titleCell);
+
+			const authorCell =
+				document.createElement("td");
+
+			authorCell.style.textAlign =
+				"left";
+			authorCell.textContent =
+				book.author;
+
+			contentRow.appendChild
+				(authorCell);
+
+			const pagesCell =
+				document.createElement("td");
+
+			pagesCell.style.textAlign =
+				"right";
+
+			const formattedPages =
+				book.pages.toLocaleString();
+
+			pagesCell.textContent =
+				`${formattedPages}`;
+
+			contentRow.appendChild
+				(pagesCell);
+
+			const statusCell =
+				document.createElement("td");
+
+			statusCell.setAttribute
 				(
-					book,
-					btnsContainer
+					"id",
+					"read-status"
+				);
+
+			statusCell.style.textAlign =
+				"center";
+
+			statusCell.textContent =
+				book.read;
+
+			statusCell.textContent =
+				(book.read === true)
+					? "Yes" : "No";
+
+			contentRow.appendChild
+				(statusCell);
+
+			tableBody.appendChild
+				(contentRow);
+
+
+			const section =
+				document.createElement
+					("section");
+
+			section.setAttribute
+				(
+					"id",
+					"edit-btns-container"
+				);
+
+			const deleteBtn =
+				document.createElement("button");
+
+			deleteBtn.setAttribute
+				(
+					"class",
+					"remove-btn"
+				);
+
+			deleteBtn.setAttribute
+				(
+					"data-bookID",
+					`${book.id}`
+				);
+
+			const deleteIcon =
+				document.createElement("img");
+
+			const path =
+				"../assets/images/delete.png";
+
+			deleteIcon.setAttribute
+				(
+					"src",
+					path
+				);
+
+			deleteIcon.setAttribute
+				(
+					"class",
+					"remove-icon"
+				);
+
+			deleteBtn.appendChild
+				(deleteIcon);
+
+			section.appendChild
+				(deleteBtn);
+
+			const changeStatusBtn =
+				document.createElement("button");
+
+			changeStatusBtn.setAttribute
+				(
+					"data-bookID",
+					`${book.id}`
+				);
+
+			changeStatusBtn.setAttribute
+				(
+					"id",
+					"change-status-btn"
+				);
+
+			changeStatusBtn.setAttribute
+				(
+					"id",
+					"change-status-btn"
+				);
+
+			changeStatusBtn.textContent =
+				"Change Read Status";
+
+
+			btnsContainer.appendChild
+				(section);
+
+			section.appendChild
+				(changeStatusBtn);
+
+			this.toggleBookStatus
+				(
+					changeStatusBtn,
+					statusCell,
+					book.read
 				);
 
 		}); // forEach
@@ -437,8 +597,15 @@ class Library {
 				`${book.id}`
 			);
 
+		changeStatusBtn.setAttribute
+			(
+				"id",
+				"change-status-btn"
+			);
+
 		changeStatusBtn.textContent =
 			"Change Read Status";
+
 
 		btnsContainer.appendChild
 			(section);
@@ -446,8 +613,19 @@ class Library {
 		section.appendChild
 			(changeStatusBtn);
 
-	} // appendRowButtons()
+		const statusCell =
+			document.querySelector
+				("#book-status");
 
+		this.toggleBookStatus
+			(
+				changeStatusBtn,
+				statusCell,
+				book.read
+
+			);
+
+	} // appendRowButtons()
 
 	//========================================================================================================
 
@@ -512,6 +690,12 @@ class Library {
 		const statusCell =
 			document.createElement("td");
 
+		statusCell.setAttribute
+			(
+				"id",
+				"read-status"
+			);
+
 		statusCell.style.textAlign =
 			"center";
 
@@ -528,7 +712,12 @@ class Library {
 		tableBody.appendChild
 			(contentRow);
 
-	} // appendTableData()
+		const changeStatusBtn =
+			document.querySelector
+				("#read-status");
+
+
+	} // appendTableData()z
 
 	//========================================================================================================
 
@@ -597,7 +786,6 @@ class Library {
 
 	} // clearTable()
 
-
 	//=========================================================================================================
 
 	removeBook(book) {
@@ -647,23 +835,35 @@ class Library {
 
 	//=========================================================================================================
 
-	toggleBookStatus(book) {
+	toggleBookStatus(button, cell, status) {
 
-		const isBook =
-			book instanceof Book;
+		button.addEventListener("click", () => {
 
-		if (!isBook) {
+			status =
+				(status === true)
+					? false : true;
 
-			const error =
-				"The argument must be a book.";
+			const bookID =
+				button.getAttribute
+					("data-bookID");
 
-			throw new TypeError(error);
+			const index =
+				new Number
+					(bookID);
 
-		} // if
+			this.#library[index].read =
+				status;
 
-		book.read =
-			book.read === true ?
-				false : true;
+			cell.textContent =
+				(status === true)
+					? "Yes" : "No";
+
+			console.log
+				(
+					`Read Status of "${this.library[index].title}":  ${status}."`
+				);
+
+		}); // forEach
 
 	} // toggleBookStatus()
 
