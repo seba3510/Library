@@ -629,98 +629,6 @@ class Library {
 
 	//========================================================================================================
 
-	#appendTableData(book, tableBody) {
-
-		const contentRow =
-			document.createElement("tr");
-
-		const bookIDCell =
-			document.createElement("td");
-
-		bookIDCell.textContent =
-			`${book.id}`;
-
-		bookIDCell.style.textAlign =
-			"center";
-
-		// bookIDCell.style.visibility =
-		// 	"hidden"
-
-		contentRow.appendChild
-			(bookIDCell);
-
-		const titleCell =
-			document.createElement("td");
-
-		titleCell.textContent =
-			book.title;
-
-		titleCell.style.textAlign =
-			"left";
-
-		contentRow.appendChild
-			(titleCell);
-
-		const authorCell =
-			document.createElement("td");
-
-		authorCell.style.textAlign =
-			"left";
-		authorCell.textContent =
-			book.author;
-
-		contentRow.appendChild
-			(authorCell);
-
-		const pagesCell =
-			document.createElement("td");
-
-		pagesCell.style.textAlign =
-			"right";
-
-		const formattedPages =
-			book.pages.toLocaleString();
-
-		pagesCell.textContent =
-			`${formattedPages}`;
-
-		contentRow.appendChild
-			(pagesCell);
-
-		const statusCell =
-			document.createElement("td");
-
-		statusCell.setAttribute
-			(
-				"id",
-				"read-status"
-			);
-
-		statusCell.style.textAlign =
-			"center";
-
-		statusCell.textContent =
-			book.read;
-
-		statusCell.textContent =
-			(book.read === true)
-				? "Yes" : "No";
-
-		contentRow.appendChild
-			(statusCell);
-
-		tableBody.appendChild
-			(contentRow);
-
-		const changeStatusBtn =
-			document.querySelector
-				("#read-status");
-
-
-	} // appendTableData()z
-
-	//========================================================================================================
-
 	#appendTableHeader(tableHeader) {
 
 		const headerRow =
@@ -873,11 +781,9 @@ class Library {
 
 } // class
 
-
 //========================================================================================================
 
 try {
-
 
 	const library =
 		new Library();
