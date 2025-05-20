@@ -263,7 +263,124 @@ class Library {
 
 		//TODO: Complete this method.
 
+		const body =
+			document.querySelector("body");
+
+		let tableContainer =
+			document.querySelector("#table-container");
+
+		const doesTableExist =
+			tableContainer != null;
+
+
+		if (!doesTableExist) {
+
+			tableContainer =
+				document.createElement("div");
+
+			tableContainer.setAttribute("id", "table-container");
+
+			body.appendChild(tableContainer);
+
+		} // if
+
+		else {
+
+			this.#clearTable
+				(tableContainer);
+
+		} // else
+
+		const table =
+			document.createElement
+				("table");
+
+		const tableHeader =
+			document.createElement
+				("thead");
+
+		const tableBody =
+			document.createElement
+				("tbody");
+
+		table.appendChild
+			(tableHeader);
+
+		table.appendChild
+			(tableBody);
+
+		tableContainer.appendChild
+			(table);
+
+		table.style.visibility =
+			"visible";
+
+		this.#appendTableHeader(tableHeader);
+
 	} // displayBooks()
+
+	#appendTableHeader(tableHeader) {
+
+		const headerRow =
+			document.createElement("tr");
+
+		const bookIDHeaderCell =
+			document.createElement("th");
+
+		bookIDHeaderCell.textContent =
+			"ID";
+
+		bookIDHeaderCell.style.visibility =
+			"hidden";
+
+		const titleHeaderCell =
+			document.createElement("th");
+
+		titleHeaderCell.textContent =
+			"Title";
+
+		headerRow.appendChild
+			(titleHeaderCell);
+
+		const authorHeaderCell =
+			document.createElement("th");
+
+		authorHeaderCell.textContent =
+			"Author";
+
+		headerRow.appendChild
+			(authorHeaderCell);
+
+		const pagesHeaderCell =
+			document.createElement("th");
+
+		pagesHeaderCell.textContent =
+			"Number Of Pages";
+
+		headerRow.appendChild
+			(pagesHeaderCell);
+
+		const statusHeaderCell =
+			document.createElement("th");
+
+		statusHeaderCell.textContent =
+			"Has the Book Been Read?";
+
+		headerRow.appendChild
+			(statusHeaderCell);
+
+		tableHeader.appendChild
+			(headerRow);
+
+	} // appendTableHeader()
+
+	//==============================================================
+
+	#clearTable(tableContainer) {
+
+		tableContainer.innerHTML = "";
+
+	} // clearTable()
 
 	//==============================================================
 
@@ -282,7 +399,8 @@ class Library {
 		} // if
 
 		const index =
-			this.#library.indexOf(book);
+			this.#library.indexOf
+				(book);
 
 		const isBookFound =
 			index != -1;
@@ -301,7 +419,8 @@ class Library {
 
 		else {
 
-			this.#library.splice(index, 1);
+			this.#library.splice
+				(index, 1);
 
 			this.#bookID--;
 
@@ -330,6 +449,8 @@ class Library {
 				false : true;
 
 	} // toggleBookStatus()
+
+	//==============================================================
 
 } // class
 
@@ -413,18 +534,7 @@ try {
 
 	library.addBook(book6);
 
-	console.log
-		(
-			`Status of ${book6.title} before change: ${book6.read}`
-		);
-
-	library.toggleBookStatus(book6);
-
-	console.log
-		(
-			`Status of ${book6.title} after change: ${book6.read}`
-		);
-
+	library.displayBooks();
 
 } // try
 

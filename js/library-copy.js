@@ -157,7 +157,7 @@ function displayLibrary() {
 
 	tableContainer.appendChild(btnsContainer);
 
-	library.forEach((book => {
+	this.library.forEach((book => {
 
 		const contentRow =
 			document.createElement("tr");
