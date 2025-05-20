@@ -20,11 +20,23 @@ class Book {
 
 	set id(value) {
 
+		const isInt =
+			Number.isInteger
+				(value);
+
+		if (!isInt) {
+
+			const error =
+				"The book ID must be an integer.";
+
+			throw new TypeError(error);
+
+		} // if
+
 		this.#id =
 			value;
 
 	} // setId()
-
 
 	//=========================================================================================================
 
@@ -200,18 +212,15 @@ class Library {
 
 	#bookID;
 
-
 	//========================================================================================================
-
 
 	get library() {
 
 		return this.#library;
+
 	} // getLibrary()
 
-
 	//========================================================================================================
-
 
 	set library(value) {
 
@@ -247,7 +256,7 @@ class Library {
 
 		this.library = [];
 
-		this.bookID = 0;
+		this.#bookID = 0;
 
 	} // constructor()
 
@@ -366,6 +375,8 @@ class Library {
 
 	} // displayBooks()
 
+	//========================================================================================================
+
 	appendRowButtons(book, btnsContainer) {
 
 		const section =
@@ -440,7 +451,6 @@ class Library {
 
 	//========================================================================================================
 
-
 	#appendTableData(book, tableBody) {
 
 		const contentRow =
@@ -451,6 +461,9 @@ class Library {
 
 		bookIDCell.textContent =
 			`${book.id}`;
+
+		bookIDCell.style.textAlign =
+			"center";
 
 		// bookIDCell.style.visibility =
 		// 	"hidden"
@@ -464,14 +477,17 @@ class Library {
 		titleCell.textContent =
 			book.title;
 
+		titleCell.style.textAlign =
+			"left";
+
 		contentRow.appendChild
 			(titleCell);
 
 		const authorCell =
 			document.createElement("td");
 
-		// authorCell.style.textAlign =
-		// 	"left";
+		authorCell.style.textAlign =
+			"left";
 		authorCell.textContent =
 			book.author;
 
@@ -481,11 +497,14 @@ class Library {
 		const pagesCell =
 			document.createElement("td");
 
-		// pagesCell.style.textAlign =
-		// 	"right";
+		pagesCell.style.textAlign =
+			"right";
+
+		const formattedPages =
+			book.pages.toLocaleString();
 
 		pagesCell.textContent =
-			`${book.pages}`;
+			`${formattedPages}`;
 
 		contentRow.appendChild
 			(pagesCell);
@@ -493,8 +512,8 @@ class Library {
 		const statusCell =
 			document.createElement("td");
 
-		// statusCell.style.textAlign =
-		// 	"left";
+		statusCell.style.textAlign =
+			"center";
 
 		statusCell.textContent =
 			book.read;
@@ -511,7 +530,6 @@ class Library {
 
 	} // appendTableData()
 
-
 	//========================================================================================================
 
 	#appendTableHeader(tableHeader) {
@@ -525,7 +543,8 @@ class Library {
 		bookIDHeaderCell.textContent =
 			"ID";
 
-		headerRow.appendChild(bookIDHeaderCell);
+		headerRow.appendChild
+			(bookIDHeaderCell);
 
 		const titleHeaderCell =
 			document.createElement("th");
@@ -546,7 +565,8 @@ class Library {
 			(authorHeaderCell);
 
 		const pagesHeaderCell =
-			document.createElement("th");
+			document.createElement
+				("th");
 
 		pagesHeaderCell.textContent =
 			"Number of Pages";
@@ -555,7 +575,8 @@ class Library {
 			(pagesHeaderCell);
 
 		const statusHeaderCell =
-			document.createElement("th");
+			document.createElement
+				("th");
 
 		statusHeaderCell.textContent =
 			"Has the Book Been Read?";
@@ -567,7 +588,6 @@ class Library {
 			(headerRow);
 
 	} // appendTableHeader()
-
 
 	//========================================================================================================
 
@@ -666,9 +686,9 @@ try {
 		new Book
 			(
 				library.bookID,
-				"Book #1",
-				"Author #1",
-				50,
+				"The Great Gatsby",
+				"F. Scott Fitzgerald",
+				180,
 				true
 			);
 
@@ -676,9 +696,9 @@ try {
 		new Book
 			(
 				library.bookID,
-				"Book #2",
-				"Author #2",
-				100,
+				"One Hundred Years of Solitude",
+				"Gabriel García Márquez",
+				417,
 				false
 			);
 
@@ -686,9 +706,9 @@ try {
 		new Book
 			(
 				library.bookID,
-				"Book #3",
-				"Author #3",
-				500,
+				"Don Quixote",
+				"Miguel de Cervantes",
+				1_072,
 				true
 			);
 
@@ -696,9 +716,9 @@ try {
 		new Book
 			(
 				library.bookID,
-				"Book #4",
-				"Author #4",
-				123,
+				"Pride and Prejudice",
+				"Jane Austen",
+				400,
 				true
 			);
 
@@ -710,9 +730,9 @@ try {
 		new Book
 			(
 				Library.bookID,
-				"Book #5",
-				"Author #5",
-				5,
+				"To Kill a Mockingbird",
+				"Harper Lee",
+				384,
 				false
 			);
 
@@ -725,10 +745,10 @@ try {
 	const book6 =
 		new Book
 			(
-				Library.bookID,
-				"Book #6",
-				"Author #6",
-				456,
+				library.bookID,
+				"The Divine Comedy",
+				"Dante Alighieri",
+				928,
 				true
 			);
 
@@ -740,41 +760,8 @@ try {
 
 catch (ex) {
 
-	const isTypeError =
-		ex instanceof TypeError;
-
-	if (isTypeError) {
-
-		const error =
-			ex.message;
-
-		console.error(error);
-
-	} // if
-
-	const isRangeError =
-		ex instanceof RangeError;
-
-	if (isRangeError) {
-
-		const error =
-			ex.message;
-
-		console.error(error);
-
-	} // if
-
-	const isGeneralError =
-		ex instanceof Error;
-
-	if (isGeneralError) {
-
-		const error =
-			ex.message;
-
-		console.error(error);
-
-	} // if
+	console.error
+		(ex.message);
 
 } // catch
 
