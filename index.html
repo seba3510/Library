@@ -51,12 +51,20 @@
 						<legend>Has the book been read?</legend>
 
 						<section>
-							<input type="radio" name="haveRead" id="haveRead" />
+							<input
+								type="checkbox"
+								name="haveRead"
+								id="have-read"
+							/>
 							<label for="haveRead">Yes</label>
 						</section>
 
 						<section>
-							<input type="radio" name="notRead" id="notRead" />
+							<input
+								type="checkbox"
+								name="notRead"
+								id="not-read"
+							/>
 							<label for="notRead">No</label>
 						</section>
 					</fieldset>
@@ -65,7 +73,11 @@
 					<button id="close-modal" class="close-form-btn">
 						Close
 					</button>
-					<button type="submit" class="submit-form-btn">
+					<button
+						type="submit"
+						class="submit-form-btn"
+						id="submit-form-btn"
+					>
 						Add book
 					</button>
 				</section>
@@ -85,6 +97,6 @@
 			</div>
 		</footer>
 
-		<script type="module" src="./scripts/form.js"></script>
+		<script src="./scripts/library.js"></script>
 	</body>
 </html>
