@@ -716,9 +716,17 @@ class Form {
 			document.querySelector
 				("#dialog-box");
 
+		const haveRead =
+			document.querySelector
+				("#have-read");
+
+		haveRead.checked =
+			false;
+
 		button.addEventListener("click", () => {
 
 			dialogBox.showModal();
+
 
 		}); // addEventListener()
 
@@ -839,7 +847,7 @@ class Form {
 
 			this.#library.displayBooks();
 
-			// this.clearData();
+			this.clearData();
 
 		}); // addEventListener
 
