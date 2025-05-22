@@ -517,7 +517,8 @@ class Library {
 			this.removeBook
 				(
 					deleteBtn,
-					contentRow
+					contentRow,
+					section
 				);
 
 			this.toggleBookStatus
@@ -534,7 +535,7 @@ class Library {
 
 	//========================================================================================================
 
-	removeBook(button, row) {
+	removeBook(button, row, section) {
 
 		button.addEventListener("click", () => {
 
@@ -543,6 +544,7 @@ class Library {
 			console.log(this.#library)
 
 			row.remove();
+			section.remove();
 
 			const bookID =
 				button.getAttribute
