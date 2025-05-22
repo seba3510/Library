@@ -26,7 +26,7 @@
 			</button>
 		</section>
 
-		<dialog id="dialog">
+		<dialog id="dialog-box">
 			<form action="/" method="dialog">
 				<section class="form-field">
 					<label for="title">Title</label>
@@ -49,21 +49,16 @@
 				<section class="form-field">
 					<fieldset>
 						<legend>Has the book been read?</legend>
-						<input
-							type="checkbox"
-							name="agree"
-							id="agree"
-							value="Yes"
-						/>
-						<label for="chbx">Yes</label> <br />
-						<input
-							type="checkbox"
-							name="disagree"
-							id="disagree"
-							value="No"
-						/>
-						<label for="chbx">No</label>
-						<small></small>
+
+						<section>
+							<input type="radio" name="haveRead" id="haveRead" />
+							<label for="haveRead">Yes</label>
+						</section>
+
+						<section>
+							<input type="radio" name="notRead" id="notRead" />
+							<label for="notRead">No</label>
+						</section>
 					</fieldset>
 				</section>
 				<section id="btns-container">
@@ -90,7 +85,7 @@
 			</div>
 		</footer>
 
-		<!-- <script src="./js/form-validation.js"></script> -->
-		<script src="./js/library.js"></script>
+		<!-- <script type="module" src="./js/library.js"></script> -->
+		<script src="./scripts/form.js"></script>
 	</body>
 </html>
