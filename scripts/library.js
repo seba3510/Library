@@ -1,3 +1,4 @@
+import { Book } from "./book.js";
 class Library {
 
 	#library;
@@ -625,7 +626,7 @@ try {
 	const book5 =
 		new Book
 			(
-				Library.bookID,
+				library.bookID,
 				"To Kill a Mockingbird",
 				"Harper Lee",
 				384,
@@ -663,8 +664,7 @@ catch (ex) {
 
 //===========================================================================================================
 
+const library =
+	new Library();
 
-// const library =
-// 	new Library();
-
-// export { library };
+export { library };
