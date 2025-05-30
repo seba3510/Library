@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a simple library app done as part of the _JavaScript_ curriculum of _The Odin Project_. This library consists of storing book objects in an array. To add a book, a form is displayed to the user. Then, the information of the book is entered. Once the form is submitted, a table is displayed with the information of the book. The user can do one of the following:
+This is a simple library app done as part of the [JavaScript curriculum](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript) of [The Odin Project](https://www.theodinproject.com). This library consists of storing book objects in an array. To add a book, a form is displayed to the user. Then, the information of the book is entered. Once the form is submitted, a table is displayed with the information of the book. The user can do one of the following:
 
 -   Remove the book
 -   Change the read status
