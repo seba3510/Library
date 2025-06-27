@@ -1,9 +1,13 @@
 class Book {
 
     #id;
+
     #title;
+
     #author;
+
     #pages;
+
     #read;
 
     //=========================================================================================================
@@ -17,19 +21,6 @@ class Book {
     //========================================================================================================
 
     set id(value) {
-
-        const isInt =
-            Number.isInteger
-                (value);
-
-        if (!isInt) {
-
-            const error =
-                "The book ID must be an integer.";
-
-            throw new TypeError(error);
-
-        } // if
 
         this.#id =
             value;
@@ -47,18 +38,6 @@ class Book {
     //=========================================================================================================
 
     set title(value) {
-
-        const isString =
-            typeof value === "string";
-
-        if (!isString) {
-
-            const error =
-                "The title must be a string.";
-
-            throw new TypeError(error);
-
-        } // if
 
         this.#title =
             value;
@@ -98,35 +77,6 @@ class Book {
 
     set pages(value) {
 
-        const isInteger =
-            Number.isInteger
-                (value);
-
-        const areNumPagesValid =
-            value > 0;
-
-        let error = "";
-
-        if (!isInteger) {
-
-            error =
-                "The number of pages must " +
-                "be an integer.";
-
-            throw new TypeError(error);
-
-        } // if
-
-        if (!areNumPagesValid) {
-
-            error =
-                "The number of pages must be " +
-                "greater than 0.";
-
-            throw new RangeError(error);
-
-        } //  if
-
         this.#pages =
             value;
 
@@ -146,38 +96,21 @@ class Book {
 
     set read(value) {
 
-        const isBoolean =
-            typeof value === "boolean";
-
-        if (!isBoolean) {
-
-            const error =
-                "The read status must be a boolean.";
-
-            throw new TypeError(error);
-
-        } // if
-
-        else {
-
-            this.#read =
-                value;
-
-        } // else
+        this.#read =
+            value;
 
     } // setRead()
 
     //=========================================================================================================
 
 
-    constructor
-        (
-            id,
-            title,
-            author,
-            pages,
-            read
-        ) {
+    constructor(
+        id,
+        title,
+        author,
+        pages,
+        read
+    ) {
 
         this.#id =
             id;

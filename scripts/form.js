@@ -1,89 +1,141 @@
 import { library } from "./library.js";
+
+//=====================================================================
+
 class Form {
 
+    #form;
+
+    #submitBtn;
+
+    #cancelBtn;
+
+    #dialogBox;
+
+
+    //=====================================================================
 
     constructor() {
 
+        this.#form =
+            document.querySelector(
+                "form"
+            );
+
+        this.#submitBtn =
+            document.querySelector(
+                "#submit-btn"
+            );
+
+        this.#cancelBtn =
+            document.querySelector(
+                "#cancel-btn"
+            );
+
+        this.#dialogBox =
+            document.querySelector(
+                "dialog"
+            );
+
     } // constructor()
 
-    //======================================================================
+    //=====================================================================
 
+    displayForm() {
 
-    #displayForm() {
-
-        // this.#clearData();
+        const selector =
+            "#add-book-btn";
 
         const button =
             document.querySelector
-                ("#open-modal");
-
-        const dialogBox =
-            document.querySelector
-                ("#dialog-box");
-
-        const haveRead =
-            document.querySelector
-                ("#have-read");
-
-        haveRead.checked =
-            false;
+                (selector);
 
         button.addEventListener("click", () => {
 
-            dialogBox.showModal();
+            this.#dialogBox.show();
 
+            this.#submitForm();
 
         }); // addEventListener()
 
     } // displayForm()
 
-    //======================================================================
+    //=====================================================================
 
-    #closeForm() {
+    #submitForm() {
 
-        const dialogBox =
-            document.querySelector
-                ("#dialog-box");
 
-        const button =
-            document.querySelector
-                ("#close-modal");
-
-        button.addEventListener("click", (event) => {
+        this.#form.addEventListener("submit", (event) => {
 
             event.preventDefault();
 
-            dialogBox.close();
+            const title =
+                document.querySelector(
+                    "#title"
+                ).value.trim();
 
-        }); // addEventListener
+            const author =
+                document.querySelector(
+                    "#author"
+                ).value.trim();
 
+            const pagesInput =
+                document.querySelector(
+                    "#pages"
+                ).value;
 
-    } // closeForm()
+            const pages =
+                parseInt(
+                    pagesInput
+                );
 
-    //======================================================================
+            const read =
+                document.querySelector(
+                    "#read"
+                );
 
+            const hasBookBeenRead =
+                (read.checked);
 
-    //======================================================================
+            library.addBook(
+                library.bookID,
+                title,
+                author,
+                pages,
+                hasBookBeenRead
+            );
 
-    clearData() {
+            const x = 10;
+
+            // // library.displayBooks();
+
+            // this.#clearData();
+
+        }); // addEventListener()
+
+    } // submitForm()
+
+    //=====================================================================
+
+    #clearData() {
 
         const title =
             document.querySelector
-                ("#book-title");
+                ("#title").value.trim();
 
         const author =
             document.querySelector
-                ("#book-author");
+                ("#author").value.trim();
 
         const pages =
             document.querySelector
-                ("#num-pages");
+                ("#pages");
 
-        const haveRead =
+        const hasRead =
             document.querySelector
-                ("#haveRead");
+                ("#read");
 
-        const haveNotRead =
+        const notRead =
             document.querySelector
                 ("#not-read");
 
@@ -91,91 +143,16 @@ class Form {
 
         author.value = "";
 
-        pages.value = "";
-
-        haveNotRead.checked = false;
-
-        haveRead.checked = false;
+        // hasRead.checked ? (!hasRead.checked)
+        //     : (!notRead.checked)
 
     } // clearData()
 
-    //======================================================================
-
-    #submitForm() {
-
-        const form =
-            document.querySelector
-                ("form");
-
-        form.addEventListener("submit", (event) => {
-
-            event.preventDefault();
-
-            const title =
-                document.querySelector
-                    ("#book-title").value
-
-            const author =
-                document.querySelector
-                    ("#book-author").value;
-
-            const pages =
-                Number
-                    (
-                        document.querySelector
-                            ("#num-pages").value
-                    );
-
-            const haveRead =
-                document.querySelector
-                    ("#have-read");
-
-            const hasBookBeenRead =
-                haveRead.checked;
-
-            const haveNotRead =
-                document.querySelector
-                    ("#not-read").checked;
-
-            const readStatus =
-                (hasBookBeenRead === true)
-                    ? true : false;
-
-            library.addBook
-                (
-                    library.bookID,
-                    title,
-                    author,
-                    pages,
-                    readStatus
-                );
-
-            library.displayBooks();
-
-            this.clearData();
-
-        }); // addEventListener
-
-    } // submitForm()
-
-    //======================================================================
-
-    addNewBook() {
-
-        this.#displayForm();
-
-        this.#closeForm();
-
-        this.#submitForm();
-
-    } // addNewBook()
-
-    //======================================================================
-
-
 } // class
+
+//=====================================================================
 
 const form =
     new Form();
 
-form.addNewBook();
+form.displayForm();

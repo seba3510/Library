@@ -1,0 +1,45 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	background-color: rgb(21, 97, 132);
+}
+
+#book-img {
+	width: 50px;
+	height: 50px;
+}
+
+#btn-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	margin-top: 2em;
+}
+
+button {
+	cursor: pointer;
+}
+
+dialog {
+	left: 500px;
+	top: 250px;
+}
+
+footer {
+	border: 5px solid red;
+}
+
+#btns-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 50px;
+}

@@ -76,9 +76,6 @@ class Library {
 
 		this.#bookID++;
 
-		console.log(this.#library);
-
-
 	} // addBook()
 
 	//========================================================================================================
@@ -365,8 +362,6 @@ class Library {
 			console.log(this.#library);
 
 			this.bookID--;
-
-
 
 		}); // forEach
 
