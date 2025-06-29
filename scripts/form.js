@@ -98,8 +98,13 @@ class Form {
 			const hasBookBeenRead =
 				(read.checked);
 
+			const bookID =
+				self
+					.crypto
+					.randomUUID();
+
 			library.addBook(
-				library.bookID,
+				bookID,
 				title,
 				author,
 				pages,

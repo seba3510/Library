@@ -47,7 +47,6 @@ class Library {
 
 		this.library = [];
 
-		this.#bookID = 0;
 
 	} // constructor()
 
@@ -60,9 +59,7 @@ class Library {
 		pages,
 		read) {
 
-
-		id =
-			this.#bookID;
+		this.#bookID = id;
 
 		const book =
 			new Book(
@@ -74,8 +71,6 @@ class Library {
 			);
 
 		this.#library.push(book);
-
-		this.#bookID++;
 
 	} // addBook()
 
