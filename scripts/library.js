@@ -1,4 +1,6 @@
 import { Book } from "./book.js";
+
+//========================================================================================================
 class Library {
 
 	#library;
@@ -22,16 +24,13 @@ class Library {
 
 	} // setLibrary()
 
-
 	//========================================================================================================
-
 
 	get bookID() {
 
 		return this.#bookID;
 
 	} // getBookID()
-
 
 	//========================================================================================================
 
@@ -41,7 +40,6 @@ class Library {
 			value;
 
 	} // setBookID()
-
 
 	//========================================================================================================
 
@@ -53,24 +51,27 @@ class Library {
 
 	} // constructor()
 
-
 	//========================================================================================================
 
-	addBook(id, title, author, pages, read) {
+	addBook(
+		id,
+		title,
+		author,
+		pages,
+		read) {
 
 
 		id =
 			this.#bookID;
 
 		const book =
-			new Book
-				(
-					id,
-					title,
-					author,
-					pages,
-					read
-				);
+			new Book(
+				id,
+				title,
+				author,
+				pages,
+				read
+			);
 
 		this.#library.push(book);
 
@@ -83,24 +84,29 @@ class Library {
 	displayBooks() {
 
 		const body =
-			document.querySelector
-				("body");
+			document.querySelector(
+				"body"
+			);
 
 		let tableContainer =
-			document.querySelector
-				("#table-container");
+			document.querySelector(
+				"#table-container"
+			);
 
-		let doesTableExist =
-			(tableContainer != null);
+		const doesTableExist =
+			(tableContainer !== null);
 
 		if (!doesTableExist) {
 
 			tableContainer =
-				document.createElement
-					("section");
+				document.createElement(
+					"section"
+				);
 
-			tableContainer.setAttribute
-				("id", "table-container");
+			tableContainer.setAttribute(
+				"id",
+				"table-container"
+			);
 
 			body.appendChild
 				(tableContainer);
@@ -114,49 +120,64 @@ class Library {
 		} // else
 
 		const table =
-			document.createElement
-				("table");
+			document.createElement(
+				"table"
+			);
 
 		const tableHeader =
-			document.createElement
-				("thead");
+			document.createElement(
+				"thead"
+			);
 
 		const tableBody =
-			document.createElement
-				("tbody");
+			document.createElement(
+				"tbody"
+			);
 
-		table.appendChild
-			(tableHeader);
+		table.appendChild(
+			tableHeader
+		);
 
-		table.appendChild
-			(tableBody);
+		table.appendChild(
+			tableBody
+		);
 
-		tableContainer.appendChild
-			(table);
+		tableContainer.appendChild(
+			table
+		);
 
 		table.style.visibility =
 			"visible";
 
-		this.#appendTableHeader
-			(tableHeader);
+		this.#appendTableHeader(
+			tableHeader
+		);
 
 		const btnsContainer =
-			document.createElement
-				("section");
+			document.createElement(
+				"section"
+			);
 
-		btnsContainer.setAttribute
-			("class", "btns-container");
+		btnsContainer.setAttribute(
+			"class",
+			"btns-container"
+		);
 
-		tableContainer.appendChild
-			(btnsContainer);
+		tableContainer.appendChild(
+			btnsContainer
+		);
 
 		this.#library.forEach((book) => {
 
 			const contentRow =
-				document.createElement("tr");
+				document.createElement(
+					"tr"
+				);
 
 			const bookIDCell =
-				document.createElement("td");
+				document.createElement(
+					"td"
+				);
 
 			bookIDCell.textContent =
 				`${book.id}`;
@@ -164,14 +185,14 @@ class Library {
 			bookIDCell.style.textAlign =
 				"center";
 
-			// bookIDCell.style.visibility =
-			// 	"hidden"
-
-			contentRow.appendChild
-				(bookIDCell);
+			contentRow.appendChild(
+				bookIDCell
+			);
 
 			const titleCell =
-				document.createElement("td");
+				document.createElement(
+					"td"
+				);
 
 			titleCell.textContent =
 				book.title;
@@ -179,43 +200,54 @@ class Library {
 			titleCell.style.textAlign =
 				"left";
 
-			contentRow.appendChild
-				(titleCell);
+			contentRow.appendChild(
+				titleCell
+			);
 
 			const authorCell =
-				document.createElement("td");
+				document.createElement(
+					"td"
+				);
 
 			authorCell.style.textAlign =
 				"left";
 			authorCell.textContent =
 				book.author;
 
-			contentRow.appendChild
-				(authorCell);
+			contentRow.appendChild(
+				authorCell
+			);
 
 			const pagesCell =
-				document.createElement("td");
+				document.createElement(
+					"td"
+				);
 
-			pagesCell.style.textAlign =
-				"right";
+			pagesCell
+				.style
+				.textAlign = "right";
 
 			const formattedPages =
-				book.pages.toLocaleString();
+				book
+					.pages
+					.toLocaleString();
 
 			pagesCell.textContent =
 				`${formattedPages}`;
 
-			contentRow.appendChild
-				(pagesCell);
+			contentRow.appendChild(
+				pagesCell
+			);
 
 			const statusCell =
-				document.createElement("td");
-
-			statusCell.setAttribute
-				(
-					"id",
-					"read-status"
+				document.createElement(
+					"td"
 				);
+
+			statusCell.setAttribute(
+				"id",
+				"read-status"
+			);
 
 			statusCell.style.textAlign =
 				"center";
@@ -224,40 +256,47 @@ class Library {
 				book.read;
 
 			statusCell.textContent =
-				(book.read === true)
-					? "Yes" : "No";
+				(book.read)
+					? "Yes"
+					: "No";
 
-			contentRow.appendChild
-				(statusCell);
+			contentRow.appendChild(
+				statusCell
+			);
 
-			tableBody.appendChild
-				(contentRow);
-
+			tableBody.appendChild(
+				contentRow
+			);
 
 			const section =
-				document.createElement
-					("section");
-
-			section.setAttribute
-				(
-					"id",
-					"edit-btns-container"
+				document.createElement(
+					"section"
 				);
+
+			section.setAttribute(
+				"id",
+				"edit-btns-container"
+			);
 
 			const deleteBtn =
-				document.createElement("button");
-
-			deleteBtn.setAttribute
-				(
-					"class",
-					"remove-btn"
+				document.createElement(
+					"button"
 				);
 
-			deleteBtn.setAttribute
-				(
-					"data-bookID",
-					`${book.id}`
-				);
+			deleteBtn.setAttribute(
+				"type",
+				"button"
+			);
+
+			deleteBtn.setAttribute(
+				"class",
+				"remove-btn"
+			);
+
+			deleteBtn.setAttribute(
+				"data-bookID",
+				`${book.id}`
+			);
 
 			const deleteIcon =
 				document.createElement("img");
@@ -265,65 +304,63 @@ class Library {
 			const path =
 				"../assets/images/delete.png";
 
-			deleteIcon.setAttribute
-				(
-					"src",
-					path
-				);
+			deleteIcon.setAttribute(
+				"src",
+				path
+			);
 
-			deleteIcon.setAttribute
-				(
-					"class",
-					"remove-icon"
-				);
+			deleteIcon.setAttribute(
+				"class",
+				"remove-icon"
+			);
 
-			deleteBtn.appendChild
-				(deleteIcon);
+			deleteBtn.appendChild(
+				deleteIcon
+			);
 
-			section.appendChild
-				(deleteBtn);
+			section.appendChild(
+				deleteBtn
+			);
 
 			const changeStatusBtn =
-				document.createElement("button");
-
-			changeStatusBtn.setAttribute
-				(
-					"data-bookID",
-					`${book.id}`
+				document.createElement(
+					"button"
 				);
 
-			changeStatusBtn.setAttribute
-				(
-					"id",
-					"change-status-btn"
-				);
+			changeStatusBtn.setAttribute(
+				"data-bookID",
+				`${book.id}`
+			);
+
+			changeStatusBtn.setAttribute(
+				"id",
+				"change-status-btn"
+			);
 
 			changeStatusBtn.textContent =
 				"Change Read Status";
 
-			section.appendChild
-				(changeStatusBtn);
+			section.appendChild(
+				changeStatusBtn
+			);
 
-			btnsContainer.appendChild
-				(section);
+			btnsContainer.appendChild(
+				section
+			);
 
+			this.removeBook(
+				deleteBtn,
+				contentRow,
+				section
+			);
 
-			this.removeBook
-				(
-					deleteBtn,
-					contentRow,
-					section
-				);
-
-			this.toggleBookStatus
-				(
-					changeStatusBtn,
-					statusCell,
-					book.read
-				);
+			this.toggleBookStatus(
+				changeStatusBtn,
+				statusCell,
+				book.read
+			);
 
 		}); // forEach
-
 
 	} // displayBooks()
 
@@ -341,12 +378,14 @@ class Library {
 			section.remove();
 
 			const bookID =
-				button.getAttribute
-					("data-bookID");
+				button.getAttribute(
+					"data-bookID"
+				);
 
 			const index =
-				Number
-					(bookID);
+				parseInt(
+					bookID
+				);
 
 			this.#library =
 				this.#library.filter((book) => {
@@ -364,7 +403,6 @@ class Library {
 			this.bookID--;
 
 		}); // forEach
-
 
 	} // removeBook()
 
@@ -462,7 +500,7 @@ class Library {
 				status;
 
 			cell.textContent =
-				(status === true)
+				(status)
 					? "Yes" : "No";
 
 			console.log
@@ -474,9 +512,7 @@ class Library {
 
 	} // toggleBookStatus()
 
-
 	//========================================================================================================
-
 
 } // class
 
@@ -484,5 +520,7 @@ class Library {
 
 const library =
 	new Library();
+
+//========================================================================================================
 
 export { library };
