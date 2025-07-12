@@ -150,7 +150,7 @@ class Library {
 
 		const btnsContainer =
 			document.createElement(
-				"section"
+				"div"
 			);
 
 		btnsContainer.setAttribute(
@@ -161,6 +161,8 @@ class Library {
 		tableContainer.appendChild(
 			btnsContainer
 		);
+
+		let id = 0;
 
 		this.#library.forEach((book) => {
 
@@ -177,8 +179,6 @@ class Library {
 			bookIDCell.textContent =
 				`${book.id}`;
 
-			bookIDCell.style.textAlign =
-				"center";
 
 			contentRow.appendChild(
 				bookIDCell
@@ -192,9 +192,6 @@ class Library {
 			titleCell.textContent =
 				book.title;
 
-			titleCell.style.textAlign =
-				"left";
-
 			contentRow.appendChild(
 				titleCell
 			);
@@ -204,8 +201,6 @@ class Library {
 					"td"
 				);
 
-			authorCell.style.textAlign =
-				"left";
 			authorCell.textContent =
 				book.author;
 
@@ -240,13 +235,9 @@ class Library {
 				);
 
 			statusCell.setAttribute(
-				"id",
+				"class",
 				"read-status"
 			);
-
-			statusCell.style.textAlign =
-				"center";
-
 			statusCell.textContent =
 				book.read;
 
@@ -263,14 +254,18 @@ class Library {
 				contentRow
 			);
 
-			const section =
+			const btnsCell =
 				document.createElement(
-					"section"
+					"td"
 				);
 
-			section.setAttribute(
+			btnsCell.setAttribute(
 				"id",
-				"edit-btns-container"
+				"edit-btns"
+			);
+
+			contentRow.appendChild(
+				btnsCell
 			);
 
 			const deleteBtn =
@@ -289,8 +284,8 @@ class Library {
 			);
 
 			deleteBtn.setAttribute(
-				"data-bookID",
-				`${book.id}`
+				"data-bookId",
+				`${id}`
 			);
 
 			const deleteIcon =
@@ -313,7 +308,7 @@ class Library {
 				deleteIcon
 			);
 
-			section.appendChild(
+			btnsCell.appendChild(
 				deleteBtn
 			);
 
@@ -323,9 +318,11 @@ class Library {
 				);
 
 			changeStatusBtn.setAttribute(
-				"data-bookID",
-				`${book.id}`
+				"data-bookId",
+				`${id}`
 			);
+
+			id++;
 
 			changeStatusBtn.setAttribute(
 				"id",
@@ -335,18 +332,14 @@ class Library {
 			changeStatusBtn.textContent =
 				"Change Read Status";
 
-			section.appendChild(
+			btnsCell.appendChild(
 				changeStatusBtn
-			);
-
-			btnsContainer.appendChild(
-				section
 			);
 
 			this.removeBook(
 				deleteBtn,
 				contentRow,
-				section
+				btnsCell
 			);
 
 			this.toggleBookStatus(
@@ -432,31 +425,46 @@ class Library {
 		authorHeaderCell.textContent =
 			"Author";
 
-		headerRow.appendChild
-			(authorHeaderCell);
+		headerRow.appendChild(
+			authorHeaderCell
+		);
 
 		const pagesHeaderCell =
-			document.createElement
-				("th");
+			document.createElement(
+				"th"
+			);
 
 		pagesHeaderCell.textContent =
 			"Number of Pages";
 
-		headerRow.appendChild
-			(pagesHeaderCell);
+		headerRow.appendChild(
+			pagesHeaderCell
+		);
 
 		const statusHeaderCell =
-			document.createElement
-				("th");
+			document.createElement(
+				"th"
+			);
 
 		statusHeaderCell.textContent =
 			"Has the Book Been Read?";
 
-		headerRow.appendChild
-			(statusHeaderCell);
+		headerRow.appendChild(
+			statusHeaderCell
+		);
 
-		tableHeader.appendChild
-			(headerRow);
+		const btnsHeaderCell =
+			document.createElement(
+				"th"
+			);
+
+		headerRow.appendChild(
+			btnsHeaderCell
+		);
+
+		tableHeader.appendChild(
+			headerRow
+		);
 
 	} // appendTableHeader()
 
@@ -470,12 +478,19 @@ class Library {
 
 		tableContainer.innerHTML = "";
 
-
 	} // clearTable()
 
 	//=========================================================================================================
 
 	toggleBookStatus(button, cell, status) {
+
+		const bookID =
+			button.getAttribute(
+				"data-bookID"
+			);
+
+		console.log(bookID);
+
 
 		button.addEventListener("click", () => {
 
@@ -484,8 +499,12 @@ class Library {
 					? false : true;
 
 			const bookID =
-				button.getAttribute
-					("data-bookID");
+				button.getAttribute(
+					"data-bookId"
+				);
+
+			console.log(bookID);
+
 
 			const index =
 				new Number
@@ -500,10 +519,10 @@ class Library {
 
 			console.log
 				(
-					`Read Status of "${this.library[index].title}":  ${status}."`
+					`Read Status of "${this.library[index].title}": ${status}."`
 				);
 
-		}); // forEach
+		}); // addEventListener()
 
 	} // toggleBookStatus()
 

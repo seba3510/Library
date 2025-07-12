@@ -11,35 +11,103 @@ header {
 	background-color: rgb(21, 97, 132);
 }
 
-#book-img {
-	width: 50px;
-	height: 50px;
-}
-
-#btn-container {
+.image-container {
+	border: 3px solid red;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	margin-top: 2em;
+}
+
+.image-container img {
+	width: 50px;
+	cursor: pointer;
+}
+
+header > img {
+	width: 50px;
 }
 
 button {
 	cursor: pointer;
 }
 
+.wrapper {
+	position: absolute;
+	top: 200px;
+	left: 50%;
+	margin-left: -130px;
+}
+
 dialog {
-	left: 500px;
-	top: 250px;
+	padding: 1em;
 }
 
-footer {
-	border: 5px solid red;
-}
-
-#btns-container {
+.btns-container {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	gap: 50px;
+	gap: 20px;
+	margin-top: 0.5em;
+}
+
+.btn-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	border: 3px solid blue;
+	padding: 1em;
+}
+
+.btn-container > button {
+	padding: 0.5em 0.3em;
+}
+
+table {
+	table-layout: fixed;
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 1em;
+}
+
+tbody,
+tr,
+td,
+th {
+	border: 1px solid black;
+}
+
+th,
+td {
+	vertical-align: top;
+	padding: 0.5em;
+}
+
+#edit-btns {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+}
+
+.remove-icon {
+	width: 50px;
+}
+
+/* tr:last-child,
+td:last-child,
+th:last-child {
+	border: none;
+} */
+
+td:last-child {
+	border-right: none;
+	border-top: none;
+	border-bottom: none;
+}
+
+th:last-child {
+	border-top: none;
 }

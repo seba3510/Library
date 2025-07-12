@@ -29,7 +29,7 @@ class Form {
 
 		this.#cancelBtn =
 			document.querySelector(
-				"#cancel-btn"
+				"#close-btn"
 			);
 
 		this.#dialogBox =
@@ -44,18 +44,20 @@ class Form {
 	displayForm() {
 
 		const selector =
-			"#add-book-btn";
+			"#book-img";
 
-		const button =
+		const image =
 			document.querySelector(
 				selector
 			);
 
-		button.addEventListener("click", () => {
+		image.addEventListener("click", () => {
 
 			this.#dialogBox.show();
 
 			this.#submitForm();
+
+			this.#closeForm();
 
 		}); // addEventListener()
 
@@ -64,7 +66,6 @@ class Form {
 	//=====================================================================
 
 	#submitForm() {
-
 
 		this.#form.addEventListener("submit", (event) => {
 
@@ -111,15 +112,25 @@ class Form {
 				hasBookBeenRead
 			);
 
-			const x = 10;
+			library.displayBooks();
 
-			// // library.displayBooks();
-
-			// this.#clearData();
+			this.#clearData();
 
 		}); // addEventListener()
 
 	} // submitForm()
+
+	//=====================================================================
+
+	#closeForm() {
+
+		this.#cancelBtn.addEventListener("click", () => {
+
+			this.#dialogBox.close();
+
+		}); // addEventListener()
+
+	} // closeForm()
 
 	//=====================================================================
 
@@ -154,7 +165,7 @@ class Form {
 		author.value = "";
 
 		// hasRead.checked ? (!hasRead.checked)
-		//     : (!notRead.checked)
+		// 	: (!notRead.checked);
 
 	} // clearData()
 
@@ -168,3 +179,4 @@ const form =
 	new Form();
 
 form.displayForm();
+
