@@ -1,4 +1,6 @@
-import { library } from "./library.js";
+import {
+	Library
+} from "./library.js";
 
 //=====================================================================
 
@@ -6,12 +8,11 @@ class Form {
 
 	#form;
 
-	#submitBtn;
-
 	#cancelBtn;
 
 	#dialogBox;
 
+	#library;
 
 	//=====================================================================
 
@@ -20,11 +21,6 @@ class Form {
 		this.#form =
 			document.querySelector(
 				"form"
-			);
-
-		this.#submitBtn =
-			document.querySelector(
-				"#submit-btn"
 			);
 
 		this.#cancelBtn =
@@ -36,6 +32,9 @@ class Form {
 			document.querySelector(
 				"dialog"
 			);
+
+		this.#library =
+			new Library();
 
 	} // constructor()
 
@@ -72,19 +71,18 @@ class Form {
 			event.preventDefault();
 
 			const title =
-				document.querySelector(
-					"#title"
-				).value.trim();
+				this.#form[0]
+					.value
+					.trim();
 
 			const author =
-				document.querySelector(
-					"#author"
-				).value.trim();
+				this.#form[1]
+					.value
+					.trim();
 
 			const pagesInput =
-				document.querySelector(
-					"#pages"
-				).value;
+				this.#form[2]
+					.value;
 
 			const pages =
 				parseInt(
@@ -97,14 +95,14 @@ class Form {
 				);
 
 			const hasBookBeenRead =
-				(read.checked);
+				read.checked;
 
 			const bookID =
 				self
 					.crypto
 					.randomUUID();
 
-			library.addBook(
+			this.#library.addBook(
 				bookID,
 				title,
 				author,
@@ -112,9 +110,11 @@ class Form {
 				hasBookBeenRead
 			);
 
-			library.displayBooks();
+			this.#library.displayBooks();
 
-			this.#clearData();
+			// Clear data of form
+			this.#form
+				.reset();
 
 		}); // addEventListener()
 
@@ -131,43 +131,6 @@ class Form {
 		}); // addEventListener()
 
 	} // closeForm()
-
-	//=====================================================================
-
-	#clearData() {
-
-		const title =
-			document.querySelector(
-				"#title"
-			).value.trim();
-
-		const author =
-			document.querySelector(
-				"#author"
-			).value.trim();
-
-		const pages =
-			document.querySelector
-				("#pages");
-
-		const hasRead =
-			document.querySelector(
-				"#read"
-			);
-
-		const notRead =
-			document.querySelector(
-				"#not-read"
-			);
-
-		title.value = "";
-
-		author.value = "";
-
-		// hasRead.checked ? (!hasRead.checked)
-		// 	: (!notRead.checked);
-
-	} // clearData()
 
 	//=====================================================================
 

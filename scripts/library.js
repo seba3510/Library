@@ -1,6 +1,9 @@
-import { Book } from "./book.js";
+import {
+	Book
+} from "./book.js";
 
 //========================================================================================================
+
 class Library {
 
 	#library;
@@ -47,7 +50,6 @@ class Library {
 
 		this.library = [];
 
-
 	} // constructor()
 
 	//========================================================================================================
@@ -70,7 +72,8 @@ class Library {
 				read
 			);
 
-		this.#library.push(book);
+		this.#library
+			.push(book);
 
 	} // addBook()
 
@@ -89,13 +92,14 @@ class Library {
 			);
 
 		const doesTableExist =
-			(tableContainer !== null);
+			(tableContainer
+				!== null);
 
 		if (!doesTableExist) {
 
 			tableContainer =
 				document.createElement(
-					"section"
+					"div"
 				);
 
 			tableContainer.setAttribute(
@@ -103,8 +107,9 @@ class Library {
 				"table-container"
 			);
 
-			body.appendChild
-				(tableContainer);
+			body.appendChild(
+				tableContainer
+			);
 
 		} // if
 
@@ -148,20 +153,6 @@ class Library {
 			tableHeader
 		);
 
-		const btnsContainer =
-			document.createElement(
-				"div"
-			);
-
-		btnsContainer.setAttribute(
-			"class",
-			"btns-container"
-		);
-
-		tableContainer.appendChild(
-			btnsContainer
-		);
-
 		let id = 0;
 
 		this.#library.forEach((book) => {
@@ -178,7 +169,6 @@ class Library {
 
 			bookIDCell.textContent =
 				`${book.id}`;
-
 
 			contentRow.appendChild(
 				bookIDCell
@@ -213,13 +203,8 @@ class Library {
 					"td"
 				);
 
-			pagesCell
-				.style
-				.textAlign = "right";
-
 			const formattedPages =
-				book
-					.pages
+				book.pages
 					.toLocaleString();
 
 			pagesCell.textContent =
@@ -254,19 +239,28 @@ class Library {
 				contentRow
 			);
 
-			const btnsCell =
+			const deleteBookCell =
 				document.createElement(
 					"td"
 				);
 
-			btnsCell.setAttribute(
-				"id",
-				"edit-btns"
-			);
+			// const btnsCell =
+			// 	document.createElement(
+			// 		"td"
+			// 	);
+
+			// btnsCell.setAttribute(
+			// 	"class",
+			// 	"edit-btns"
+			// );
 
 			contentRow.appendChild(
-				btnsCell
+				deleteBookCell
 			);
+
+			// contentRow.appendChild(
+			// 	btnsCell
+			// );
 
 			const deleteBtn =
 				document.createElement(
@@ -284,12 +278,14 @@ class Library {
 			);
 
 			deleteBtn.setAttribute(
-				"data-bookId",
+				"data-bookID",
 				`${id}`
 			);
 
 			const deleteIcon =
-				document.createElement("img");
+				document.createElement(
+					"img"
+				);
 
 			const path =
 				"../assets/images/delete.png";
@@ -308,9 +304,14 @@ class Library {
 				deleteIcon
 			);
 
-			btnsCell.appendChild(
+			deleteBookCell.appendChild(
 				deleteBtn
 			);
+
+			const changeStatusCell =
+				document.createElement(
+					"td"
+				);
 
 			const changeStatusBtn =
 				document.createElement(
@@ -318,21 +319,25 @@ class Library {
 				);
 
 			changeStatusBtn.setAttribute(
-				"data-bookId",
+				"data-bookID",
 				`${id}`
 			);
 
 			id++;
 
 			changeStatusBtn.setAttribute(
-				"id",
+				"class",
 				"change-status-btn"
 			);
 
 			changeStatusBtn.textContent =
 				"Change Read Status";
 
-			btnsCell.appendChild(
+			changeStatusCell.appendChild(
+				changeStatusBtn
+			);
+
+			contentRow.appendChild(
 				changeStatusBtn
 			);
 
@@ -354,7 +359,11 @@ class Library {
 
 	//========================================================================================================
 
-	removeBook(button, row, section) {
+	removeBook(
+		button,
+		row,
+		section
+	) {
 
 		button.addEventListener("click", () => {
 
@@ -399,13 +408,17 @@ class Library {
 	#appendTableHeader(tableHeader) {
 
 		const headerRow =
-			document.createElement("tr");
+			document.createElement(
+				"tr"
+			);
 
 		const bookIDHeaderCell =
-			document.createElement("th");
+			document.createElement(
+				"th"
+			);
 
-		bookIDHeaderCell.textContent =
-			"ID";
+		bookIDHeaderCell.
+			textContent = "ID";
 
 		headerRow.appendChild
 			(bookIDHeaderCell);
@@ -416,11 +429,14 @@ class Library {
 		titleHeaderCell.textContent =
 			"Title";
 
-		headerRow.appendChild
-			(titleHeaderCell);
+		headerRow.appendChild(
+			titleHeaderCell
+		);
 
 		const authorHeaderCell =
-			document.createElement("th");
+			document.createElement(
+				"th"
+			);
 
 		authorHeaderCell.textContent =
 			"Author";
@@ -473,8 +489,9 @@ class Library {
 	#clearTable() {
 
 		const tableContainer =
-			document.querySelector
-				("#table-container");
+			document.querySelector(
+				"#table-container"
+			);
 
 		tableContainer.innerHTML = "";
 
@@ -482,45 +499,35 @@ class Library {
 
 	//=========================================================================================================
 
-	toggleBookStatus(button, cell, status) {
-
-		const bookID =
-			button.getAttribute(
-				"data-bookID"
-			);
-
-		console.log(bookID);
-
+	toggleBookStatus(
+		button,
+		cell,
+		status
+	) {
 
 		button.addEventListener("click", () => {
 
 			status =
-				(status === true)
-					? false : true;
+				(status) ? false
+					: true;
 
 			const bookID =
 				button.getAttribute(
 					"data-bookId"
 				);
 
-			console.log(bookID);
-
-
 			const index =
-				new Number
-					(bookID);
+				new Number(
+					bookID
+				);
 
 			this.#library[index].read =
 				status;
 
 			cell.textContent =
-				(status)
-					? "Yes" : "No";
+				(status) ? "Yes"
+					: "No";
 
-			console.log
-				(
-					`Read Status of "${this.library[index].title}": ${status}."`
-				);
 
 		}); // addEventListener()
 
@@ -532,9 +539,4 @@ class Library {
 
 //========================================================================================================
 
-const library =
-	new Library();
-
-//========================================================================================================
-
-export { library };
+export { Library };

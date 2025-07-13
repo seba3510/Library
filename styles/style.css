@@ -9,14 +9,15 @@ header {
 	align-items: center;
 	gap: 20px;
 	background-color: rgb(21, 97, 132);
+	color: white;
 }
 
 .image-container {
-	border: 3px solid red;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
+	padding: 0.3em;
 }
 
 .image-container img {
@@ -64,17 +65,27 @@ dialog {
 	padding: 0.5em 0.3em;
 }
 
-table {
-	table-layout: fixed;
-	width: 100%;
-	border-collapse: collapse;
+#table-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 	margin-top: 1em;
 }
 
+table {
+	table-layout: fixed;
+	min-width: 1000px;
+	width: 80%;
+	border-collapse: collapse;
+	margin: 0 auto;
+}
+
+thead,
 tbody,
 tr,
-td,
-th {
+th,
+td {
 	border: 1px solid black;
 }
 
@@ -84,30 +95,21 @@ td {
 	padding: 0.5em;
 }
 
-#edit-btns {
+thead th:last-child,
+tbody td:last-child {
+	border-top: hidden;
+	border-bottom: hidden;
+	border-right: hidden;
+}
+
+/* .edit-btns {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
 	gap: 10px;
-}
+} */
 
 .remove-icon {
 	width: 50px;
-}
-
-/* tr:last-child,
-td:last-child,
-th:last-child {
-	border: none;
-} */
-
-td:last-child {
-	border-right: none;
-	border-top: none;
-	border-bottom: none;
-}
-
-th:last-child {
-	border-top: none;
 }
