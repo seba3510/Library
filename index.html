@@ -1,85 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Sebastian's Library</title>
-		<link rel="stylesheet" href="./styles/resets.css" />
-		<link rel="stylesheet" href="./styles/style.css" />
-		<link rel="icon" href="./assets/images/read.png" />
-	</head>
 
-	<body>
-		<header>
-			<img src="./assets/images/book.png" alt="This is a book" />
-			<h1>Sebastian's Library</h1>
-		</header>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Sebastian's Library</title>
+	<link rel="stylesheet" href="./styles/resets.css" />
+	<link rel="stylesheet" href="./styles/style.css" />
+	<link rel="icon" href="./assets/images/read.png" />
+</head>
 
-		<div class="image-container">
-			<img src="./assets/images/add.png" id="book-img" />
-		</div>
+<body>
+	<header>
+		<img src="./assets/images/book.png" alt="This is a book" />
+		<h1>Sebastian's Library</h1>
+	</header>
 
-		<div class="wrapper">
-			<dialog>
-				<form>
+	<div class="image-container">
+		<img src="./assets/images/add.png" id="book-img" />
+	</div>
+
+	<div class="wrapper">
+		<dialog>
+			<form>
+				<div class="form-control">
+					<label for="title"> Title </label>
+					<input type="text" name="book-title" id="title" placeholder="Title of the book" />
+				</div>
+
+				<div class="form-control">
+					<label for="author"> Author </label>
+					<input type="text" name="book-author" id="author" placeholder="Author of the book" />
+				</div>
+
+				<div class="form-control">
+					<label for="pages"> Number of Pages </label>
+					<input type="number" name="num-pages" id="pages" />
+				</div>
+
+				<fieldset>
+					<legend>Has the book been read?</legend>
+
 					<div class="form-control">
-						<label for="title"> Title </label>
-						<input
-							type="text"
-							name="book-title"
-							id="title"
-							placeholder="Title of the book"
-						/>
+						<input type="radio" name="status" id="read" value="Yes" />
+						<label for="read">Yes</label>
 					</div>
 
 					<div class="form-control">
-						<label for="author"> Author </label>
-						<input
-							type="text"
-							name="book-author"
-							id="author"
-							placeholder="Author of the book"
-						/>
+						<input type="radio" name="status" id="not-read" value="No" />
+						<label for="not-read">No</label>
 					</div>
+				</fieldset>
 
-					<div class="form-control">
-						<label for="pages"> Number of Pages </label>
-						<input type="number" name="num-pages" id="pages" />
-					</div>
+				<div class="btns-container">
+					<button type="button" id="close-btn">Cancel</button>
 
-					<fieldset>
-						<legend>Has the book been read?</legend>
+					<button type="submit" id="submit-btn">Add Book</button>
+				</div>
+			</form>
+		</dialog>
+	</div>
 
-						<div class="form-control">
-							<input
-								type="radio"
-								name="status"
-								id="read"
-								value="Yes"
-							/>
-							<label for="read">Yes</label>
-						</div>
+	<script src="./scripts/form.js" type="module"></script>
+</body>
 
-						<section class="form-control">
-							<input
-								type="radio"
-								name="status"
-								id="not-read"
-								value="No"
-							/>
-							<label for="not-read">No</label>
-						</section>
-					</fieldset>
-
-					<div class="btns-container">
-						<button type="button" id="close-btn">Cancel</button>
-
-						<button type="submit" id="submit-btn">Add Book</button>
-					</div>
-				</form>
-			</dialog>
-		</div>
-
-		<script src="./scripts/form.js" type="module"></script>
-	</body>
 </html>

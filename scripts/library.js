@@ -223,6 +223,7 @@ class Library {
 				"class",
 				"read-status"
 			);
+
 			statusCell.textContent =
 				book.read;
 
@@ -234,10 +235,6 @@ class Library {
 			contentRow.appendChild(
 				statusCell
 			);
-
-			// tableBody.appendChild(
-			// 	contentRow
-			// );
 
 			const deleteBookCell =
 				document.createElement(
@@ -361,11 +358,8 @@ class Library {
 
 		button.addEventListener("click", () => {
 
-
-			console.log("Before Removal...");
-			console.log(this.#library)
-
 			row.remove();
+
 			section.remove();
 
 			const bookID =
@@ -374,7 +368,7 @@ class Library {
 				);
 
 			const index =
-				parseInt(
+				new Number(
 					bookID
 				);
 
@@ -387,9 +381,6 @@ class Library {
 					return (book != elem);
 
 				}); // filter()
-
-			console.log("After Removal...");
-			console.log(this.#library);
 
 			this.bookID--;
 

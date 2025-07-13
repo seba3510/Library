@@ -1,4 +1,4 @@
-body {
+html {
 	font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -52,15 +52,6 @@ dialog {
 	margin-top: 0.5em;
 }
 
-.btn-container {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	border: 3px solid blue;
-	padding: 1em;
-}
-
 .btn-container > button {
 	padding: 0.5em 0.3em;
 }
@@ -75,8 +66,8 @@ dialog {
 
 table {
 	table-layout: fixed;
-	min-width: 1000px;
 	width: 80%;
+	min-width: 1000px;
 	border-collapse: collapse;
 	margin: 0 auto;
 }
@@ -87,6 +78,24 @@ tr,
 th,
 td {
 	border: 1px solid black;
+}
+
+thead {
+	font-size: 1.5rem;
+	/* background-color: rgb(119, 81, 224); */
+}
+
+thead th:nth-child(1),
+thead th:nth-child(2),
+thead th:nth-child(3),
+thead th:nth-child(4),
+thead th:nth-child(5){
+	background-color: rgb(119, 81, 224);
+	color: white;
+}
+
+tbody {
+	font-size: 1.2rem;
 }
 
 th,
@@ -108,16 +117,27 @@ tbody td:last-child {
 }
 
 thead > tr > th:last-child,
-tbody td:last-child {
+tbody > tr > td:last-child {
 	border-top: hidden;
 	border-bottom: hidden;
 	border-right: hidden;
 }
 
-.remove-icon {
-	width: 50px;
+tbody > tr > td:nth-child(7n - 5),
+tbody > tr > td:nth-child(7n - 6),
+tbody > tr > td:nth-child(7n - 2) {
+	text-align: left;
 }
 
-tbody > tr > th:nth-child(2) {
-	text-align: center;
+tbody > tr > td:nth-child(7n - 3) {
+	text-align: right;
+}
+
+
+.remove-btn {
+	border: none;
+}
+
+.remove-icon {
+	width: 50px;
 }
