@@ -382,11 +382,37 @@ class Library {
 
 				}); // filter()
 
+			const numBooks =
+				this.library
+					.length;
+
+			const isLibraryEmpty =
+				(numBooks === 0);
+
+			if (isLibraryEmpty) {
+
+				this.#removeHeader();
+
+			} // if
+
 			this.bookID--;
 
-		}); // forEach
+		}); // forEach()
 
 	} // removeBook()
+
+	//========================================================================================================
+
+	#removeHeader() {
+
+		const tableHeader =
+			document.querySelector(
+				"thead"
+			);
+
+		tableHeader.remove();
+
+	} // removeHeader()
 
 	//========================================================================================================
 
