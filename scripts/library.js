@@ -235,32 +235,18 @@ class Library {
 				statusCell
 			);
 
-			tableBody.appendChild(
-				contentRow
-			);
+			// tableBody.appendChild(
+			// 	contentRow
+			// );
 
 			const deleteBookCell =
 				document.createElement(
 					"td"
 				);
 
-			// const btnsCell =
-			// 	document.createElement(
-			// 		"td"
-			// 	);
-
-			// btnsCell.setAttribute(
-			// 	"class",
-			// 	"edit-btns"
-			// );
-
 			contentRow.appendChild(
 				deleteBookCell
 			);
-
-			// contentRow.appendChild(
-			// 	btnsCell
-			// );
 
 			const deleteBtn =
 				document.createElement(
@@ -308,6 +294,10 @@ class Library {
 				deleteBtn
 			);
 
+			contentRow.appendChild(
+				deleteBookCell
+			);
+
 			const changeStatusCell =
 				document.createElement(
 					"td"
@@ -338,13 +328,17 @@ class Library {
 			);
 
 			contentRow.appendChild(
-				changeStatusBtn
+				changeStatusCell
+			);
+
+			tableBody.appendChild(
+				contentRow
 			);
 
 			this.removeBook(
 				deleteBtn,
 				contentRow,
-				btnsCell
+				deleteBookCell
 			);
 
 			this.toggleBookStatus(
@@ -420,14 +414,17 @@ class Library {
 		bookIDHeaderCell.
 			textContent = "ID";
 
-		headerRow.appendChild
-			(bookIDHeaderCell);
+		headerRow.appendChild(
+			bookIDHeaderCell
+		);
 
 		const titleHeaderCell =
-			document.createElement("th");
+			document.createElement(
+				"th"
+			);
 
-		titleHeaderCell.textContent =
-			"Title";
+		titleHeaderCell
+			.textContent = "Title";
 
 		headerRow.appendChild(
 			titleHeaderCell
@@ -469,13 +466,22 @@ class Library {
 			statusHeaderCell
 		);
 
-		const btnsHeaderCell =
+		const removeBookCell =
 			document.createElement(
 				"th"
 			);
 
 		headerRow.appendChild(
-			btnsHeaderCell
+			removeBookCell
+		);
+
+		const changeStatusCell =
+			document.createElement(
+				"th"
+			);
+
+		headerRow.appendChild(
+			changeStatusCell
 		);
 
 		tableHeader.appendChild(
@@ -513,7 +519,7 @@ class Library {
 
 			const bookID =
 				button.getAttribute(
-					"data-bookId"
+					"data-bookID"
 				);
 
 			const index =
@@ -521,13 +527,12 @@ class Library {
 					bookID
 				);
 
-			this.#library[index].read =
-				status;
+			this.#library[index]
+				.read = status;
 
 			cell.textContent =
 				(status) ? "Yes"
 					: "No";
-
 
 		}); // addEventListener()
 

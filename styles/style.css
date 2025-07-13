@@ -95,21 +95,29 @@ td {
 	padding: 0.5em;
 }
 
-thead th:last-child,
+thead th:nth-child(7n - 1),
+tbody td:nth-child(7n - 1) {
+	border-top: hidden;
+	border-bottom: hidden;
+	border-right: hidden;
+}
+
+tbody td:nth-child(7n - 1),
+tbody td:last-child {
+	text-align: center;
+}
+
+thead > tr > th:last-child,
 tbody td:last-child {
 	border-top: hidden;
 	border-bottom: hidden;
 	border-right: hidden;
 }
 
-/* .edit-btns {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	gap: 10px;
-} */
-
 .remove-icon {
 	width: 50px;
+}
+
+tbody > tr > th:nth-child(2) {
+	text-align: center;
 }
